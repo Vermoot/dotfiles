@@ -1,0 +1,4 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+
+<dead_acute> <c> : "ç"
+<dead_acute> <C> : "Ç"

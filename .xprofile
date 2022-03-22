@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xrdb -merge ~/.Xresources
+
+xset r rate 180 70

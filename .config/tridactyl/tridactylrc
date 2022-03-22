@@ -1,0 +1,187 @@
+" ---- General Settings ---- {{{
+set configversion 2.0
+set theme gruvsur
+set smoothscroll true
+set hintchars ntesirhdoaufclpywmgxkvjbqz
+set modeindicator true
+" ---- END General Settings ---- }}}
+
+" ---- Binds ---- {{{
+unbind --mode=normal <ArrowUp>
+unbind --mode=normal <ArrowDown>
+unbind --mode=normal <ArrowRight>
+unbind --mode=normal <ArrowLeft>
+bind --mode=ex <ArrowDown> ex.next_completion
+bind --mode=ex <ArrowUp> ex.prev_completion
+bind --mode=ex <Tab> ex.insert_space_or_completion
+bind --mode=ex <PageUp> ex.prev_history
+bind --mode=ex <PageDown> ex.next_history
+unbind --mode=ex <Space>
+bind <S-ArrowDown> scrollline 2
+bind <S-ArrowUp> scrollline -2
+bind <S-ArrowLeft> scrollpx -10
+bind <S-ArrowRight> scrollpx 10
+bind n scrollline 10
+bind e scrollline -10
+bind m scrollpx -50
+bind i scrollpx 50
+bind I forward
+bind M back
+bind E tabprev
+bind N tabnext
+bind F hint -W tabopen
+unbind --mode=normal <C-f>
+
+" --- END Binds ---- }}}
+
+" ---- Default binds ---- {{{
+" bind <ArrowLeft> scrollpx -50
+" bind <ArrowRight> scrollpx 50
+" bind <ArrowDown> scrollline 10
+" bind <ArrowUp> scrollline -10
+" bind <A-p> pin
+" bind <A-m> mute toggle
+" bind <F1> help
+" bind o fillcmdline open
+" bind O current_url open
+" bind w fillcmdline winopen
+" bind W current_url winopen
+" bind t fillcmdline tabopen
+" bind ]] followpage next
+" bind [[ followpage prev
+" bind [c urlincrement -1
+" bind ]c urlincrement 1
+" bind <C-x> urlincrement -1
+" bind <C-a> urlincrement 1
+" bind T current_url tabopen
+" bind yy clipboard yank
+" bind ys clipboard yankshort
+" bind yc clipboard yankcanon
+" bind ym clipboard yankmd
+" bind yo clipboard yankorg
+" bind yt clipboard yanktitle
+" bind gh home
+" bind gH home true
+" bind p clipboard open
+" bind P clipboard tabopen
+" bind <C-e> scrollline 10
+" bind <C-y> scrollline -10
+" bind G scrollto 100
+" bind gg scrollto 0
+" bind <C-u> scrollpage -0.5
+" bind <C-d> scrollpage 0.5
+" bind <C-f> scrollpage 1
+" bind <C-b> scrollpage -1
+" bind <C-v> nmode ignore 1 mode normal
+" bind $ scrollto 100 x
+" bind ^ scrollto 0 x
+" bind <C-o> jumpprev
+" bind <C-i> jumpnext
+" bind d tabclose
+" bind D composite tabprev; tabclose #
+" bind gx0 tabclosealltoleft
+" bind gx$ tabclosealltoright
+" bind << tabmove -1
+" bind >> tabmove +1
+" bind u undo
+" bind U undo window
+" bind r reload
+" bind R reloadhard
+" bind x stop
+" bind gi focusinput -l
+" bind g? rot13
+" bind g! jumble
+" bind g; changelistjump -1
+" bind gt tabnext_gt
+" bind gT tabprev
+" bind g^ tabfirst
+" bind g0 tabfirst
+" bind g$ tablast
+" bind ga tabaudio
+" bind gr reader
+" bind gu urlparent
+" bind gU urlroot
+" bind gf viewsource
+" bind : fillcmdline_notrail
+" bind s fillcmdline open search
+" bind S fillcmdline tabopen search
+" bind M gobble 1 quickmark
+" bind B fillcmdline taball
+" bind b fillcmdline tab
+" bind ZZ qall
+" bind f hint
+" bind F hint -b
+" bind gF hint -qb
+" bind ;i hint -i
+" bind ;b hint -b
+" bind ;o hint
+" bind ;I hint -I
+" bind ;k hint -k
+" bind ;K hint -K
+" bind ;y hint -y
+" bind ;Y hint -cF img i => tri.excmds.yankimage(tri.urlutils.getAbsoluteURL(i.src))
+" bind ;p hint -p
+" bind ;h hint -h
+" bind v hint -h
+" bind ;P hint -P
+" bind ;r hint -r
+" bind ;s hint -s
+" bind ;S hint -S
+" bind ;a hint -a
+" bind ;A hint -A
+" bind ;; hint -; *
+" bind ;# hint -#
+" bind ;v hint -W mpvsafe
+" bind ;w hint -w
+" bind ;O hint -W fillcmdline_notrail open
+" bind ;W hint -W fillcmdline_notrail winopen
+" bind ;T hint -W fillcmdline_notrail tabopen
+" bind ;z hint -z
+" bind ;m composite hint -Jpipe img src | open images.google.com/searchbyimage?image_url=
+" bind ;M composite hint -Jpipe img src | tabopen images.google.com/searchbyimage?image_url=
+" bind ;gi hint -qi
+" bind ;gI hint -qI
+" bind ;gk hint -qk
+" bind ;gy hint -qy
+" bind ;gp hint -qp
+" bind ;gP hint -qP
+" bind ;gr hint -qr
+" bind ;gs hint -qs
+" bind ;gS hint -qS
+" bind ;ga hint -qa
+" bind ;gA hint -qA
+" bind ;g; hint -q;
+" bind ;g# hint -q#
+" bind ;gv hint -qW mpvsafe
+" bind ;gw hint -qw
+" bind ;gb hint -qb
+" bind ;gF hint -qb
+" bind ;gf hint -q
+" bind <S-Insert> mode ignore
+" bind <AC-Escape> mode ignore
+" bind <AC-`> mode ignore
+" bind <S-Escape> mode ignore
+" bind <Escape> composite mode normal ; hidecmdline
+" bind <C-[> composite mode normal ; hidecmdline
+" bind a current_url bmark
+" bind A bmark
+" bind zi zoom 0.1 true
+" bind zo zoom -0.1 true
+" bind zm zoom 0.5 true
+" bind zr zoom -0.5 true
+" bind zM zoom 0.5 true
+" bind zR zoom -0.5 true
+" bind zz zoom 1
+" bind zI zoom 3
+" bind zO zoom 0.3
+" bind . repeat
+" ---- END Default binds ---- }}}
+
+" ---- Autocmds ---- {{{
+autocmd DocStart https://www.youtube.com/watch mode ignore
+autocmd DocStart https://monkeytype.com/ mode ignore
+autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
+autocmd TriStart .* source_quiet
+autocmd https://www.youtube.com/ FullscreenEnter set https://www.youtube.com/ modeindicator false
+autocmd https://www.youtube.com/ FullscreenLeft set https://www.youtube.com/ modeindicator true
+" ---- END Autocmds ---- }}}

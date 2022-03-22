@@ -1,0 +1,110 @@
+configuration {
+	modi:				"drun";
+	font:				"SF Compact Rounded 12";
+	show-icons: true;
+	display-drun: 			"";
+	display-window: 			"";
+	sidebar-mode: 			false;
+	window-format: 		"{t}";
+}
+
+@theme "/dev/null"
+
+* {
+	bg:				#282828;
+	fg:				#ebdbb2;
+	button:				#282828;
+
+	background-color:		@bg;
+	text-color:			@fg;
+}
+
+window {
+	transparency:                   "real";
+	border-radius:                  10px;
+	width:			    	30%;
+	padding: 			5px;
+	border:				2px;
+	border-color:			@fg;
+}
+
+prompt {
+	enabled:			false;
+	horizontal-align:		0.5;
+	vertical-align:			0.5;
+	background-color:		@button;
+	border:                         2px;
+	border-color:                   @fg;
+	border-radius:                  10px;
+	font:				"feather 17";
+	padding:			0 1% 0;
+}
+
+entry {
+	placeholder:			"";
+	expand:                         true;
+	padding:                        2%;
+	background-color:               @button;
+        placeholder-color:              @fg;
+	border:				2px;
+	border-color:			@fg;
+	border-radius:			10px;
+	cursor:				text;
+}
+
+inputbar {
+	children: 			[ entry ];
+	expand:                         false;
+	spacing:			1%;
+}
+
+listview {
+	columns:                        1;
+	lines:	                        6;
+	cycle:                          true;
+	dynamic:                        true;
+	layout:                         vertical;
+	fixed-height: 									true;
+}
+
+mainbox {
+	children:                       [ inputbar, listview ];
+	spacing:                       	2%;
+	padding:                        2% 1% 2% 1%;
+}
+
+listview {
+}
+
+element {
+	orientation:                    horizontal;
+	border-radius:                  10px;
+	padding:			1% 1%;
+	spacing: 			8px;
+}
+
+element-icon {
+  size: 			32px;
+	horizontal-align: 0;
+  background-color: inherit;
+}
+
+element-text {
+
+	expand:                         true;
+	horizontal-align: 							0;
+	vertical-align:                 0.5;
+	background-color:               inherit;
+  text-color:                     inherit;
+}
+
+element selected {
+	background-color:               @fg;
+	text-color:                     @bg;
+	border-radius:                  10px;
+}
+
+listview, element, element selected, element-icon, element-text {
+	cursor:				pointer;
+}
+

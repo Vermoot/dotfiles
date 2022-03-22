@@ -1,0 +1,2 @@
+WARN  2022-02-06T12:56:08.529 210654 deadly_signal:161: got signal 1 (SIGHUP)
+WARN  2022-02-06T12:56:39.425 210519 deadly_signal:161: got signal 1 (SIGHUP)

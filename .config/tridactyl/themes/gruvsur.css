@@ -1,0 +1,174 @@
+/* This is my Gruvbox theme for Tridactyl, based on Shydactyl and made to look good on macOS Big Sur */
+
+
+:root {
+
+		/* ---- Gruv colors ---- {{{*/
+	  --bg-primary: #282828;
+    --bg-secondary: #3c3836;
+    --bg-tertiary: #504945;
+    --bg-accent: #32302f;
+    --fg-normal: #ebdbb2;
+    --fg-muted: #bdae93;
+    --fg-link: #d79921;
+    --bg-floating: #3c3836;
+    --interactive-normal: #ebdbb2;
+    --interactive-hover: #bdae93;
+    --interactive-active: #fbf1c7;
+		/* ---- END Gruv colors ---- }}}*/
+
+    --tridactyl-font-family: "SF Compact Rounded", sans-serif;
+    --tridactyl-small-font-size: 16px;
+
+		--tridactyl-cmdl-bg: var(--bg-primary);
+    --tridactyl-cmdl-font-size: 1.5rem;
+    --tridactyl-cmdl-font-family: var(--tridactyl-font-family);
+    --tridactyl-cmdl-line-height: 1.5;
+
+    --tridactyl-cmplt-option-height: 2.3em;
+    --tridactyl-cmplt-font-size: var(--tridactyl-small-font-size);
+    --tridactyl-cmplt-font-family: var(--tridactyl-font-family);
+    --tridactyl-cmplt-border-top: unset;
+
+    --tridactyl-status-font-size: 9px;
+    --tridactyl-status-font-family: var(--tridactyl-font-family);
+    --tridactyl-status-border: 1px var(--tridactyl-fg) solid;
+
+    --tridactyl-header-font-size: var(--tridactyl-small-font-size);
+    --tridactyl-header-font-weight: 200;
+    --tridactyl-header-border-bottom: unset;
+
+    --tridactyl-hintspan-font-size: var(--tridactyl-font-size);
+    --tridactyl-hintspan-bg: var(--bg-secondary);
+    --tridactyl-hintspan-fg: var(--tridactyl-fg);
+    --tridactyl-hintspan-font-family: var(--tridactyl-font-family);
+    --tridactyl-hintspan-font-weight: 400;
+
+    --tridactyl-hint-bg: transparent;
+    --tridactyl-hint-active-bg: var(--fg-normal);
+    --tridactyl-hint-outline: 1px solid var(--fg-muted);
+
+		
+		--tridactyl-bg: var(--bg-primary);
+		--tridactyl-of-bg: var(--fg-normal);
+		--tridactyl-fg: var(--fg-normal);
+		--tridactyl-of-fg: var(--bg-primary);
+}
+
+:root #command-line-holder {
+    order: 1;
+    color: var(--tridactyl-cmdl-bg);
+}
+
+:root #tridactyl-input {
+    width: 90%;
+    padding: 1rem;
+}
+
+:root #completions table {
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-spacing: 0;
+    table-layout: fixed;
+    padding-bottom: 1rem;
+    padding-top: 0;
+}
+
+:root #completions > div {
+    max-height: calc(11 * var(--tridactyl-cmplt-option-height));
+    min-height: calc(10 * var(--tridactyl-cmplt-option-height));
+}
+
+/* COMPLETIONS */
+
+:root #completions {
+    font-weight: 200;
+    order: 2;
+}
+
+#completions img {
+	display: inline;
+	vertical-align: middle;
+	height: 1.4em;
+	width: 1.4em;
+	padding-inline: 8px;
+}
+
+/* Olie doesn't know how CSS inheritance works */
+:root #completions .HistoryCompletionSource {
+    max-height: unset;
+    min-height: unset;
+}
+
+:root #completions .HistoryCompletionSource table {
+    width: 100%;
+    font-size: 9pt;
+    border-spacing: 0;
+    table-layout: fixed;
+}
+
+/* redundancy 2: redundancy 2: more redundancy */
+:root #completions .BmarkCompletionSource {
+    max-height: unset;
+    min-height: unset;
+}
+
+:root #completions table tr td.prefix,
+:root #completions table tr td.privatewindow,
+:root #completions table tr td.container,
+:root #completions table tr td.icon {
+    /* display: none; */
+}
+
+:root #completions .BufferCompletionSource table {
+    width: unset;
+    font-size: unset;
+    border-spacing: unset;
+    table-layout: unset;
+}
+
+:root #completions table tr .title {
+    width: 50%;
+}
+
+:root #completions table tr {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:root #completions .sectionHeader {
+    display: none;
+}
+
+:root #cmdline_iframe:not(.hidden) {
+    position: fixed !important;
+    bottom: unset;
+    top: 25% !important;
+    left: 10% !important;
+    z-index: 2147483647 !important;
+    width: 80% !important;
+		border-radius: 13px !important;
+    border: solid 1px var(--tridactyl-fg) !important;
+    /* box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 15px !important; */
+}
+
+:root span.TridactylHint {
+    border: solid 1px var(--tridactyl-fg) !important;
+    border-radius: 4px !important;
+}
+
+:root .TridactylStatusIndicator {
+    position: fixed !important;
+    bottom: 0 !important;
+    font-weight: 200 !important;
+    padding: 0.8ex !important;
+}
+
+/* #Shydactyl-normal { */
+/*  border-color: green !important; */
+/* } */
+
+/* #Shydactyl-insert { */
+/*  border-color: yellow !important; */
+/* } */
