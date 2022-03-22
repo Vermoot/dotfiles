@@ -1,0 +1,6 @@
+{
+  "bar_character": "▒",
+  "bar_max_width": 5,
+  "bar_time_unit": 0.4,
+  "line_format": "%b │ %12r │ %12T %s"
+}

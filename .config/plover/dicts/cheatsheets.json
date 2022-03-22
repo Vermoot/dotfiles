@@ -1,0 +1,8 @@
+{
+"STPHOEFPLT": "{PLOVER:SHELL:feh -F ~/.config/plover/dicts/Explainers/aerick-phrasing.png &}",
+"STPHOEFPLT/STPHOEFPLT": "{#Escape}",
+"STPH-RBL": "{PLOVER:SHELL:feh -F ~/.config/plover/dicts/Explainers/Teds_Navigation_Commands.png &}",
+"STPH-RBL/STPH-RBL": "{#Escape}",
+"SKWH-RBL": "{PLOVER:SHELL:feh -F ~/.config/plover/dicts/Explainers/Emily\\'s\\ Modifiers.png &}",
+"SKWH-RBL/SKWH-RBL": "{#Escape}"
+}
