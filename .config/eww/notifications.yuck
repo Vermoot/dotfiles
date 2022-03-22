@@ -1,0 +1,14 @@
+(defvar summary "")
+(defwindow notification
+  :monitor 0
+  :geometry (geometry :y "40px" :x "0px" :width "150px" :height "40px" :anchor "center top")
+  :windowtype "dock"
+  :wm-ignore true
+
+  (box :class "notification-window"
+    (label :limit-width 30
+           :wrap true
+           :show-truncated true
+           :text summary)))
+  
+

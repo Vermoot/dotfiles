@@ -1,0 +1,161 @@
+// @use "notifications";
+
+* {
+  all: unset;
+}
+
+window {
+  background-color: transparent;
+}
+
+// Gruvbox colors {{{
+$gb-bg0: #282828;
+$gb-bg0-hard: #1d2021;
+$gb-bg0-soft: #32302f;
+$gb-bg1: #3c3836;
+$gb-bg2: #504945;
+$gb-bg3: #665c54;
+$gb-bg4: #7c6f64;
+
+// Dark Foreground
+$gb-fg0: #fbf1c7;
+$gb-fg1: #ebdbb2;
+$gb-fg2: #d5c4a1;
+$gb-fg3: #bdae93;
+$gb-fg4: #a89984;
+
+// Dark Colors
+$gb-red: #cc241d;
+$gb-green: #98971a;
+$gb-yellow: #d79921;
+$gb-blue: #458588;
+$gb-purple: #b16286;
+$gb-aqua: #689d6a;
+$gb-orange: #d65d0e;
+$gb-gray: #928374;
+
+$gb-light-red: #fb4934;
+$gb-light-green: #b8bb26;
+$gb-light-yellow: #fabd2f;
+$gb-light-blue: #83a598;
+$gb-light-purple: #d3869b;
+$gb-light-aqua: #8ec07c;
+$gb-light-orange: #f38019;
+$gb-light-gray: #a89984;
+// }}}
+
+
+.bar-window {
+  margin: 8px 0 8px;
+  font-family: SF Compact Rounded;
+  color: $gb-fg1;
+  // background-color: $gb-bg0-soft;
+  background-color: $gb-bg1;
+  border: 1px solid $gb-bg3;
+  border-radius: 8px;
+}
+
+.bar-top {
+  // background-color: purple;
+}
+
+.bar-mid {
+  // background-color: lightblue;
+}
+
+.bar-bot {
+  // background-color: blue;
+}
+
+.clock {
+  // margin-bottom: 4px;
+  font-family: "Rounded Mplus 1c Bold";
+  font-size: 18px;
+  color: $gb-gray;
+  // background-color: $gb-bg3;
+  margin-bottom: 3px;
+  padding-top: 3px;
+  border-radius: 2px;
+}
+
+.clock-text {
+  margin: -3px;
+}
+
+.clock-separator {
+  background-color: $gb-gray;
+  border-radius: 2px;
+  padding-top:2px;
+  margin: 0px 4px 0px;
+}
+
+.net-tooltip {
+  background-color: $gb-bg2;
+  border: 1px solid $gb-bg4;
+  border-radius: 8px;
+  font-family: "Rounded Mplus 1c Bold";
+  font-size: 14px;
+  color: $gb-gray;
+  padding: 5px 8px 5px;
+}
+
+.netmonitor {
+  margin-bottom: 5px;
+  color: $gb-gray;
+}
+
+.network-arrow {
+  font-family: "Rounded Mplus 1c Bold";
+  font-size: 18px;
+  margin: 0 -1px 0;
+}
+
+.net-gray {
+  color: $gb-gray;
+}
+
+.net-green {
+  color: $gb-green;
+}
+
+.net-yellow {
+  color: $gb-yellow;
+}
+
+.net-red {
+  color: $gb-light-red;
+}
+
+@keyframes ripple {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.appmenu-button {
+  background-color: $gb-yellow;
+  // border: 1px solid $gb-gray;
+  margin: 2px;
+  border-radius: 6px;
+  transition: all 100ms ease;
+  background-size: 10% 10%;
+  // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+.appmenu-button:hover {
+  // background-color: $gb-blue;
+  transition: all 100ms ease;
+  // padding-top: 60px;
+  background-image : none;
+  background-size: 0% 0%;
+  animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+.appmenu-button:active {
+  background-color: $gb-green;
+  // transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
+  background-size: 0% 0%;
+  // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  // transition: all 50ms ease;
+
+}
