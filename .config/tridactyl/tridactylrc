@@ -179,7 +179,9 @@ unbind --mode=normal <C-f>
 
 " ---- Autocmds ---- {{{
 autocmd DocStart https://www.youtube.com/watch mode ignore
+autocmd DocStart https://www.twitch.tv/ mode ignore
 autocmd DocStart https://monkeytype.com/ mode ignore
+autocmd DocStart https://www.nytimes.com/games/wordle/index.html mode ignore
 autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
 autocmd TriStart .* source_quiet
 autocmd https://www.youtube.com/ FullscreenEnter set https://www.youtube.com/ modeindicator false
