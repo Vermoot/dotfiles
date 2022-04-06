@@ -114,8 +114,8 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Move across buffers with Meh
-nnoremap <M-CR> :BufferLineCyclePrev<cr>
-nnoremap <M-Tab> :BufferLineCycleNext<cr>
+nnoremap <silent><M-CR> :BufferLineCyclePrev<cr>
+nnoremap <silent><M-Tab> :BufferLineCycleNext<cr>
 
 " }}}
 
