@@ -113,7 +113,7 @@ local function update_state (noti)
         table.insert(wm_state, this_screen)
     end
     awful.spawn.with_shell("eww update wm_state='"..json.encode(wm_state).."'")
-    awful.spawn.with_shell("echo '"..json.encode(wm_state).."' > ~/wm_state.json")
+    awful.spawn.with_shell("echo '"..json.encode(wm_state).."' > ~/.config/eww/wm_state_example.json")
 
     if noti then
         awful.util.spawn("notify-send '" .. json.encode(wm_state) .. "'")
