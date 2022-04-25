@@ -1,11 +1,13 @@
 -- Imports {{{
 pcall(require, "luarocks.loader")
+json = require("json")
 
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 local gmath = require("gears.math")
 require("awful.autofocus")
+require("awful.remote")
 
 -- Widget and layout library
 local wibox = require("wibox")
@@ -81,6 +83,53 @@ awful.layout.layouts = {
 awful.mouse.snap.edge_enabled = false
 awful.mouse.snap.client_enabled = false
 -- }}}
+
+-- Bar function {{{
+
+local function update_state (noti)
+
+    local wm_state = {}
+
+    for s in screen do
+        this_screen = {}
+        for _, t in ipairs(s.tags) do
+            this_tag = {index=t.index, name=t.name, visible=t.selected, clients={}}
+            for _,c in ipairs(s:get_all_clients(false)) do
+                -- if c.type == "normal" then
+            -- for _, c in ipairs(client.get(0, true)) do
+                if c.type == "normal" and c.first_tag == t then
+                    table.insert(this_tag["clients"], {name=c.name,
+                                                       id=c.window,
+                                                       class=c.class,
+                                                       focused = c == client.focus,
+                                                       minimized=c.minimized,
+                                                       maximized=c.maximized,
+                                                       floating=c.floating,
+                                                       oncurrenttag = c:isvisible()})
+                end
+            end
+            table.insert(this_screen, this_tag)
+        end
+        table.insert(wm_state, this_screen)
+    end
+    awful.spawn.with_shell("eww update wm_state='"..json.encode(wm_state).."'")
+    awful.spawn.with_shell("echo '"..json.encode(wm_state).."' > ~/wm_state.json")
+
+    if noti then
+        awful.util.spawn("notify-send '" .. json.encode(wm_state) .. "'")
+        awful.spawn.with_shell("echo '"..json.encode(wm_state).."' | xsel -b")
+    end
+end
+
+client.connect_signal("focus", function () update_state() end)
+client.connect_signal("property::position", function () update_state() end)
+client.connect_signal("list", function () update_state() end)
+client.connect_signal("request::geometry", function () update_state() end)
+client.connect_signal("unfocus", function () update_state() end)
+screen.connect_signal("tag::history::update", function () update_state() end)
+
+
+--}}}
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -160,9 +209,6 @@ local function set_wallpaper(s)
     end
 end
 
--- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -194,34 +240,38 @@ awful.screen.connect_for_each_screen(function(s)
         buttons = tasklist_buttons,
     }
 
-    -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s})
-
-    -- Add widgets to the wibox
-    s.mywibox:setup {
-        layout = wibox.layout.align.horizontal,
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            -- mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
-    }
+--[[
+   [     -- Create the wibox
+   [     s.mywibox = awful.wibar({ position = "top", screen = s})
+   [ 
+   [     -- Add widgets to the wibox
+   [     s.mywibox:setup {
+   [         layout = wibox.layout.align.horizontal,
+   [         { -- Left widgets
+   [             layout = wibox.layout.fixed.horizontal,
+   [             -- mylauncher,
+   [             s.mytaglist,
+   [             s.mypromptbox,
+   [         },
+   [         s.mytasklist, -- Middle widget
+   [         { -- Right widgets
+   [             layout = wibox.layout.fixed.horizontal,
+   [             wibox.widget.systray(),
+   [             mytextclock,
+   [             s.mylayoutbox,
+   [         },
+   [     }
+   ]]
 end)
 -- }}}
 
 -- {{{ Mouse bindings
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function(c)
-            client.focus = c
-            c:raise()
+            if c.focusable then
+                client.focus = c
+                c:raise()
+            end
 
             if not c.floating then
                 return
@@ -292,6 +342,10 @@ end
 -- {{{ Key bindings
 
 -- Functions {{{
+local function noti_type()
+    local c = client.focus
+    awful.util.spawn("notify-send -t 0 '"..c.name..c.type.."'" )
+end
 
 local function move_to_previous_tag()
     local c = client.focus
@@ -329,20 +383,12 @@ local function next_screen()
     s2.selected_tag:clients()[0]:raise()
 end
 
-local function swap_prev_tag()
+local function swap_tag_by_idx(idx)
     local t = client.focus.screen.selected_tag
     local tags = awful.screen.focused().tags
-    local nt = tags[gmath.cycle(#tags, t.index-1)]
+    local nt = tags[gmath.cycle(#tags, t.index-idx)]
     t:swap(nt)
-    -- awful.tag.viewnext()
-end
-
-local function swap_next_tag()
-    local t = client.focus.screen.selected_tag
-    local tags = awful.screen.focused().tags
-    local nt = tags[gmath.cycle(#tags, t.index+1)]
-    t:swap(nt)
-    -- awful.tag.viewnext()
+    update_state()
 end
 
 local function toggle_gaps()
@@ -364,27 +410,29 @@ end
 globalkeys = gears.table.join(
 
     -- Move across tags
-    awful.key({ modkey,           }, "m",      awful.tag.viewprev),
-    awful.key({ modkey,           }, "i",      awful.tag.viewnext),
+    awful.key({ modkey,           }, "e",      awful.tag.viewprev),
+    awful.key({ modkey,           }, "n",      awful.tag.viewnext),
 
     awful.key({ modkey, "Mod1"    }, "o",      function () swap_screens() end),
+    awful.key({ modkey,           }, "k",      function () update_state(true) end),
+    awful.key({ modkey,           }, "j",      function () noti_type() end),
 
-    awful.key({ modkey,           }, "n",      function () awful.client.focus.byidx( 1)   end),
-    awful.key({ modkey,           }, "e",      function () awful.client.focus.byidx(-1)   end),
+    awful.key({ modkey,           }, "i",      function () awful.client.focus.byidx( 1)   end),
+    awful.key({ modkey,           }, "m",      function () awful.client.focus.byidx(-1)   end),
     
     awful.key({ modkey,           }, "t",      function () awful.tag.add("o", { screen = awful.screen.focused(),
-                                                                               layout = awful.layout.suit.tile
+                                                                                layout = awful.layout.suit.tile
                                                                               }
                                                                         ):view_only()   end),
     awful.key({ modkey,           }, "w",      function () close_tag() end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Control" }, "n",      function () awful.client.swap.byidx( 1)    end),
-    awful.key({ modkey, "Control" }, "e",      function () awful.client.swap.byidx(-1)    end),
-    awful.key({ modkey, "Control" }, "m",      function () move_to_previous_tag()         end),
-    awful.key({ modkey, "Control" }, "i",      function () move_to_next_tag()             end),
-    awful.key({ modkey, "Mod1"    }, "i",      function () swap_next_tag()                end),
-    awful.key({ modkey, "Mod1"    }, "m",      function () swap_prev_tag()                end),
+    awful.key({ modkey, "Control" }, "i",      function () awful.client.swap.byidx( 1)    end),
+    awful.key({ modkey, "Control" }, "m",      function () awful.client.swap.byidx(-1)    end),
+    awful.key({ modkey, "Control" }, "e",      function () move_to_previous_tag()         end),
+    awful.key({ modkey, "Control" }, "n",      function () move_to_next_tag()             end),
+    awful.key({ modkey, "Mod1"    }, "n",      function () swap_tag_by_idx(-1)                end),
+    awful.key({ modkey, "Mod1"    }, "e",      function () swap_tag_by_idx(1)                end),
     awful.key({ modkey,           }, "o",      function () awful.screen.focus_relative(1) end),
     awful.key({ modkey,           }, "g",      function () toggle_gaps() end),
 
@@ -403,10 +451,12 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "d",      function () awful.layout.inc( 1)                end),
 
 
-    -- Volume keys
-    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("pamixer -i 5 --unmute",    false) end),
-    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("pamixer -d 5 --unmute",    false) end),
-    awful.key({}, "XF86AudioMute",        function () awful.util.spawn("pamixer -t",        false) end),
+    --[[
+       [ -- Volume keys
+       [ awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("pamixer -i 5 --unmute",    false) end),
+       [ awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("pamixer -d 5 --unmute",    false) end),
+       [ awful.key({}, "XF86AudioMute",        function () awful.util.spawn("pamixer -t",        false) end),
+       ]]
 
     -- Media keys
     awful.key({}, "XF86AudioPlay",        function () awful.util.spawn("playerctl -p spotify play-pause", false) end),
@@ -525,55 +575,88 @@ awful.rules.rules = {
     -- Case-by-case basis
     { rule_any = { name = { "plank" } }, properties = { ontop = true } },
     { rule_any = { class = { "eww" } }, properties = { border_width=0 } },
+    { rule_any = { class = { "tint2" } }, properties = { border_width=0 } },
     { rule_any = { name = { "xfce4-panel" } }, properties = { ontop = true } },
     { rule_any = { name = { "menu" } }, properties = { border_width=0 } },
     { rule_any = { class = { "floatingfeh" } }, properties = { floating = true,
                                                                placement = awful.placement.centered() } },
 
-    -- Plasma stuff
+    --[[
+       [ -- Plasma stuff
+       [ { rule_any = {
+       [     role = {
+       [         "pop-up",
+       [         "task_dialog",
+       [     },
+       [     name = {
+       [         "win7",
+       [     },
+       [     class = {
+       [         "plasmashell",
+       [         "Plasma",
+       [         "krunner",
+       [         "Kmix",
+       [         "Klipper",
+       [         "Plasmoidviewer",
+       [     },
+       [ }
+       [ , properties = {
+       [     floating = true,
+       [     border_width = 1,
+       [     sticky = true,
+       [     -- focusable = false
+       [     },
+       [     -- role = { "dock" }
+       [ },
+       ]]
+
+    -- Desktop
     {
-        rule = { name = "Bureau - Plasma" },
-        properties = { floating = true, border_width=4, sticky=true },
+        rule = { class = "plasmashell", type = "desktop" },
+        properties = { floating = true, border_width=0, sticky=true },
         callback = function(c)
             c:geometry( { width = 1920 , height = 1080 } )
         end,
     },
-    -- {
-        -- rule = { name = "Bureau" },
-        -- properties = { type="desktop", floating = true, border_width=0, sticky=true },
-        -- callback = function(c)
-            -- -- c:unmanage()
-            -- c:geometry( { width = 1920 , height = 1080 } )
-        -- end,
-    -- },
-    { rule_any = {
-        role = {
-            "pop-up",
-            "task_dialog",
-        },
-        name = {
-            "win7",
-        },
-        class = {
-            "plasmashell",
-            "Plasma",
-            -- "krunner",
-            "Kmix",
-            "Klipper",
-            "Plasmoidviewer",
-        },
-    }
-    , properties = {
-        floating = true,
-        border_width = 0
-        },
-        -- role = { "dock" }
-    },
     { rule_any = { class = { "krunner" } }, properties = { floating=true } },
+    { rule_any = { class = { "latte-dock" } }, properties = { floating=true, border_width=0, sticky=true } },
+
+    -- Panels
+    { rule = {class = "plasmashell", type = "dock"},
+        properties = {
+            border_width = 0, focusable = false
+        }
+    },
+
+    -- Dialogs (menus)
+    { rule = {class = "plasmashell", type = "dialog"},
+        properties = {
+            floating = true,
+            border_width = 1,
+            sticky = true,
+            focusable = true,
+        }
+    },
+
+    -- OSDs (Volume...)
+    { rule = {class = "plasmashell", type = "notification"},
+        properties = {
+            floating = true,
+            focusable = false,
+            border_width = 5,
+        }
+    },
+    
+    {rule = {class = "eww"}, properties = {focusable = false,}},
 }
 -- }}}
 
 -- {{{ Signals
+
+
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal("property::geometry", set_wallpaper)
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
 
@@ -664,10 +747,12 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 
 -- Focus firefox when clicking on a link
 client.connect_signal("property::urgent", function(c)
-    if c.class == "firefox" then
-        c.minimized = false
-        c:jump_to()
-    end
+    -- if c.class == "firefox" then
+        -- c.minimized = false
+        -- c:jump_to()
+    -- end
+    c.minimized = false
+    c:jump_to()
 end)
 
 -- }}}

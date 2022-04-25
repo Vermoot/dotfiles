@@ -6,6 +6,7 @@
 
 window {
   background-color: transparent;
+  padding: 8px 0 8px;
 }
 
 // Gruvbox colors {{{
@@ -53,6 +54,8 @@ $gb-light-gray: #a89984;
   background-color: $gb-bg1;
   border: 1px solid $gb-bg3;
   border-radius: 8px;
+  // max-width: 32px;
+  // max-height: 1064px;
 }
 
 .bar-top {
@@ -143,7 +146,7 @@ $gb-light-gray: #a89984;
 }
 
 .appmenu-button:hover {
-  // background-color: $gb-blue;
+  background-color: $gb-blue;
   transition: all 100ms ease;
   // padding-top: 60px;
   background-image : none;
@@ -155,7 +158,69 @@ $gb-light-gray: #a89984;
   background-color: $gb-green;
   // transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   background-size: 0% 0%;
-  // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  // transition: all 50ms ease;
+  animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  transition: all 50ms ease;
 
+}
+
+// WORKSPACES WIDGET
+.ws-widget {
+  padding: 3px;
+}
+
+.ws-cell {
+  min-height: 18px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  border: 2px solid $gb-bg4;
+  transition: all 50ms ease;
+  padding: 4px 4px 0px;
+}
+
+.ws-cell:hover {
+  border-color: $gb-fg2;
+  background-color: red;
+}
+
+.ws-visible {
+  border-color: $gb-fg1;
+  // background-color: $gb-bg0;
+}
+
+.client {
+  background-color: $gb-bg3;
+  // min-height: 14px;
+  // min-width: 14px;
+  padding: 7px;
+  margin-bottom: 4px;
+  border-radius: 50%;
+  // animation: zooom 1000ms cubic-bezier(0, 0, 0.2, 1) ;
+  transition: all 150ms ease;
+  // // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+.client-minimized {
+  background-color: transparent;
+  box-shadow: inset 0 0 0 2px $gb-bg3;
+}
+
+.client:hover {
+  background-color: $gb-fg3;
+  box-shadow: inset 0 0 0 2px $gb-fg3;
+}
+
+.client-onspace {
+  background-color: $gb-gray;
+}
+
+.client-maximized {
+  border-radius: 20%;
+}
+
+.client-focused, .client-focused:hover {
+  background-color: $gb-fg1;
+}
+
+.client-floating {
+  border-radius: 50% 15% 50% 15%;
 }

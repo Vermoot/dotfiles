@@ -1,5 +1,34 @@
 (include "./notifications.yuck")
 
+(defvar wm_state '[[{"clients":[{"minimized":false,"oncurrenttag":false,"class":"firefox","focused":false,"name":"Gtk – 3.0: CSS Properties — Mozilla Firefox"}],"visible":false,"index":1,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"discord","focused":false,"name":"help - Discord"}],"visible":false,"index":2,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"~"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"eww"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":true,"name":"ranger"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"cawesome"}],"visible":true,"index":3,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"notion-app-enhanced","focused":false,"name":"Watch List"}],"visible":false,"index":4,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"Spotify","focused":false,"name":"Spotify"}],"visible":false,"index":5,"name":"o"}]]
+
+')
+
+(defwidget workspaces []
+  (box :orientation "v"
+       :space-evenly "false"
+       :class "ws-widget"
+
+    (for ws in {wm_state[0]}
+      (eventbox :cursor "pointer"
+        (box :orientation "v"
+             :space-evenly "false"
+             :class "ws-cell 
+                     ${ws.visible ? "ws-visible" : ""}"
+          (for c in {ws.clients}
+            (eventbox :cursor "pointer"
+              (button :onclick "wmctrl -ia ${c.id}"
+                      :class "client 
+                          ${c.oncurrenttag ? "client-onspace": ""} 
+                          ${c.focused ? "client-focused": ""} 
+                          ${c.maximized ? "client-maximized": ""} 
+                          ${c.floating ? "client-floating": ""} 
+                          ${c.minimized ? "client-minimized": ""}"
+                          
+                :tooltip {c.name}))))))))
+              
+
+
 (defwidget appmenu []
   (eventbox :cursor "pointer"
    (button :class "appmenu-button"
@@ -27,14 +56,14 @@
          :space-evenly false
          :halign "center"
          :class "netmonitor"
-      (box :class "network-arrow ${EWW_NET["wlan0"]["NET_UP"] < 100000     ? "net-gray" :
-                                   EWW_NET["wlan0"]["NET_UP"] < 1000000    ? "net-green" :
-                                   EWW_NET["wlan0"]["NET_UP"] < 10000000   ? "net-yellow" :
+      (box :class "network-arrow ${EWW_NET["wlp35s0"]["NET_UP"] < 100000     ? "net-gray" :
+                                   EWW_NET["wlp35s0"]["NET_UP"] < 1000000    ? "net-green" :
+                                   EWW_NET["wlp35s0"]["NET_UP"] < 10000000   ? "net-yellow" :
                                    "net-red" }" "↑")
 
-      (box :class "network-arrow ${EWW_NET["wlan0"]["NET_DOWN"] < 100000   ? "net-gray" :
-                                   EWW_NET["wlan0"]["NET_DOWN"] < 1000000  ? "net-green" :
-                                   EWW_NET["wlan0"]["NET_DOWN"] < 10000000 ? "net-yellow" :
+      (box :class "network-arrow ${EWW_NET["wlp35s0"]["NET_DOWN"] < 100000   ? "net-gray" :
+                                   EWW_NET["wlp35s0"]["NET_DOWN"] < 1000000  ? "net-green" :
+                                   EWW_NET["wlp35s0"]["NET_DOWN"] < 10000000 ? "net-yellow" :
                                    "net-red" }" "↓"))))
     
   
@@ -49,7 +78,7 @@
   :geometry (geometry :x "6px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
   ; :stacking "fg"
   :wm-ignore false
-  :reserve (struts :distance "38px" :side "left")
+  :reserve (struts :distance "40px" :side "left")
   :windowtype "dock"
 
   (box :class "bar-window" 
@@ -57,12 +86,14 @@
     :space-evenly true
     (box :class "bar-top"
       :orientation "v"
-      :valign "start"
+      :valign "fill"
       :space-evenly false
-      (appmenu))
+      ; (appmenu)
+      (workspaces))
     (box :class "bar-mid")
     (box :class "bar-bot"
          :valign "end"
+         :vexpand "true"
          :orientation "v"
          :space-evenly false
       (netmonitor)
@@ -107,11 +138,11 @@
     (box :space-evenly false
       (box :halign "start" "↑")
       (box :space-evenly false :orientation "h" :halign "end" :hexpand true
-        { EWW_NET["wlan0"]["NET_UP"] > 1000000 ?
-         round(EWW_NET["wlan0"]["NET_UP"] / 1000000, 1)
-         : round(EWW_NET["wlan0"]["NET_UP"] / 1000, 1)}
+        { EWW_NET["wlp35s0"]["NET_UP"] > 1000000 ?
+         round(EWW_NET["wlp35s0"]["NET_UP"] / 1000000, 1)
+         : round(EWW_NET["wlp35s0"]["NET_UP"] / 1000, 1)}
         
-        { EWW_NET["wlan0"]["NET_UP"] > 1000000 ?
+        { EWW_NET["wlp35s0"]["NET_UP"] > 1000000 ?
             " Mo/s"
           : " ko/s"}))
 
@@ -125,11 +156,11 @@
     (box :space-evenly false 
       (box :halign "start" "↓")
       (box :space-evenly false :orientation "h" :halign "end" :hexpand true
-        { EWW_NET["wlan0"]["NET_DOWN"] > 1000000 ?
-         round(EWW_NET["wlan0"]["NET_DOWN"] / 1000000, 1)
-         : round(EWW_NET["wlan0"]["NET_DOWN"] / 1000, 1)}
+        { EWW_NET["wlp35s0"]["NET_DOWN"] > 1000000 ?
+         round(EWW_NET["wlp35s0"]["NET_DOWN"] / 1000000, 1)
+         : round(EWW_NET["wlp35s0"]["NET_DOWN"] / 1000, 1)}
         
-        { EWW_NET["wlan0"]["NET_DOWN"] > 1000000 ?
+        { EWW_NET["wlp35s0"]["NET_DOWN"] > 1000000 ?
             " Mo/s"
           : " ko/s"}))))
         
