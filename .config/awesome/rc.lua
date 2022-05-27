@@ -97,7 +97,7 @@ local function update_state (noti)
             for _,c in ipairs(s:get_all_clients(false)) do
                 -- if c.type == "normal" then
             -- for _, c in ipairs(client.get(0, true)) do
-                if c.type == "normal" and c.first_tag == t then
+                if (c.type == "normal" or c.type == "dialog") and c.first_tag == t then
                     table.insert(this_tag["clients"], {name=c.name,
                                                        id=c.window,
                                                        class=c.class,
@@ -112,6 +112,7 @@ local function update_state (noti)
         end
         table.insert(wm_state, this_screen)
     end
+    -- awful.spawn.with_shell("notify-send 'update_state'")
     awful.spawn.with_shell("eww update wm_state='"..json.encode(wm_state).."'")
     awful.spawn.with_shell("echo '"..json.encode(wm_state).."' > ~/.config/eww/wm_state_example.json")
 
@@ -214,7 +215,7 @@ awful.screen.connect_for_each_screen(function(s)
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "o", "o", "o", "o", "o"}, s, awful.layout.layouts[1])
+    awful.tag({ "o", "o", "o", "o", "o", "o", "o"}, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -451,12 +452,10 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "d",      function () awful.layout.inc( 1)                end),
 
 
-    --[[
-       [ -- Volume keys
-       [ awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("pamixer -i 5 --unmute",    false) end),
-       [ awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("pamixer -d 5 --unmute",    false) end),
-       [ awful.key({}, "XF86AudioMute",        function () awful.util.spawn("pamixer -t",        false) end),
-       ]]
+    -- Volume keys
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.spawn.with_shell("pamixer -i 5 --unmute && volume.sh",    false) end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.spawn.with_shell("pamixer -d 5 --unmute && volume.sh",    false) end),
+    awful.key({}, "XF86AudioMute",        function () awful.spawn.with_shell("pamixer -t && volume.sh",        false) end),
 
     -- Media keys
     awful.key({}, "XF86AudioPlay",        function () awful.util.spawn("playerctl -p spotify play-pause", false) end),
@@ -466,7 +465,8 @@ globalkeys = gears.table.join(
     -- Utils
     awful.key({ modkey, }, "space", function () awful.util.spawn("rofi -m -4 -combi-modi 'window,drun' -show combi -modi combi",                                     false) end),
     awful.key({ modkey,  }, "s",     function () awful.spawn.with_shell("scrot -s -f -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png",    false) end),
-    awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("replay-sorcery save",    false) end)
+    awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("replay-sorcery save",    false) end),
+    awful.key({ modkey, "Control"  }, "space",     function () awful.spawn.with_shell("~/.config/eww/modules/menu/menu.sh",    false) end)
     -- awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("scrot -s -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png", false) end)
 
 )
@@ -542,7 +542,7 @@ awful.rules.rules = {
                      maximized_horizontal = false,
                      maximized_vertical = false,
                      maximized = false,
-     }
+                   }
     },
 
     { rule = {class = "firefox"},
@@ -612,11 +612,11 @@ awful.rules.rules = {
 
     -- Desktop
     {
-        rule = { class = "plasmashell", type = "desktop" },
-        properties = { floating = true, border_width=0, sticky=true },
-        callback = function(c)
-            c:geometry( { width = 1920 , height = 1080 } )
-        end,
+        rule       = { class = "plasmashell", type = "desktop" },
+        properties = { floating = true, border_width=0, sticky=true, focusable=true },
+        callback   = function(c)
+                        c:geometry( { width = 1920 , height = 1080 } )
+                     end,
     },
     { rule_any = { class = { "krunner" } }, properties = { floating=true } },
     { rule_any = { class = { "latte-dock" } }, properties = { floating=true, border_width=0, sticky=true } },
@@ -648,6 +648,12 @@ awful.rules.rules = {
     },
     
     {rule = {class = "eww"}, properties = {focusable = false,}},
+
+    {rule = {class = "yabridge-host.exe.so"},
+        properties = {
+            border_width = 0,
+        }
+    },
 }
 -- }}}
 
