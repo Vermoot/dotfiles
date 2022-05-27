@@ -1,0 +1,34 @@
+@import '../gruvbox-colors.scss';
+
+.menu {
+  border-radius: 12px;
+}
+
+.menubox {
+  background-color: $gb-bg3;
+  border: 2px solid $gb-fg1;
+  border-radius: 12px;
+  padding-top: 6px;
+}
+
+.menubutton {
+  min-height: 28px;
+  background-color: $gb-bg4;
+  border: 2px solid $gb-fg4;
+  border-radius: 25%;
+  transition: background-color 200ms ease;
+}
+
+.menubutton:hover {
+  background-color: $gb-bg2;
+}
+
+.menu-wm-controls {
+  padding: 0px 6px 0px;
+}
+
+.separator {
+  padding-top: 1px;
+  margin: 4px 8px 4px;
+  background-color: $gb-fg4;
+}

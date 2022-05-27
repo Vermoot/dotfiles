@@ -1,0 +1,58 @@
+@import "../gruvbox-colors.scss";
+// .volume-window {
+
+// }
+
+.volume-spacer, .menu-spacer {
+  transition: all 200ms cubic-bezier(.1,-0.00,.0,1.49);
+}
+
+.volume-widget {
+  background-color: $gb-bg2;
+  // background-color: red;
+  border: 2px solid $gb-fg4;
+  border-radius: 12px;
+  padding: 0px 10px 0px;
+  min-height: 32px;
+}
+
+.volume-icon {
+  font-size: 28px;
+  // margin: 0 6px 0;
+}
+
+.volume-icon-muted {
+  color: $gb-light-red;
+}
+
+.volume-slider {
+  background-color: $gb-fg1;
+  // padding: 1px;
+  border-radius: 4px;
+  margin: 16px 0px 16px;
+  contents {
+    trough {
+      // padding-top: 3px;
+      border-radius:5px;
+      slider {
+        background: transparent;
+      }
+      highlight {
+        background: $gb-aqua;
+        padding: 3px;
+        border-radius:4px;
+      }
+    }
+  }
+}
+
+.volume-slider-muted {
+  background-color: $gb-bg4;
+  contents {
+    trough {
+      highlight {
+        background: $gb-bg0;
+      }
+    }
+  }
+}

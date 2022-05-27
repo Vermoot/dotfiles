@@ -1,32 +1,78 @@
-(include "./notifications.yuck")
+(include "./modules/notifications/notifications.yuck")
+(include "./modules/volume/volume.yuck")
+(include "./modules/menu/menu.yuck")
 
 (defvar wm_state '[[{"clients":[{"minimized":false,"oncurrenttag":false,"class":"firefox","focused":false,"name":"Gtk – 3.0: CSS Properties — Mozilla Firefox"}],"visible":false,"index":1,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"discord","focused":false,"name":"help - Discord"}],"visible":false,"index":2,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"~"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"eww"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":true,"name":"ranger"},{"minimized":false,"oncurrenttag":true,"class":"org.wezfurlong.wezterm","focused":false,"name":"cawesome"}],"visible":true,"index":3,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"notion-app-enhanced","focused":false,"name":"Watch List"}],"visible":false,"index":4,"name":"o"},{"clients":[{"minimized":false,"oncurrenttag":false,"class":"Spotify","focused":false,"name":"Spotify"}],"visible":false,"index":5,"name":"o"}]]
 
 ')
 
 (defwidget workspaces []
-  (box :orientation "v"
-       :space-evenly "false"
-       :class "ws-widget"
+  ; (eventbox
+    (box :orientation "v"
+         :space-evenly "false"
+         :class "ws-widget"
+         :spacing 3
+         :height 300
 
-    (for ws in {wm_state[0]}
-      (eventbox :cursor "pointer"
-        (box :orientation "v"
-             :space-evenly "false"
-             :class "ws-cell 
-                     ${ws.visible ? "ws-visible" : ""}"
-          (for c in {ws.clients}
-            (eventbox :cursor "pointer"
-              (button :onclick "wmctrl -ia ${c.id}"
-                      :class "client 
-                          ${c.oncurrenttag ? "client-onspace": ""} 
-                          ${c.focused ? "client-focused": ""} 
-                          ${c.maximized ? "client-maximized": ""} 
-                          ${c.floating ? "client-floating": ""} 
-                          ${c.minimized ? "client-minimized": ""}"
-                          
-                :tooltip {c.name}))))))))
+      (for ws in {wm_state[0]}
+        (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.index - 1}"
+                  ; :onrightclick "eww update ws_controls_visible='${!ws_controls_visible}'"
+                  :class "ws-cell ${ws.visible ? "ws-visible" : ""}"
+          (box :orientation "v"
+               :space-evenly "false"
+               :class "ws-cell-inner"
+               :spacing 4
+            (for c in {ws.clients}
+              (client :c c)))))))
+            
+          
+        
+      
+    
+  
+; )
+          
+(defvar client_controls_visible "false")
+(defvar ws_controls_visible "false")
+
+(defwidget client [c]
+  (eventbox :cursor "pointer"
+    (box :orientation "v"
+         :space-evenly "false"
+      (button :onclick "wmctrl -ia ${c.id}"
+              :onrightclick "eww update client_controls_visible='${!client_controls_visible}'"
+              :class "client 
+                  ${c.oncurrenttag ? "client-onspace": ""} 
+                  ${c.focused ? "client-focused": ""} 
+                  ${c.maximized ? "client-maximized": ""} 
+                  ${c.floating ? "client-floating": ""} 
+                  ${c.minimized ? "client-minimized": ""}"
+              :tooltip {c.name})
+              ; :style "background-image: url('./${c.class}.svg')"
+        ; (image :path "./${c.class}.svg" :image-width 18 :image-height 18 :class "spotify")
+      
+      
+      (client_controls :visible {client_controls_visible})
+      (ws_controls :visible {ws_controls_visible}))))
+      
+    
+  
+
+
+(defwidget client_controls [visible]
+  (revealer :reveal {client_controls_visible}
+            :transition "slidedown"
+            :duration "5000ms"
+    (box :class "client-controls")))
+  
+
               
+(defwidget ws_controls [visible]
+  (revealer :reveal {ws_controls_visible}
+            :transition "slidedown"
+            :duration "200ms"
+    (box :class "ws-controls")))
+  
 
 
 (defwidget appmenu []
@@ -75,21 +121,22 @@
 
 (defwindow bar
   :monitor 0
-  :geometry (geometry :x "6px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
-  ; :stacking "fg"
+  :geometry (geometry :x "8px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
+  ; :stacking "bg"
   :wm-ignore false
   :reserve (struts :distance "40px" :side "left")
   :windowtype "dock"
 
   (box :class "bar-window" 
     :orientation "v"
-    :space-evenly true
+    :space-evenly false
     (box :class "bar-top"
       :orientation "v"
       :valign "fill"
       :space-evenly false
       ; (appmenu)
       (workspaces))
+    
     (box :class "bar-mid")
     (box :class "bar-bot"
          :valign "end"
@@ -146,12 +193,6 @@
             " Mo/s"
           : " ko/s"}))
 
-      
-      
-     
-        
-      
-    
 
     (box :space-evenly false 
       (box :halign "start" "↓")
@@ -166,7 +207,3 @@
         
       
     
-
-  
-
-

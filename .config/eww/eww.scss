@@ -1,61 +1,24 @@
-// @use "notifications";
+@import './modules/gruvbox-colors.scss';
+@import './modules/menu/menu.scss';
+@import './modules/volume/volume.scss';
 
-* {
+button {
   all: unset;
 }
 
 window {
   background-color: transparent;
-  padding: 8px 0 8px;
 }
-
-// Gruvbox colors {{{
-$gb-bg0: #282828;
-$gb-bg0-hard: #1d2021;
-$gb-bg0-soft: #32302f;
-$gb-bg1: #3c3836;
-$gb-bg2: #504945;
-$gb-bg3: #665c54;
-$gb-bg4: #7c6f64;
-
-// Dark Foreground
-$gb-fg0: #fbf1c7;
-$gb-fg1: #ebdbb2;
-$gb-fg2: #d5c4a1;
-$gb-fg3: #bdae93;
-$gb-fg4: #a89984;
-
-// Dark Colors
-$gb-red: #cc241d;
-$gb-green: #98971a;
-$gb-yellow: #d79921;
-$gb-blue: #458588;
-$gb-purple: #b16286;
-$gb-aqua: #689d6a;
-$gb-orange: #d65d0e;
-$gb-gray: #928374;
-
-$gb-light-red: #fb4934;
-$gb-light-green: #b8bb26;
-$gb-light-yellow: #fabd2f;
-$gb-light-blue: #83a598;
-$gb-light-purple: #d3869b;
-$gb-light-aqua: #8ec07c;
-$gb-light-orange: #f38019;
-$gb-light-gray: #a89984;
-// }}}
 
 
 .bar-window {
   margin: 8px 0 8px;
   font-family: SF Compact Rounded;
   color: $gb-fg1;
-  // background-color: $gb-bg0-soft;
   background-color: $gb-bg1;
+  // background-color: transparent;
   border: 1px solid $gb-bg3;
   border-radius: 8px;
-  // max-width: 32px;
-  // max-height: 1064px;
 }
 
 .bar-top {
@@ -130,9 +93,8 @@ $gb-light-gray: #a89984;
 }
 
 @keyframes ripple {
-  to {
-    background-size: 100% 100%;
-  }
+  from { background-size: 0% 0%; }
+  to { background-size: 100% 100%; }
 }
 
 .appmenu-button {
@@ -141,8 +103,8 @@ $gb-light-gray: #a89984;
   margin: 2px;
   border-radius: 6px;
   transition: all 100ms ease;
-  background-size: 10% 10%;
-  // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
+  // background-size: 10% 10%;
+  animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
 .appmenu-button:hover {
@@ -156,46 +118,50 @@ $gb-light-gray: #a89984;
 
 .appmenu-button:active {
   background-color: $gb-green;
-  // transition: all 75ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
+  transition: all 500ms cubic-bezier(0, 0, 0.2, 1), background-size 0ms, background-image 0ms;
   background-size: 0% 0%;
   animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
-  transition: all 50ms ease;
+  // transition: all 50ms ease;
 
 }
 
 // WORKSPACES WIDGET
 .ws-widget {
   padding: 3px;
+  // background-color: $gb-bg2;
 }
 
 .ws-cell {
-  min-height: 18px;
-  margin-bottom: 4px;
   border-radius: 6px;
   border: 2px solid $gb-bg4;
   transition: all 50ms ease;
-  padding: 4px 4px 0px;
+  // background-color: green;
 }
+
+
+.ws-cell-inner {
+  // background-color: orange;
+  // margin-bottom: 5px;
+  padding: 6px 5px;
+  min-height: 14px;
+}
+
 
 .ws-cell:hover {
-  border-color: $gb-fg2;
-  background-color: red;
-}
-
-.ws-visible {
-  border-color: $gb-fg1;
-  // background-color: $gb-bg0;
+  border-color: $gb-fg3;
+  transition: all 500ms ease;
 }
 
 .client {
   background-color: $gb-bg3;
-  // min-height: 14px;
-  // min-width: 14px;
-  padding: 7px;
-  margin-bottom: 4px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:22px;
+  min-height: 14px;
+  // margin-bottom: 5px;
   border-radius: 50%;
-  // animation: zooom 1000ms cubic-bezier(0, 0, 0.2, 1) ;
-  transition: all 150ms ease;
+  // animation: example 1000ms cubic-bezier(0, 0, 0.2, 1) ;
+  transition: all 300ms ease;
   // // animation: ripple 1000ms cubic-bezier(0, 0, 0.2, 1) forwards;
 }
 
@@ -204,23 +170,49 @@ $gb-light-gray: #a89984;
   box-shadow: inset 0 0 0 2px $gb-bg3;
 }
 
-.client:hover {
+.client:hover,
+.ws-cell:hover .client:hover {
   background-color: $gb-fg3;
   box-shadow: inset 0 0 0 2px $gb-fg3;
 }
 
-.client-onspace {
+.ws-visible, .ws-visible:hover {
+  border-color: $gb-fg1;
+}
+
+.client-onspace, .ws-visible:hover .client-onspace {
   background-color: $gb-gray;
+  box-shadow: inset 0 0 0 2px $gb-gray;
 }
 
 .client-maximized {
   border-radius: 20%;
 }
 
-.client-focused, .client-focused:hover {
+.client-focused,
+.ws-visible:hover .client-focused,
+.ws-visible:hover .client-focused:hover {
   background-color: $gb-fg1;
+  box-shadow: inset 0 0 0 2px $gb-fg1;
 }
 
 .client-floating {
   border-radius: 50% 15% 50% 15%;
 }
+
+.client-controls {
+  padding: 3px;
+  background-color: orange;
+  margin-top: 4px;
+  border-radius: 3px;
+}
+
+.ws-controls {
+  padding: 3px;
+  background-color: teal;
+  margin-top: 4px;
+  border-radius: 3px;
+}
+
+
+

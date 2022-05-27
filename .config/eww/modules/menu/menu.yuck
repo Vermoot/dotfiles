@@ -1,0 +1,51 @@
+(defwidget menubutton [onclick ?label]
+  (eventbox :cursor "pointer"
+    (button :onclick "eww close menu-closer && eww close menu && ${onclick}"
+            :class "menubutton"
+      (label :text label))))
+    
+  
+
+
+(defwidget separator []
+  (box :class "separator"))
+
+
+(defwidget wm_controls []
+  (box :class "menu-wm-controls"
+       :orientation "h"
+       :space-evenly true
+       :spacing 6
+    (menubutton :onclick `xdotool key --clearmodifiers Super+b` :label "bar")
+    (menubutton :onclick `xdotool key --clearmodifiers Super+f` :label "float")
+    (menubutton :onclick `awesome-client 'require("awful").titlebar.toggle(client.focus, "left")'`)
+    (menubutton :onclick `awesome-client 'require("awful").titlebar.toggle(client.focus, "left")'`)
+    (menubutton :onclick `awesome-client 'require("awful").titlebar.toggle(client.focus, "left")'`)))
+  
+
+
+(defwindow menu
+  :monitor 0
+  :geometry (geometry :width "200px" :height "300px")
+  :stacking "fg"
+  :focusable false
+  (box :class "menubox"
+       :space-evenly "false"
+       :orientation "v"
+    (wm_controls)
+    (separator)))
+  
+
+    
+  
+
+  
+(defwidget closer [window]
+  (eventbox :onclick "eww close ${window} && eww close ${window}-closer"))
+
+(defwindow menu-closer
+  :monitor 0
+  :geometry (geometry :width "1920px" :height "1080px")
+  :stacking "fg"
+  (closer :window "menu"))
+

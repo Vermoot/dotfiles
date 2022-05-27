@@ -1,0 +1,11 @@
+(defvar menu-entries)
+
+(defwidget menu-widget
+  (for entry in {menu-entries}
+    (eventbox :onhover 
+    )
+  )
+)
+
+(defwindow menu
+  (menu-widget))
