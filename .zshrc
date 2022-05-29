@@ -30,16 +30,19 @@ export MOZ_USE_XINPUT2=1
 
 # ------------------ Aliases ----------------------- {{{
 
-alias zshrc="nvim ~/.config/.zshrc"
+alias zshrc="nvim ~/.zshrc"
 alias yabairc="nvim ~/.config/yabai/yabairc"
 alias skhdrc="nvim ~/.config/skhd/skhdrc"
 alias nvimrc="nvim ~/.config/nvim/init.vim"
 alias cxmonad="nvim ~/.config/xmonad/xmonad.hs"
 alias cpicom="nvim ~/.config/picom/picom.conf"
 alias cawesome="nvim ~/.config/awesome/rc.lua"
+
 alias scrotsel="scrot -s -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png"
 alias scrotwin="scrot -u -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png"
 alias scrotscreen="scrot -u ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png"
+
+alias audiowine="WINEPREFIX='/home/vermoot/.audiowine/prefix1'"
 
 # -------------------------------------------------- }}}
 
