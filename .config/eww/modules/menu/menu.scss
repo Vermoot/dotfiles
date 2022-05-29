@@ -17,10 +17,10 @@
   border: 2px solid $gb-fg4;
   border-radius: 25%;
   transition: background-color 200ms ease;
-}
-
-.menubutton:hover {
-  background-color: $gb-bg2;
+  
+  &:hover {
+    background-color: $gb-bg2;
+  }
 }
 
 .menu-wm-controls {

@@ -23,8 +23,8 @@
                     volume-level < 65 ? "" : 
                     ""}
                     
-             :class 'volume-icon ${volume-muted ? "volume-icon-muted" : ""}'
-      )
+             :class 'volume-icon ${volume-muted ? "volume-icon-muted" : ""}')
+      
       (scale :class 'volume-slider ${volume-muted ? "volume-slider-muted" : ""}'
              :hexpand "true"
              :min 0

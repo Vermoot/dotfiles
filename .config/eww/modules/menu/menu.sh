@@ -1,7 +1,7 @@
 eww close menu
 eww close menu-closer
 
-eww update menu_shrunk=true
+# eww update menu_shrunk=true
 
 awesome-client 'client.focus = require("awful").mouse.client_under_pointer()'
 
@@ -24,4 +24,4 @@ fi
 
 eww open menu-closer
 eww open menu -p "${menuX}x${menuY}" -s "${menuW}x${menuH}"
-eww update menu_shrunk=false
+# eww update menu_shrunk=false
