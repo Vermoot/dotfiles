@@ -112,13 +112,16 @@ local function update_state (noti)
         end
         table.insert(wm_state, this_screen)
     end
-    -- awful.spawn.with_shell("notify-send 'update_state'")
-    awful.spawn.with_shell("eww update wm_state='"..json.encode(wm_state).."'")
-    awful.spawn.with_shell("echo '"..json.encode(wm_state).."' > ~/.config/eww/wm_state_example.json")
+    json_wm_state = json.encode(wm_state)
+    -- This is janky as shit, but single quotes in client names trip everything up.
+    -- Maybe find a solution one day.
+    json_wm_state = json_wm_state:gsub("'", "")
+    awful.spawn.with_shell("eww update wm_state='"..json_wm_state.."'")
+    awful.spawn.with_shell("echo '"..json_wm_state.."' > ~/.config/eww/wm_state_example.json")
 
     if noti then
-        awful.util.spawn("notify-send '" .. json.encode(wm_state) .. "'")
-        awful.spawn.with_shell("echo '"..json.encode(wm_state).."' | xsel -b")
+        awful.util.spawn("notify-send '" .. json_wm_state .. "'")
+        awful.spawn.with_shell("echo '"..json_wm_state.."' | xsel -b")
     end
 end
 
