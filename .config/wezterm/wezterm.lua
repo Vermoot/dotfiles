@@ -6,6 +6,7 @@ return {
   skip_close_confirmation_for_processes_named = {
       "bash", "sh", "zsh", "fish", "tmux"
   },
+  allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace",
 -- }}}
 
 -- Appearance {{{
@@ -22,6 +23,7 @@ return {
 -- Font {{{
   font = wezterm.font_with_fallback({
       "Terminus (TTF)",
+      "TerminessTTF Nerd Font Mono",
       "JetBrainsMono Nerd Font"
     }),
   font_size = 12,
