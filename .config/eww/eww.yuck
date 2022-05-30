@@ -119,11 +119,10 @@
 (defpoll min  :interval "1s" "date +%M")
 (defpoll date :interval "3600s" "date")
 
-(defvar text "hello")
 (defwindow bar
   :monitor 0
   :geometry (geometry :x "8px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
-  ; :stacking "bg"
+  ; :stacking "fg"
   :wm-ignore false
   :reserve (struts :distance "40px" :side "left")
   :windowtype "dock"
@@ -138,7 +137,7 @@
       ; (appmenu)
       (workspaces))
     
-    (box :class "bar-mid" (label :text text))
+    (box :class "bar-mid")
     (box :class "bar-bot"
          :valign "end"
          :vexpand "true"
