@@ -6,6 +6,7 @@ json = require("json")
 local gears = require("gears")
 local awful = require("awful")
 local gmath = require("gears.math")
+local dpi = require("beautiful.xresources").apply_dpi
 require("awful.autofocus")
 require("awful.remote")
 
@@ -489,7 +490,7 @@ clientkeys = gears.table.join(
             else
                 c.floating = true
                 awful.titlebar.show(c, "left")
-                c:geometry({width=1200, height=700})
+                c:geometry({width=dpi(1200), height=dpi(700)})
                 awful.placement.centered(c)
             end
         end),
@@ -618,7 +619,7 @@ awful.rules.rules = {
         rule       = { class = "plasmashell", type = "desktop" },
         properties = { floating = true, border_width=0, sticky=true, focusable=true },
         callback   = function(c)
-                        c:geometry( { width = 1920 , height = 1080 } )
+                        c:geometry( { width = 2560 , height = 1600 } )
                      end,
     },
     { rule_any = { class = { "krunner" } }, properties = { floating=true } },
@@ -702,17 +703,17 @@ client.connect_signal("request::titlebars", function(c)
         end)
     )
 
-    awful.titlebar(c, { position="left", size = 32}) : setup
+    awful.titlebar(c, { position="left", size = dpi(32)}) : setup
     {
         { -- Top
             {
                 awful.titlebar.widget.closebutton    (c),
                 awful.titlebar.widget.maximizedbutton(c),
                 awful.titlebar.widget.minimizebutton(c),
-                spacing = 6,
+                spacing = dpi(6),
                 layout = wibox.layout.fixed.vertical,
             },
-            margins = 8,
+            margins = dpi(8),
             widget = wibox.container.margin
         },
         {
