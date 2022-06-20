@@ -1,58 +1,45 @@
-" Plugins {{{
-" Auto install plugins apparently {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-	silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-else
-	autocmd VimEnter *
-				\  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-				\|   PlugInstall --sync | q
-				\| endif
-endif
-" }}}
+-- Plugins {{{
+require 'packer'.startup(function(use)
+	use 'machakann/vim-highlightedyank'
+	use 'psliwka/vim-smoothie'
+	use 'unblevable/quick-scope'
+	use 'ap/vim-css-color'
+	use 'glacambre/firenvim'
+	use 'tpope/vim-surround'
+	use 'wellle/targets.vim'
+	use 'jiangmiao/auto-pairs'
+	use 'justinmk/vim-sneak'
+	use 'kien/rainbow_parentheses.vim'
+	use 'sheerun/vim-polyglot'
+	use 'alvan/vim-closetag'
+	use 'tpope/vim-repeat'
+	use 'liuchengxu/vim-which-key'
+	use 'preservim/nerdcommenter'
+	use 'iamcco/markdown-preview.nvim'
+	use 'tridactyl/vim-tridactyl'
+	use 'kyazdani42/nvim-web-devicons'
+	use 'akinsho/bufferline.nvim'
+	use 'elkowar/yuck.vim'
+	use 'fladson/vim-kitty'
+	use 'baskerville/vim-sxhkdrc'
+	use 'junegunn/vim-easy-align'
+	use 'eraserhd/parinfer-rust'
+	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+	use 'nvim-lua/plenary.nvim'
+	use 'nvim-telescope/telescope.nvim'
 
-call plug#begin('~/.vim/plugged')
-Plug 'machakann/vim-highlightedyank'
-Plug 'psliwka/vim-smoothie'
-Plug 'unblevable/quick-scope'
-Plug 'ap/vim-css-color'
-Plug 'glacambre/firenvim'
-Plug 'tpope/vim-surround'
-Plug 'wellle/targets.vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'justinmk/vim-sneak'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'alvan/vim-closetag'
-Plug 'tpope/vim-repeat'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'liuchengxu/vim-which-key'
-Plug 'preservim/nerdcommenter'
-Plug 'iamcco/markdown-preview.nvim'
-Plug 'tridactyl/vim-tridactyl'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'akinsho/bufferline.nvim'
-Plug 'elkowar/yuck.vim'
-Plug 'fladson/vim-kitty'
-Plug 'baskerville/vim-sxhkdrc'
-Plug 'junegunn/vim-easy-align'
-Plug 'eraserhd/parinfer-rust'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+	-- Color Schemes
+	use 'joshdick/onedark.vim'
+	use 'morhetz/gruvbox'
+	use 'doums/darcula'
+	use 'vim-airline/vim-airline'
+	use 'vim-airline/vim-airline-themes'
+	use 'rainglow/vim'
+	use 'drewtempelmeyer/palenight.vim'
+end)
+-- END Plugins }}}
 
-" Color Schemes
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-Plug 'doums/darcula'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'rainglow/vim'
-Plug 'drewtempelmeyer/palenight.vim'
-
-call plug#end()
-" }}}
+vim.cmd [[
 
 set background=dark
 colorscheme gruvbox
@@ -96,6 +83,7 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q<cr>
 nnoremap <Leader>Q :q!<cr>
 nnoremap <Leader>x :x<cr>
+nnoremap <Leader>c :bd<cr>
 
 " dd doesn't cut but deletes. Use Vx to cut line
 nnoremap d "_d
@@ -118,6 +106,8 @@ nnoremap <silent><M-C-S-Tab> :BufferLineCycleNext<cr>
 " }}}
 
 "Plugin configs {{{
+
+"}}}
 
 " " coc.nvim {{{
 
@@ -324,3 +314,5 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 "}}}
 
 " }}}
+
+]]
