@@ -33,7 +33,7 @@ export MOZ_USE_XINPUT2=1
 alias zshrc="nvim ~/.zshrc"
 alias yabairc="nvim ~/.config/yabai/yabairc"
 alias skhdrc="nvim ~/.config/skhd/skhdrc"
-alias nvimrc="nvim ~/.config/nvim/init.vim"
+alias nvimrc="nvim ~/.config/nvim/init.lua"
 alias cxmonad="nvim ~/.config/xmonad/xmonad.hs"
 alias cpicom="nvim ~/.config/picom/picom.conf"
 alias cawesome="nvim ~/.config/awesome/rc.lua"
@@ -47,3 +47,7 @@ alias audiowine="WINEPREFIX='/home/vermoot/.audiowine/prefix1'"
 # -------------------------------------------------- }}}
 
 export PATH=$PATH:/home/vermoot/.spicetify
+
+__git_files () { 
+    _wanted files expl 'local files' _files     
+}
