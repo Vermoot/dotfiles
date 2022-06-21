@@ -7,15 +7,16 @@ return {
       "bash", "sh", "zsh", "fish", "tmux"
   },
   allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace",
+  warn_about_missing_glyphs = false,
 -- }}}
 
 -- Appearance {{{
   enable_tab_bar = false,
   window_padding = {
-    left = 30,
-    right = 30,
-    top = 30,
-    bottom = 30,
+    left = "30pt",
+    right = "30pt",
+    top = "30pt",
+    bottom = "30pt",
   },
   -- window_background_opacity=1.0,
 --}}}
