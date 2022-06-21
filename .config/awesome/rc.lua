@@ -6,6 +6,7 @@ json = require("json")
 local gears = require("gears")
 local awful = require("awful")
 local gmath = require("gears.math")
+local dpi = require("beautiful.xresources").apply_dpi
 require("awful.autofocus")
 require("awful.remote")
 
@@ -343,6 +344,10 @@ end
 
 -- }}}
 
+local function titlebar_position(c)
+    if c.width >= c.height then return "left" else return "top" end
+end
+
 -- {{{ Key bindings
 
 -- Functions {{{
@@ -478,22 +483,23 @@ clientkeys = gears.table.join(
     -- awful.key({ modkey,           }, 'b', awful.titlebar.toggle),
     awful.key({ modkey,           }, 'b',
         function (c)
-            awful.titlebar.toggle(c, "left")
+            awful.titlebar.toggle(c, titlebar_position(c))
         end),
     awful.key({ modkey,           }, "c", function (c) c:kill()                         end),
     awful.key({ modkey,           }, "f",
         function(c)
             if c.floating then
                 c.floating = false
-                awful.titlebar.hide(c, "left")
+                awful.titlebar.hide(c, titlebar_position(c))
             else
                 c.floating = true
-                awful.titlebar.show(c, "left")
+                awful.titlebar.show(c, titlebar_position(c))
                 c:geometry({width=1200, height=700})
                 awful.placement.centered(c)
             end
         end),
     awful.key({ modkey,           }, "y", function (c) c.ontop = not c.ontop                         end),
+    awful.key({ modkey,           }, "u", function (c) c.sticky = not c.sticky                         end),
     awful.key({ modkey, "Control" }, "l", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey, "Control" }, "o", function (c) c:move_to_screen()               end),
     awful.key({ modkey,           }, "x", function (c) c.maximized = not c.maximized c:raise() end)
@@ -557,6 +563,18 @@ awful.rules.rules = {
       properties = { keys = gears.table.join(clientkeys, discord_keys),}
     },
 
+    { rule = { name = "Picture-in-Picture" },
+      properties = { sticky = true, ontop = true }  
+    },
+
+    { rule = { class = "trayer" },
+      properties = { ontop = true, border_width = 0 }
+    },
+
+    -- { rule = {class = nil, floating = true},
+      -- properties = { titlebars_enabled = true }
+    -- },
+
     -- Floating clients.
     { rule_any = {
         instance = { },
@@ -570,17 +588,17 @@ awful.rules.rules = {
         role = { }
       }, properties = { floating = true }},
 
-    -- Add titlebars to normal clients and dialogs
-    { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = false }
+    -- Add titlebars to default-to-floating clients
+    { rule = {floating = true, requests_no_titlebar = false
+      }, properties = { titlebars_enabled = true }
     },
 
     -- Case-by-case basis
-    { rule_any = { name = { "plank" } }, properties = { ontop = true } },
-    { rule_any = { class = { "eww" } }, properties = { border_width=0 } },
-    { rule_any = { class = { "tint2" } }, properties = { border_width=0 } },
-    { rule_any = { name = { "xfce4-panel" } }, properties = { ontop = true } },
-    { rule_any = { name = { "menu" } }, properties = { border_width=0 } },
+    { rule_any = { name =  { "plank"       } }, properties = { ontop = true   } },
+    { rule_any = { class = { "eww"         } }, properties = { border_width=0 } },
+    { rule_any = { class = { "tint2"       } }, properties = { border_width=0 } },
+    { rule_any = { name =  { "xfce4-panel" } }, properties = { ontop = true   } },
+    { rule_any = { name =  { "menu"        } }, properties = { border_width=0 } },
     { rule_any = { class = { "floatingfeh" } }, properties = { floating = true,
                                                                placement = awful.placement.centered() } },
 
@@ -719,17 +737,57 @@ client.connect_signal("request::titlebars", function(c)
             buttons = buttons,
             widget = wibox.layout.flex.vertical
         },
-        --[[
-           [ { -- Bottom
-           [     {
-           [         awful.titlebar.widget.iconwidget(c),
-           [         buttons = buttons,
-           [         layout  = wibox.layout.fixed.vertical(),
-           [     },
-           [     margins = 7,
-           [     widget = wibox.container.margin
-           [ },
-           ]]
+        { -- Bottom
+            {
+                awful.titlebar.widget.iconwidget(c),
+                buttons = buttons,
+                layout  = wibox.layout.fixed.vertical(),
+            },
+            margins = 7,
+            widget = wibox.container.margin
+        },
+        { -- Middle
+            {
+                { -- Title
+                    align  = "center",
+                    widget = awful.titlebar.widget.titlewidget(c)
+                },
+                direction = 'east',
+                widget    = wibox.container.rotate
+            },
+            margins = 4,
+            widget = wibox.container.margin,
+            buttons = buttons,
+        },
+        layout = wibox.layout.align.vertical
+    }
+
+    awful.titlebar(c, { position="top", size = dpi(32)}) : setup
+    {
+        { -- Left
+            {
+                awful.titlebar.widget.closebutton    (c),
+                awful.titlebar.widget.maximizedbutton(c),
+                awful.titlebar.widget.minimizebutton(c),
+                spacing = dpi(6),
+                layout = wibox.layout.fixed.horizontal,
+            },
+            margins = dpi(8),
+            widget = wibox.container.margin
+        },
+        {
+            buttons = buttons,
+            widget = wibox.layout.flex.horizontal
+        },
+        { -- Bottom
+            {
+                awful.titlebar.widget.iconwidget(c),
+                buttons = buttons,
+                layout  = wibox.layout.fixed.vertical(),
+            },
+            margins = dpi(8),
+            widget = wibox.container.margin
+        },
         --[[
            [ { -- Middle
            [     { -- Title
@@ -753,6 +811,17 @@ end)
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+-- client.connect_signal("property::geometry", function(c)
+    -- if awful.titlebar(c) ~= nil then
+        -- if c.height >= c.width then
+            -- awful.titlebar.hide(c, "top")
+            -- awful.titlebar.show(c, "left")
+        -- else
+            -- awful.titlebar.hide(c, "left")
+            -- awful.titlebar.show(c, "top")
+        -- end
+    -- end
+-- end)
 
 -- Focus firefox when clicking on a link
 client.connect_signal("property::urgent", function(c)
