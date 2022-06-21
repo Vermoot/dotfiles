@@ -46,3 +46,4 @@ alias audiowine="WINEPREFIX='/home/vermoot/.audiowine/prefix1'"
 
 # -------------------------------------------------- }}}
 
+export PATH=$PATH:/home/vermoot/.spicetify
