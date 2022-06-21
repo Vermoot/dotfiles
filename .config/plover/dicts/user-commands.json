@@ -35,6 +35,7 @@
 "HRO*ER": "{>}",
 "HRO*ERD": "{*>}",
 "RA*UD": "=retro_stroke:/, `,`",
+"R*EFT": "{MODE:RESET}",
 "R*R": "{^~|\n^}",
 "R-R": "{^\n^}{-|}",
 "AFPS": "{*?}",
