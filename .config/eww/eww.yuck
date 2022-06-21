@@ -39,7 +39,7 @@
   (eventbox :cursor "pointer"
     (box :orientation "v"
          :space-evenly "false"
-      (button :onclick "wmctrl -ia ${c.id}"
+      (button :onclick {c.focused ? "xdotool getactivewindow windowminimize" : "wmctrl -ia ${c.id}"}
               :onrightclick "eww update client_controls_visible='${!client_controls_visible}'"
               :class "client 
                   ${c.oncurrenttag ? "client-onspace": ""} 
@@ -62,7 +62,7 @@
 (defwidget client_controls [visible]
   (revealer :reveal {client_controls_visible}
             :transition "slidedown"
-            :duration "5000ms"
+            :duration "200ms"
     (box :class "client-controls")))
   
 
@@ -97,7 +97,9 @@
 
 (deflisten network "~/n.sh")
 (defwidget netmonitor []
-  (eventbox :onhover "eww open network-monitor-tooltip" :onhoverlost "eww close network-monitor-tooltip"
+  (eventbox :onhover "eww open network-monitor-tooltip"
+            :onhoverlost "eww close network-monitor-tooltip"
+   ; (transform :scale-x "90%"
     (box :orientation "h"
          :space-evenly false
          :halign "center"
@@ -111,6 +113,8 @@
                                    EWW_NET["wlp35s0"]["NET_DOWN"] < 1000000  ? "net-green" :
                                    EWW_NET["wlp35s0"]["NET_DOWN"] < 10000000 ? "net-yellow" :
                                    "net-red" }" "↓"))))
+
+      
     
   
 

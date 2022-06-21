@@ -36,8 +36,10 @@ window {
 
 .clock {
   // margin-bottom: 4px;
-  font-family: "Rounded Mplus 1c Bold";
-  font-size: 18px;
+  // font-family: "Rounded Mplus 1c Bold";
+  font-family: "SF Compact Rounded";
+  font-weight: 700;
+  font-size: 20px;
   color: $gb-gray;
   // background-color: $gb-bg3;
   margin-bottom: 3px;
@@ -46,14 +48,14 @@ window {
 }
 
 .clock-text {
-  margin: -3px;
+  margin: -2px;
 }
 
 .clock-separator {
   background-color: $gb-gray;
   border-radius: 2px;
-  padding-top:2px;
-  margin: 0px 4px 0px;
+  padding-top:3px;
+  margin: 0px 3px 0px;
 }
 
 .net-tooltip {
@@ -72,9 +74,10 @@ window {
 }
 
 .network-arrow {
-  font-family: "Rounded Mplus 1c Bold";
-  font-size: 18px;
-  margin: 0 -1px 0;
+  font-family: "SF Compact Rounded";
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 -2px 0;
 }
 
 .net-gray {
