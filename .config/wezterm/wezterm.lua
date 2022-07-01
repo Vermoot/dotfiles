@@ -13,10 +13,10 @@ return {
 -- Appearance {{{
   enable_tab_bar = false,
   window_padding = {
-    left = "30pt",
-    right = "30pt",
-    top = "30pt",
-    bottom = "30pt",
+    left = "20pt",
+    right = "20pt",
+    top = "20pt",
+    bottom = "20pt",
   },
   -- window_background_opacity=1.0,
 --}}}
