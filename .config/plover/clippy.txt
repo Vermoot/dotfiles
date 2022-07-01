@@ -18449,3 +18449,663 @@
 [2022-06-21 14:33:53] navigate        || TPHAF/TKPWAEUT -> TPHAFGT, TPHA*FGT
 [2022-06-21 14:33:59] docs            || TKO*BG/-S -> TKO*BGS
 [2022-06-21 14:33:59] s.              || -S/TP-F -> -PS
+[2022-06-21 17:02:20] In the          || TPH/-T -> TPH-T
+[2022-06-21 17:02:24] In the short term || TPH/-T/SHORT/TERPL -> TPH/-T/SHERPL
+[2022-06-21 17:02:26] it would        || T/WO -> T-LD, TWOULD
+[2022-06-21 17:02:30] outside         || AUT/SAOEUD -> OUSD, OUDZ, AOUDZ, OUTDZ, SWAOEUD, SWAO*EUD
+[2022-06-21 17:02:35] it would        || T/WO -> T-LD, TWOULD
+[2022-06-21 17:02:38] happier         || HAEP/*ER -> HAERP
+[2022-06-21 17:02:45] successful      || SKES/-FL -> SKEFL
+[2022-06-21 17:02:47] in the          || TPH/-T -> TPH-T
+[2022-06-21 17:02:51] I know          || EU/TPHOE -> KWRO*, KWR*PB, KWR-PB
+[2022-06-21 17:02:52] which will      || WEU/HR -> KH-L
+[2022-06-21 17:03:15] generation      || SKWREPB/RAEUGS -> SKWRAEUGS, SKWREPBGS
+[2022-06-21 17:03:19] for the         || TP-R/-T -> TP-RT
+[2022-06-21 17:03:21] reasons         || R-PB/-S -> R-PBS
+[2022-06-21 17:03:21] s.              || -S/TP-PL -> -PS
+[2022-06-21 17:03:24] generation      || SKWREPB/RAEUGS -> SKWRAEUGS, SKWREPBGS
+[2022-06-21 17:03:30] because it      || PW-BG/T -> TPWAUS
+[2022-06-21 17:03:31] feels           || TPAOEL/-S -> TPAOELS
+[2022-06-21 17:03:31] it feels        || T/TPAOEL/-S -> T-FLS
+[2022-06-21 17:03:55] We are          || WE/R -> W*ER
+[2022-06-21 17:03:58] works           || WORBG/-S -> WORBGS
+[2022-06-21 17:04:41] separate        || SEP/RAT -> SERPT, SPEPT, SPREUT, SPRAEUT, STPRERPT
+[2022-06-21 17:04:47] apart           || A/PART -> SPART
+[2022-06-21 17:04:50] even if         || -FPB/TP -> TPAOEPB
+[2022-06-21 17:04:50] that time       || THA/T-PL -> THAPLT
+[2022-06-21 17:04:51] comes           || K-PL/-S -> KOPLS
+[2022-06-21 17:06:38] is by           || S/PWEU -> SPWEU
+[2022-06-21 17:06:59] is by           || S/PWEU -> SPWEU
+[2022-06-21 17:07:00] instinct        || EUPB/STEUPBGT -> STPHEUPBGT
+[2022-06-21 17:07:02] lover           || HR-F/*ER -> HRUFR, HROFR, HRO*FR, HR*UFR
+[2022-06-21 17:07:05] hunter          || HUPBT/*ER -> HURPBT, H*URPBT, H*UFRPBT
+[2022-06-21 17:07:07] fighter         || TPAOEUT/*ER -> TPAOEURT
+[2022-06-21 17:07:13] instinct        || EUPB/STEUPBGT -> STPHEUPBGT
+[2022-06-21 17:07:14] instincts       || EUPB/STEUPBGT/-S -> EUPB/STEUPBGS
+[2022-06-21 17:07:20] is the          || S/-T -> S-T
+[2022-06-21 17:07:21] at the          || AT/-T -> TE
+[2022-06-21 17:07:23] warehouse       || WAEUR/HOUS -> WROUS
+[2022-06-21 19:03:28] population      || POP/HRAEUGS -> PHRAEUGS
+[2022-06-21 19:03:34] approach        || A/PROEFP -> PROEFP
+[2022-06-21 19:03:34] approaching     || A/PROEFP/-G -> A/PROEFPG
+[2022-06-21 19:03:41] and More        || SKP/KPA/PHOR -> SKPHOR
+[2022-06-21 19:03:48] making          || PH-BG/-G -> PHAEUG, PHA*EUG
+[2022-06-21 19:03:48] ing it          || -G/T -> T-G
+[2022-06-21 19:03:49] it a            || T/A -> TA*EU
+[2022-06-21 19:03:56] she could       || SHE/KO -> SHEBGD
+[2022-06-21 19:03:59] longer          || HROPBG/*ER -> HRORPG, HRORPBG, WHRORPBG
+[2022-06-21 19:04:02] sustain         || SUS/TAEUPB -> STAEPB, STA*EUPB
+[2022-06-21 19:04:04] all of          || AUL/-F -> A*UFL
+[2022-06-21 19:16:17] You know        || U/TPHOE -> KWRAOUPB, KWRO*UPB
+[2022-06-21 19:16:23] expect          || EBGS/PEBGT -> KP-PT, KPEBGT, KP*EBGT
+[2022-06-21 19:16:30] younger         || KWRUPBG/*ER -> KWRURPBG, KWROURPBG
+[2022-06-21 19:16:35] os              || KWRO/SKWR-BGS -> O*S, OS
+[2022-06-21 19:16:38] then the        || THEPB/-T -> THEPBT
+[2022-06-21 19:17:11] lines           || HRAOEUPB/-S -> HRAOEUPBS
+[2022-06-21 19:17:35] except          || EBGS/PEPT -> KPEPT
+[2022-06-21 19:17:37] expect          || EBGS/PEBGT -> KP-PT, KPEBGT, KP*EBGT
+[2022-06-22 00:35:54] distinct        || TKEUS/TEUPBGT -> TKEUPBGT, STKEUPBG, TKWEUPBGT, STKEUPBGT
+[2022-06-22 00:35:56] personally      || PERPB/HREU -> PHRERPBL
+[2022-06-22 00:35:58] personal        || PERPB/A*L -> PERPBL
+[2022-06-22 00:36:02] background      || PWABG/TKPWROUPBD -> PW-GD, PW*GD, PW*BG
+[2022-06-22 00:36:03] backgrounds     || PWABG/TKPWROUPBD/-S -> PW*BGS, PW-GDZ, PWABG/TKPWROUPBDZ
+[2022-06-22 00:36:03] s.              || -S/TP-PL -> -PS
+[2022-06-22 00:38:53] background      || PWABG/TKPWROUPBD -> PW-GD, PW*GD, PW*BG
+[2022-06-22 00:38:53] backgrounds     || PWABG/TKPWROUPBD/-S -> PW*BGS, PW-GDZ, PWABG/TKPWROUPBDZ
+[2022-06-22 00:38:54] s.              || -S/TP-PL -> -PS
+[2022-06-22 00:38:58] some of         || SPH/-F -> SOFPL, SPHOF
+[2022-06-22 00:39:04] families        || TPAEPL/-S -> TPAEPLS
+[2022-06-22 00:39:08] families        || TPAEPL/-S -> TPAEPLS
+[2022-06-22 00:39:14] circumstances   || SEURBG/-S -> SEURBGS, SEURBGZ
+[2022-06-22 00:39:31] you are         || U/-R -> R*U, *UR
+[2022-06-22 00:44:51] happens         || HAP/-S -> HAPS, HABS
+[2022-06-22 00:44:56] mostly          || PHOFT/HREU -> PHOFLT, PHOEFL, PHOEFLT, PHOEFLS
+[2022-06-22 00:45:10] and all         || SKP/AUL -> SKPAUL
+[2022-06-22 00:45:19] dead is         || TKED/S -> STKED
+[2022-06-22 00:45:23] slightly        || SHRAOEUT/HREU -> SHRAOEULT
+[2022-06-22 00:45:24] alive           || A/HRAOEUF -> SHRAOEUF
+[2022-06-22 00:45:37] you can         || U/K -> UBG
+[2022-06-22 00:45:44] clothes         || KHRO*ET/-S -> KHRO*ES, KHRO*ETS
+[2022-06-22 00:45:44] s and           || -S/SKPW -> SKP-PBS
+[2022-06-23 13:02:08] Do you          || TKO/U -> TKOU
+[2022-06-23 13:02:11] there is        || THR/S -> THR-Z, THR-LGS
+[2022-06-23 13:02:17] To              || T*FPLT/OFPLT -> O, TO, TPO
+[2022-06-23 13:02:18] to              || T-FPLT/OFPLT -> O, TO, TPO
+[2022-06-23 13:02:18] oto             || OFPLT/T-FPLT/OFPLT -> OT/KWRO, OET/KWRO, OT/SKWRO
+[2022-06-23 13:02:18] Toto            || T*FPLT/OFPLT/T-FPLT/OFPLT -> TOE/TOE
+[2022-06-23 13:02:24] you can         || U/K -> UBG
+[2022-06-23 13:05:57] kinds           || KAOEUPBD/-S -> KEUPBDZ, KAOEUPBZ, KAOEUPDZ, KAOEUPBDZ, KAOEUPBSDZ
+[2022-06-23 13:06:00] s.              || -S/TP-PL -> -PS
+[2022-06-23 13:06:21] who can         || WHO/K -> WHOBG
+[2022-06-23 13:06:51] battle          || PWAT/-L -> PWA*LT, PWAELT, PWHA*LT
+[2022-06-23 13:07:00] fun to          || TPUPB/O -> TPOUPB
+[2022-06-23 13:07:01] to be           || O/-B -> TOB
+[2022-06-23 13:07:09] you want        || U/WAPBT -> UPT, UPBT
+[2022-06-23 13:07:10] When you're     || WH/UR -> WHUR
+[2022-06-23 13:07:11] having          || SR/-G -> SRAG, SR-G
+[2022-06-23 13:07:17] want to         || WAPBT/O -> WA*PBT, TWAOPBT
+[2022-06-23 13:07:17] to be           || O/-B -> TOB
+[2022-06-23 13:07:44] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-23 13:07:47] All the         || AUL/-T -> AULT
+[2022-06-23 13:07:48] times           || T-PL/-S -> T-PLS, TAOEUPLS, TAO*EUPLS
+[2022-06-23 13:07:53] keeping         || KAOEP/-G -> KAOEPG
+[2022-06-23 13:07:54] all the         || AUL/-T -> AULT
+[2022-06-23 13:08:04] harder to       || HARD/*ER/O -> HARD/TO*ER
+[2022-06-23 13:08:15] they were       || THE/-RP -> THERP, THERPB
+[2022-06-23 13:08:18] agree           || A/TKPWRAOE -> TPWRAE, TKPWRAE, TKPWRAOE
+[2022-06-23 13:08:21] they know       || THE/TPHOE -> TH*EPB
+[2022-06-23 13:08:29] and I           || SKP/EU -> SKPEU
+[2022-06-23 13:08:30] I know          || EU/TPHOE -> KWRO*, KWR*PB, KWR-PB
+[2022-06-23 13:08:30] that I          || THA/EU -> THAEU
+[2022-06-23 13:08:31] I have          || EU/SR -> SREU
+[2022-06-23 13:08:31] have to         || SR/O -> STRO
+[2022-06-24 15:40:33] If you          || TP/U -> TPU
+[2022-06-24 15:40:34] you ever        || U/-FR -> UFR
+[2022-06-24 15:40:34] If you ever     || TP/U/-FR -> TPUFR
+[2022-06-24 15:40:37] a little        || AEU/HREUL -> HR-LT, HRAEUL
+[2022-06-24 15:40:54] a little        || AEU/HREUL -> HR-LT, HRAEUL
+[2022-06-24 18:34:17] manage          || PHAPB/APBLG -> PHAPBG
+[2022-06-24 18:34:19] manager         || PHAPB/APBLG/*ER -> PHARPBG, PHAEURPBG, PHAPBG/ER, PHARPBG/*ER, PHAPB/SKWRER
+[2022-06-24 18:34:20] managers        || PHAPB/APBLG/*ER/-S -> PHARPBGS, PHAPB/SKWRERS
+[2022-06-24 18:34:20] s would         || -S/WO -> WOS
+[2022-06-24 18:34:22] and I           || SKP/EU -> SKPEU
+[2022-06-24 18:34:22] I think         || EU/THEU -> KWREUBG
+[2022-06-24 18:34:39] When you        || WH/U -> WHU
+[2022-06-24 18:35:14] Discord         || TKEUS/KORD -> STKO*RD, STKORD
+[2022-06-24 18:35:23] I want          || EU/WAPBT -> EUPT
+[2022-06-24 18:35:26] all of          || AUL/-F -> A*UFL
+[2022-06-24 18:35:30] on the          || OPB/-T -> OPBT, O*PBT
+[2022-06-24 18:35:38] I was           || EU/-FS -> EUFS
+[2022-06-24 18:35:40] when I          || WH/EU -> WHEU, WH*EU
+[2022-06-24 18:35:42] started         || START/-D -> STARTD, STA*RTD
+[2022-06-24 18:35:54] even in         || -FPB/TPH -> TPHAOEPB
+[2022-06-24 18:35:55] even if         || -FPB/TP -> TPAOEPB
+[2022-06-24 18:35:56] if I            || TP/EU -> TPEU
+[2022-06-24 18:36:04] in the          || TPH/-T -> TPH-T
+[2022-06-24 18:36:04] in the          || TPH/-T -> TPH-T
+[2022-06-25 01:55:41] I don't         || EU/TKOPBT -> KWROEU, KWROPBT
+[2022-06-25 01:55:42] I don't think   || EU/TKOPBT/THEU -> KWREUPG, KWROPBG, KWRO*ET, KWREUPBG, SKWREUPBG, KWROEUPBG
+[2022-06-25 01:55:42] I don't think so || EU/TKOPBT/THEU/SO -> KWROPBGS, KWROPBLGS, TPHEUPBG/SO
+[2022-06-25 01:56:05] Granted         || TKPWRAPBT/-D -> TKPWRAPBTD
+[2022-06-25 02:01:34] taken           || TKAEUBG/*EPB -> TAEPB, TA*EPB, TA*EUPB, TA*EUFPB
+[2022-06-25 02:01:56] taken           || TAEUBG/*EPB -> TAEPB, TA*EPB, TA*EUPB, TA*EUFPB
+[2022-06-25 02:01:58] away            || A/WAEU -> WA*EU
+[2022-06-25 02:02:06] away            || A/WAEU -> WA*EU
+[2022-06-25 02:02:14] He was          || E/-FS -> EFS, HEFS
+[2022-06-25 02:03:51] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-25 02:03:58] in the          || TPH/-T -> TPH-T
+[2022-06-25 02:04:25] arms            || ARPL/-S -> ARPLS, ARPLGS
+[2022-06-25 02:04:27] dealer          || TKAOEL/*ER -> TKAOERL
+[2022-06-25 02:04:27] dealers         || TKAOEL/*ER/-S -> TKAOEL/ERS
+[2022-06-25 02:04:43] killer          || KEUL/*ER -> KEURL
+[2022-06-25 02:04:43] killers         || KEUL/*ER/-S -> KEURLS, KEUL/ERS
+[2022-06-25 02:04:49] corporate       || KORP/RAEUT -> KORPT, KPORPT
+[2022-06-25 02:04:52] lawyer          || HRAU/KWRER -> HRAUR, WHRAUR
+[2022-06-25 02:04:53] lawyers         || HRAU/KWRER/-S -> HRAURS
+[2022-06-25 02:04:53] s.              || -S/TP-PL -> -PS
+[2022-06-25 02:05:04] thinks          || THEU/-S -> THEUS
+[2022-06-25 02:05:04] he can          || E/K -> KE
+[2022-06-25 02:05:22] coming          || K-PL/-G -> KO*G, KOPLG, KOPBLG, KPHEUPBG
+[2022-06-25 02:05:22] ing to          || -G/O -> TOG
+[2022-06-25 02:05:51] we could        || WE/KO -> WEBGD
+[2022-06-25 02:05:52] could be        || KO/-B -> KOB, KOUB
+[2022-06-25 02:05:52] be the          || -B/-T -> -BT
+[2022-06-25 02:05:54] falling         || TPAUL/-G -> TPAULG
+[2022-06-25 02:05:55] from the        || TPR/-T -> TPR-T
+[2022-06-25 02:05:59] shining         || SHAOEUPB/-G -> SHAOEUPBG
+[2022-06-25 02:06:04] brighter        || PWRAOEUT/*ER -> PWRAOEURT
+[2022-06-25 02:06:05] than the        || THAPB/-T -> THAPBT
+[2022-06-25 02:06:17] of it           || -F/T -> T-F
+[2022-06-25 02:06:23] is for          || S/TP-R -> STPOR, STP-R
+[2022-06-25 02:06:28] girls           || TKPWEURL/-S -> TKPWEURLS
+[2022-06-25 02:06:31] babies          || PWAEB/-S -> PWAEBS
+[2022-06-25 02:06:36] ears            || AOER/-S -> AOERS
+[2022-06-25 02:06:38] ripped          || REUP/-D -> REUPD
+[2022-06-25 02:08:38] witness         || WEUT/-PBS -> W*PBS, W-PBS
+[2022-06-25 02:36:41] me              || PH-FPLT/EFPLT -> PHE, PHAOE, SPHAOE, PHAO*E
+[2022-06-25 02:36:42] on              || OFPLT/TPH-FPLT -> OB, OPB, O*PB, AOPB, AUPB
+[2022-06-25 02:36:42] mon             || PH-FPLT/OFPLT/TPH-FPLT -> PHOPB
+[2022-06-25 02:36:42] mona            || PH-FPLT/OFPLT/TPH-FPLT/AFPLT -> PHOE/TPHA, PHOEPB/KWRA
+[2022-06-25 02:36:45] mona            || PH-FPLT/OFPLT/TPH-FPLT/AFPLT -> PHOE/TPHA, PHOEPB/KWRA
+[2022-06-25 02:46:41] pushed          || PURB/-D -> PURBD
+[2022-06-25 02:46:44] fears           || TPAOER/-S -> TPAOERZ, TPAO*ERS
+[2022-06-25 02:46:45] s in            || -S/TPH -> TPH-S
+[2022-06-25 02:46:51] dreams          || TKRAOEPL/-S -> TKRAOEPLS
+[2022-06-25 02:46:52] s in            || -S/TPH -> TPH-S
+[2022-06-25 02:47:08] enemy           || EPB/PHEU -> TPHAEPL
+[2022-06-25 02:47:09] enemies         || EPB/PHEU/-S -> EPB/PHEUS
+[2022-06-25 02:47:14] annoys          || APB/TPHOEU/-S -> A/TPHOEUS
+[2022-06-25 02:47:16] so much         || SO/PHUFP -> SOFP, SOEFP, SOUFP, SAOFP
+[2022-06-25 02:47:19] is a            || S/AEU -> SA*EU
+[2022-06-25 02:47:24] it is           || T/S -> T-Z
+[2022-06-25 02:47:32] in a            || TPH/AEU -> TPHA*EU, TPHRA*EU
+[2022-06-25 02:47:36] shaving         || SHAEUF/-G -> SHAFG, SHAEUFG
+[2022-06-25 02:47:40] pretend         || PRE/TEPBD -> PREPBD
+[2022-06-25 02:47:40] pretending      || PRE/TEPBD/-G -> PREPBGD, PRE/TEPBGD
+[2022-06-25 02:47:41] it's a          || T-S/AEU -> TAEUS
+[2022-06-25 02:49:05] Do not          || TKO/TPHOT -> TKPHOT, TKOPBLT
+[2022-06-25 02:49:15] living          || HREUF/-G -> HREUFG, HREUFPG
+[2022-06-25 02:49:54] ugly            || UG/HREU -> ULG
+[2022-06-25 02:49:55] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-25 02:50:02] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-25 02:50:07] I can't         || EU/K-PBT -> KAEUPBT, KWRAPBT, AOEUBGT
+[2022-06-25 02:50:10] erase           || AOE/RAEUS -> RAES
+[2022-06-25 02:50:13] all the         || AUL/-T -> AULT
+[2022-06-25 02:50:18] things that     || TH-GS/THA -> THAEUPBGS
+[2022-06-25 02:50:20] all the         || AUL/-T -> AULT
+[2022-06-25 02:51:08] admit           || AD/PHEUT -> TKPHEUT
+[2022-06-25 02:51:15] authorize       || A*UT/RAOEUZ -> THOR, THORZ
+[2022-06-25 02:51:16] authorized      || A*UT/RAOEUZ/-D -> THORD, THOR/AO*EUFD
+[2022-06-25 02:51:21] You are         || U/-R -> R*U, *UR
+[2022-06-25 02:51:23] wasting         || WAEFT/-G -> WAEFGT
+[2022-06-25 02:51:29] away            || A/WAEU -> WA*EU
+[2022-06-25 02:51:34] where the       || W-R/-T -> W-RT
+[2022-06-25 02:51:41] chasing         || KHAEUS/-G -> KHAEUFG
+[2022-06-25 02:51:45] dreams          || TKRAOEPL/-S -> TKRAOEPLS
+[2022-06-25 02:51:45] s.              || -S/TP-PL -> -PS
+[2022-06-25 02:54:32] in the          || TPH/-T -> TPH-T
+[2022-06-25 02:54:40] going to        || TKPW-G/O -> TPW*G, KPWR*G, TKPWOG, TKPW*LG, TKPW*BG, TKPW*PG, TKPW*GS, TKPW*FPG, TKPWHR*G
+[2022-06-25 02:54:47] going to        || TKPW-G/O -> TPW*G, KPWR*G, TKPWOG, TKPW*LG, TKPW*BG, TKPW*PG, TKPW*GS, TKPW*FPG, TKPWHR*G
+[2022-06-25 02:54:47] going to do     || TKPW-G/O/TKO -> TKPW*G/TKPO
+[2022-06-25 02:55:21] in the          || TPH/-T -> TPH-T
+[2022-06-25 02:55:25] going to        || TKPW-G/O -> TPW*G, KPWR*G, TKPWOG, TKPW*LG, TKPW*BG, TKPW*PG, TKPW*GS, TKPW*FPG, TKPWHR*G
+[2022-06-25 02:55:28] going to        || TKPW-G/O -> TPW*G, KPWR*G, TKPWOG, TKPW*LG, TKPW*BG, TKPW*PG, TKPW*GS, TKPW*FPG, TKPWHR*G
+[2022-06-25 02:55:29] going to do     || TKPW-G/O/TKO -> TKPW*G/TKPO
+[2022-06-25 02:55:40] protect         || PRO/TEBGT -> PREBGT, PHREBGT, PREBLGT
+[2022-06-25 02:55:42] defend          || TKE/TPEPBD -> TKEFD, TK-FPBD, TKEFPBD
+[2022-06-25 02:55:42] defending       || TKE/TPEPBD/-G -> TKE/TPEPBGD
+[2022-06-25 02:55:46] we are          || WE/R -> W*ER
+[2022-06-25 02:57:35] I have          || EU/SR -> SREU
+[2022-06-25 02:57:36] found           || TP-D/-D -> 230U7BD, TPOUPBD, TPO*UPBD
+[2022-06-25 02:57:37] can be          || K/-B -> K-B
+[2022-06-25 02:57:37] be the          || -B/-T -> -BT
+[2022-06-25 02:57:43] delusion        || TKE/HRAOUGS -> TKHRAOUGS
+[2022-06-25 02:58:07] All the         || AUL/-T -> AULT
+[2022-06-25 02:58:13] and all         || SKP/AUL -> SKPAUL
+[2022-06-25 02:58:14] all the         || AUL/-T -> AULT
+[2022-06-25 02:58:16] men and women   || PHEPB/SKP/WEUPL -> SKPHEB/WEUPL
+[2022-06-25 02:58:18] merely          || PHAOER/HREU -> PHAOERL
+[2022-06-25 11:48:22] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-25 11:48:36] best way to     || PWEFT/WAEU/O -> PWEFT/TWAOEU
+[2022-06-25 11:48:40] it is           || T/S -> T-Z
+[2022-06-25 11:48:41] is to           || S/O -> STO
+[2022-06-25 11:51:14] with About      || W/P/KA*PD -> WA*EU/PW
+[2022-06-25 11:51:48] About the       || KA*PD/TKUPT/-T -> PW-T
+[2022-06-25 11:51:49] About The       || KA*PD/TKUPT/-T/KPA*D -> PW-T
+[2022-06-25 11:51:59] states          || STAEUT/-S -> STA*EUTSZ, STAEUTS
+[2022-06-25 11:52:05] may be          || PHAEU/-B -> PHA*EUB
+[2022-06-25 11:52:11] s in            || -S/TPH -> TPH-S
+[2022-06-25 11:52:19] threatening     || THRET/-PBG -> THEFPBG, THREFBG, THREFPBG, TPHREFPBG, THREUFPBG, THREFPBLG, TPHREUFPBG
+[2022-06-25 11:52:19] life threatening || HRAOEUF/THRET/-PBG -> HRAOEUF/HREFPBG
+[2022-06-25 11:52:31] suffering       || SUFR/-G -> SUFRG
+[2022-06-25 11:52:34] concern         || KAUPB/SERPB -> KERP, K-RPB, KERPB
+[2022-06-25 11:52:35] concerns        || KAUPB/SERPB/-S -> KERPBS, K-RPBS
+[2022-06-25 11:52:38] men and women   || PHEPB/SKP/WEUPL -> SKPHEB/WEUPL
+[2022-06-25 11:52:40] everywhere      || EFR/W-R -> WEFR, WEFRB
+[2022-06-25 11:52:49] .I              || TP-PL/PHR*UP/KPA*/EU -> *EUPD, *EUPLD
+[2022-06-25 11:52:53] love you        || HR-F/U -> HROUF
+[2022-06-25 11:52:58] and I           || SKP/EU -> SKPEU
+[2022-06-25 11:53:00] hitting         || HEUT/-G -> HEUGT
+[2022-06-25 11:53:02] repeat          || RE/PAOET -> PRAOET, RAOEPT
+[2022-06-25 11:54:25] tricks          || TREUBG/-S -> TREUBGS
+[2022-06-25 11:54:29] .I              || TP-PL/KPA*/EU -> *EUPD, *EUPLD
+[2022-06-25 11:54:29] I have          || EU/SR -> SREU
+[2022-06-25 11:54:30] have not        || SR/TPHOT -> SR-PBLT
+[2022-06-25 11:54:31] failed          || TPAEUL/-D -> TPAEULD
+[2022-06-25 11:55:52] I have          || EU/SR -> SREU
+[2022-06-25 11:55:52] have not        || SR/TPHOT -> SR-PBLT
+[2022-06-25 11:55:53] failed          || TPAEUL/-D -> TPAEULD
+[2022-06-25 11:56:03] You know        || U/TPHOE -> KWRAOUPB, KWRO*UPB
+[2022-06-25 11:57:17] You know        || U/TPHOE -> KWRAOUPB, KWRO*UPB
+[2022-06-25 11:57:20] motive          || PHOE/TEUF -> PHO*EUFT
+[2022-06-25 11:58:11] writing         || WRAOEUT/-G -> WREUG, WRAOEUG, WRAO*EUG, WRAO*EUGT
+[2022-06-25 12:03:43] is a            || S/AEU -> SA*EU
+[2022-06-25 12:03:48] that you're     || THA/UR -> THAUR
+[2022-06-25 12:03:48] willing         || HR/-G -> -LG, HR-G, WEULG
+[2022-06-25 12:03:49] ing to          || -G/O -> TOG
+[2022-06-25 12:03:52] you can         || U/K -> UBG
+[2022-06-25 12:05:20] outside         || AUT/SAOEUD -> OUDZ, OUSD, OUTDZ, AOUDZ, SWAOEUD, SWAO*EUD
+[2022-06-25 12:05:22] highly          || HAOEU/HREU -> HAOEUL
+[2022-06-25 12:05:25] rated           || RAEUT/-D -> RAEUTD
+[2022-06-25 12:05:28] So I            || SO/EU -> SO*EU
+[2022-06-25 12:05:28] I can't         || EU/K-PBT -> KAEUPBT, KWRAPBT, AOEUBGT
+[2022-06-25 12:05:30] with you        || W/U -> WU
+[2022-06-25 12:05:47] feeling         || TPAOEL/-G -> TPAOELG, TPAO*EL
+[2022-06-25 12:05:48] feelings        || TPAOEL/-G/-S -> TPAOELGS, TPAOEL/-GS
+[2022-06-25 12:05:51] fully           || TPUL/KWREU -> TPHRAOUL, TPHREU
+[2022-06-25 12:12:52] sixteen         || SEUBGS/TAOEPB -> STAOEPB
+[2022-06-25 12:12:55] rather than     || RAER/THAPB -> RARPB, RAERPB
+[2022-06-25 12:13:00] makes           || PH-BG/-S -> PHAEUBGS
+[2022-06-25 12:13:03] to me           || O/PHE -> TPHE
+[2022-06-25 12:13:14] especially      || AOE/SPERBL/HREU -> EPS
+[2022-06-25 12:20:55] in the          || TPH/-T -> TPH-T
+[2022-06-25 12:21:05] knows           || TPHOE/-S -> TPHOEZ, TPHO*ES
+[2022-06-25 12:21:08] in a            || TPH/AEU -> TPHA*EU, TPHRA*EU
+[2022-06-25 12:21:11] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-25 12:21:14] waited          || WAEUT/-D -> WAEUTD
+[2022-06-25 12:21:17] we were         || WE/-RP -> WERP, WRAOE, WAOERP
+[2022-06-25 12:21:19] would be        || WO/-B -> WOB, WOUB
+[2022-06-25 12:21:20] waiting         || WAEUT/-G -> WAEUGT, WA*EUGT
+[2022-06-25 12:21:24] lives           || HRAOEUF/-S -> HREUFS, HRAOEUFS
+[2022-06-25 12:22:50] When you        || WH/U -> WHU
+[2022-06-25 12:23:14] When you        || WH/U -> WHU
+[2022-06-25 12:23:20] have a          || SR/AEU -> SRA, SR*EU, SRAEU, SRA*EU
+[2022-06-25 12:23:23] until the       || TPH-L/-T -> TPH-LT
+[2022-06-25 12:24:12] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-25 12:24:17] if you          || TP/U -> TPU
+[2022-06-25 12:24:19] who I           || WHO/EU -> WHOEU, WHO*EU
+[2022-06-25 12:24:19] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-25 12:24:25] would be        || WO/-B -> WOB, WOUB
+[2022-06-25 12:24:28] lightly         || HRAOEUT/HREU -> HRAOEULT
+[2022-06-25 12:24:34] causes          || KAUS/-S -> KAUFS, KA*UFS
+[2022-06-25 12:24:36] as much         || AS/PHUFP -> SPHUFP, SPH*UFP
+[2022-06-25 12:24:38] as it           || AS/T -> TAZ
+[2022-06-25 12:24:39] cures           || KAOUR/-S -> KAOURZ, KAO*URS
+[2022-06-25 12:24:40] s.              || -S/TP-PL -> -PS
+[2022-06-25 12:24:43] Some people     || SPH/P-PL -> SPAOEPL
+[2022-06-25 12:24:46] clouds          || KHROUD/-S -> KHROUDZ
+[2022-06-25 12:24:46] s.              || -S/TP-PL -> -PS
+[2022-06-25 12:24:52] it's a          || T-S/AEU -> TAEUS
+[2022-06-25 12:25:02] It is           || T/S -> T-Z
+[2022-06-25 12:25:03] is not          || S/TPHOT -> STPHOT, S-PBLT
+[2022-06-25 12:25:35] It is           || T/S -> T-Z
+[2022-06-25 12:25:36] is not          || S/TPHOT -> STPHOT, S-PBLT
+[2022-06-25 12:25:48] whether the     || WH*ERT/-T -> WHR-T
+[2022-06-25 12:25:53] afflicted       || A/TPHREUBGT/-D -> A/TPHREUBGD
+[2022-06-25 12:25:59] and the         || SKP/-T -> SKPET, SKP-T, SKPAT, STKP-T, SKPW-T, SKP-LT, STKPH-T
+[2022-06-25 12:26:05] encounter       || EPB/KOUPBT/*ER -> EPB/KOUPBTS, EPB/KOURPBT
+[2022-06-25 12:26:06] on the          || OPB/-T -> OPBT, O*PBT
+[2022-06-25 12:26:12] reduce          || RE/TKAOUS -> RAOUS
+[2022-06-25 12:26:12] reduced         || RE/TKAOUS/-D -> RAOUFD, RE/TKAOUFD
+[2022-06-25 12:26:20] circumstances   || SEURBG/-S -> SEURBGS, SEURBGZ
+[2022-06-25 12:26:21] s and           || -S/SKP -> SKP-PBS
+[2022-06-25 12:27:01] it is           || T/S -> T-Z
+[2022-06-25 12:27:02] is to           || S/O -> STO
+[2022-06-25 12:27:09] having          || SR/-G -> SRAG, SR-G
+[2022-06-25 12:27:10] eyes            || AOEU/-S -> AO*EUZ, AO*EUS
+[2022-06-25 12:27:14] suffering       || SUFR/-G -> SUFRG
+[2022-06-25 12:27:14] sufferings      || SUFR/-G/-S -> SUFRGS, SUFR/-GS
+[2022-06-25 12:27:22] Have you        || SR/U -> SRU, SR*U
+[2022-06-25 12:27:22] you ever        || U/-FR -> UFR
+[2022-06-25 12:27:22] Have you ever   || SR/U/-FR -> SRUFR
+[2022-06-25 12:27:24] watched         || WAFP/-D -> WAFPD
+[2022-06-25 12:27:28] on the          || OPB/-T -> OPBT, O*PBT
+[2022-06-25 12:27:52] Have you        || SR/U -> SRU, SR*U
+[2022-06-25 12:27:53] you ever        || U/-FR -> UFR
+[2022-06-25 12:27:53] Have you ever   || SR/U/-FR -> SRUFR
+[2022-06-25 12:27:54] watched         || WAFP/-D -> WAFPD
+[2022-06-25 12:27:56] cars            || KAR/-S -> KARZ, KARS
+[2022-06-25 12:27:58] on the          || OPB/-T -> OPBT, O*PBT
+[2022-06-25 12:28:07] drivers         || TKRAOEUFR/-S -> TKRAOEUFRS, TKRAO*EUFRS
+[2022-06-25 12:28:15] flowers         || TPHRO*UR/-S -> TPHRO*URS
+[2022-06-25 12:28:23] If you          || TP/U -> TPU
+[2022-06-25 12:28:24] showed          || SHOE/-D -> SHOED
+[2022-06-25 12:28:39] He'd            || E/*D -> ED, AOED, HAOED
+[2022-06-25 12:28:51] garden          || TKPWARD/*EPB -> TKPWARPB, TKPWA*RPB
+[2022-06-25 12:28:54] blurs           || PWHRUR/-S -> PWHRURS
+[2022-06-25 12:28:56] houses          || HOUS/-S -> HO*UFS
+[2022-06-25 12:29:00] blurs           || PWHRUR/-S -> PWHRURS
+[2022-06-25 12:29:02] cows            || KOU/-S -> KOUS
+[2022-06-25 12:29:02] s.              || -S/TP-PL -> -PS
+[2022-06-25 12:29:33] asks            || AFBG/-S -> SK-S
+[2022-06-25 12:29:37] spider          || SPAOEUD/*ER -> SPAOEURD
+[2022-06-25 12:29:52] asks            || AFBG/-S -> SK-S
+[2022-06-25 12:30:09] peaceful        || PAES/-FL -> PAEFL, PAOEFL
+[2022-06-25 12:30:11] I can           || EU/K -> AOEUBG
+[2022-06-25 12:30:11] weapons         || WEP/-S -> WEPS
+[2022-06-25 12:30:12] I can           || EU/K -> AOEUBG
+[2022-06-25 12:30:13] can find        || K/TP-D -> K-FPBD
+[2022-06-25 12:30:16] and a           || SKP/AEU -> SKPA, STKPA, AEUPBD, SKPAEU
+[2022-06-25 12:30:27] put it          || PUT/T -> TPUT
+[2022-06-25 12:30:28] outside         || AUT/SAOEUD -> OUDZ, OUSD, OUTDZ, AOUDZ, SWAOEUD, SWAO*EUD
+[2022-06-25 12:30:29] and a           || SKP/A -> SKPA, STKPA, AEUPBD, SKPAEU
+[2022-06-25 12:30:31] and a           || SKP/A -> SKPA, STKPA, AEUPBD, SKPAEU
+[2022-06-25 12:30:31] allow           || A/HROU -> HROU, HRO*U
+[2022-06-25 12:30:34] away            || A/WAEU -> WA*EU
+[2022-06-25 12:30:36] If I            || TP/EU -> TPEU
+[2022-06-25 12:30:36] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-25 12:30:38] in the          || TPH/-T -> TPH-T
+[2022-06-25 12:30:41] is the          || S/-T -> S-T
+[2022-06-25 12:30:42] at the          || AT/-T -> TE
+[2022-06-25 12:30:48] alive           || A/HRAOEUF -> SHRAOEUF
+[2022-06-25 12:30:52] bothering       || PWO*RT/-G -> PWOERG, PWOERPBG
+[2022-06-25 12:30:56] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-25 12:30:58] with the        || W/-T -> W-T
+[2022-06-25 12:31:01] kind of         || KAOEUPBD/-F -> KAOEUFPBD
+[2022-06-25 12:31:18] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-06-25 12:31:22] you will        || U/HR -> *UL, HR*U
+[2022-06-25 12:31:24] longer          || HROPBG/*ER -> HRORPG, HRORPBG, WHRORPBG
+[2022-06-25 12:31:25] be the          || -B/-T -> -BT
+[2022-06-25 12:31:27] you believe     || U/PWHREF -> UBL
+[2022-06-25 12:31:27] believed        || PWHREF/-D -> PWHREFD, PWHRAOEFD
+[2022-06-25 12:31:27] you believed    || U/PWHREF/-D -> UBLD
+[2022-06-25 12:31:32] detect          || TKE/TEBGT -> TKEBGT, TKEBLGT, TK*EBGT
+[2022-06-25 12:31:38] subtle          || SUT/-L -> SUBLT, SUBLTD
+[2022-06-25 12:31:40] shifts          || SHEUFT/-S -> SHEUFTS
+[2022-06-25 12:31:47] importantly     || PORPB/HREU -> PORPBL, PORPBLT
+[2022-06-25 12:31:48] shifts          || SHEUFT/-S -> SHEUFTS
+[2022-06-25 12:32:01] sorts           || SORT/-S -> SORTS, SORTSZ
+[2022-06-25 12:32:37] longer          || HROPBG/*ER -> HRORPG, HRORPBG, WHRORPBG
+[2022-06-25 12:32:39] quotes          || KWOET/-S -> KWOETS
+[2022-06-25 15:05:06] had had         || H/H -> H-D
+[2022-06-26 12:20:47] Takes           || TAEUBG/-S -> TAEUBGS
+[2022-06-26 12:21:01] fun to          || TPUPB/O -> TPOUPB
+[2022-06-26 12:21:07] Right now       || RAOEUT/TPHOU -> RAOEUPBT
+[2022-06-26 12:21:10] able to         || ABL/O -> TAOEUBL
+[2022-06-26 14:01:23] study           || STUD/KWREU -> STOEU, STO*UD, STAO*UD
+[2022-06-26 14:01:23] studied         || STUD/KWREU/-D -> STOEUD, STUD/EUD, STAO*UTD/-D
+[2022-06-26 14:01:28] -type           || SKWH-PL/TAOEUP -> TAO*EUP
+[2022-06-26 14:01:29] typing          || TAOEUP/-G -> TAOEUPG
+[2022-06-26 14:01:30] on the          || OPB/-T -> OPBT, O*PBT
+[2022-06-26 14:01:44] WE              || W*FPLT/*EFPLT -> WE, WAOE
+[2022-06-26 14:01:44] ER              || *EFPLT/R*FPLT -> *ER, ER
+[2022-06-26 14:01:45] ERT             || *EFPLT/R*FPLT/T*FPLT -> ERT
+[2022-06-26 14:01:46] TY              || T*FPLT/KWR*FPLT -> TAO*E
+[2022-06-26 14:01:46] QWERTY          || KW*FPLT/W*FPLT/*EFPLT/R*FPLT/T*FPLT/KWR*FPLT -> KWER/TEU, KWERT/KWREU, KW*ERT/KWREU, KW*ERT
+[2022-06-26 14:01:56] quite a bit     || KWAOEUT/AEU/PWEUT -> KWAOEUBT
+[2022-06-26 14:01:59] getting         || TKPW-T/-G -> TKPEGT, TKPWEGT
+[2022-06-26 14:02:03] comfortable with || K-BL/W -> KW-BL
+[2022-06-26 14:02:03] with the        || W/-T -> W-T
+[2022-06-26 14:02:09] with the        || W/-T -> W-T
+[2022-06-26 14:04:14] fingers         || TPEURPBG/-S -> TPEURPBGS
+[2022-06-26 14:04:17] all the         || AUL/-T -> AULT
+[2022-06-26 14:04:35] exist           || EBGS/EUFT -> KPEUFT, KP*EUS
+[2022-06-26 14:04:36] exists          || EBGS/EUFT/-S -> KPEUFTS, EBGS/EUFTS
+[2022-06-26 14:04:37] and you         || SKP/U -> SKPU, AUPBD
+[2022-06-26 14:04:37] you can         || U/K -> UBG
+[2022-06-26 14:04:37] and you can     || SKP/U/K -> SKPUBG
+[2022-06-26 14:04:45] ing in          || -G/TPH -> TPH-G
+[2022-06-26 14:07:32] had the         || H/-T -> H-T
+[2022-06-26 14:07:33] upper           || UP/*ER -> AOURP
+[2022-06-26 14:07:54] and you're      || SKP/UR -> SKPUR
+[2022-06-26 14:08:02] Got a           || TKPWOT/AEU -> TKPWAOEUT
+[2022-06-26 14:08:04] one-way         || WUPB/SKWH-PL/WAEU -> WUPB/WA*E
+[2022-06-26 14:08:07] and you're      || SKP/UR -> SKPUR
+[2022-06-26 14:08:08] all the         || AUL/-T -> AULT
+[2022-06-26 16:10:28] had had         || H/H -> H-D
+[2022-06-26 16:10:29] it is           || T/S -> T-Z
+[2022-06-26 16:10:34] is about        || S/P -> SPW
+[2022-06-26 16:49:49] this is         || TH/S -> TH-Z, TH-S
+[2022-06-26 16:49:59] looks           || HRAOBG/-S -> HRAOBGS
+[2022-06-26 16:50:01] looks like      || HRAOBG/-S/HR-BG -> HRAOBGS/HRAOEUBLG
+[2022-06-26 17:51:56] so you          || SO/U -> SOU
+[2022-06-26 17:51:58] So you          || SO/U -> SOU
+[2022-06-26 17:52:00] and you         || SKP/U -> SKPU, AUPBD
+[2022-06-26 17:52:00] run to          || RUPB/O -> TOURPB
+[2022-06-26 17:52:02] with the        || W/-T -> W-T
+[2022-06-26 17:52:10] racing          || RAEUS/-G -> RAEFG
+[2022-06-26 17:52:17] is the          || S/-T -> S-T
+[2022-06-26 17:52:19] in a            || TPH/AEU -> TPHA*EU, TPHRA*EU
+[2022-06-26 17:52:21] a little        || AEU/HREL -> HR-LT, HRAEUL
+[2022-06-26 17:52:27] older           || OLD/*ER -> OERLD
+[2022-06-26 17:52:31] breath and      || PWR*ET/SKP -> SKPWR*ET
+[2022-06-26 17:52:36] closer          || KHROES/*ER -> KHROERS
+[2022-06-26 17:52:36] closer to       || KHROES/*ER/O -> KHROES/TO*ER
+[2022-06-26 18:22:05] 22              || TWO/TWO -> 2-D
+[2022-06-26 18:22:06] 21              || TWO/WUPB -> 12EU
+[2022-06-26 20:46:54] gets            || TKPW-T/-S -> TKPWETS, TKPWETSZ
+[2022-06-26 20:47:04] depressed       || TKE/PREFD -> TKPREFD
+[2022-06-26 22:56:37] 500             || KWHAOEUF/KWH-DZ -> 5Z
+[2022-06-26 23:00:39] 11              || WAOPB/WAOPB -> 1-D
+[2022-06-26 23:00:45] 11              || WAOPB/WAOPB -> 1-D
+[2022-06-26 23:00:50] 11              || WAOPB/WAOPB -> 1-D
+[2022-06-26 23:00:51] 11              || WAOPB/WAOPB -> 1-D
+[2022-06-26 23:36:42] 42              || TPOUR/TWO -> 24EU
+[2022-06-27 13:21:38] across          || A/KROS -> KRAOS
+[2022-06-27 13:21:40] Leaving         || HREF/-G -> HREFG, HRAOEFG
+[2022-06-27 13:21:49] in the          || TPH/-T -> TPH-T
+[2022-06-27 13:21:56] what else       || WHA/ELS -> WHELS
+[2022-06-27 13:21:57] did you         || TK/U -> TKU
+[2022-06-27 13:21:57] did you leave   || TK/U/HREF -> TKU/HREF
+[2022-06-27 13:22:04] what'd          || WHA/*D -> WHA*D, WHATD
+[2022-06-27 13:22:09] ya              || KWR-FPLT/AFPLT -> KWR*U
+[2022-06-27 13:22:16] in all          || TPH/AUL -> TPHAUL
+[2022-06-27 13:22:17] it was          || T/-FS -> TWUS, TWUZ, TWAS, T-FS
+[2022-06-27 13:22:20] in the          || TPH/-T -> TPH-T
+[2022-06-27 13:22:23] in all          || TPH/AUL -> TPHAUL
+[2022-06-27 13:22:24] it was          || T/-FS -> TWUS, TWUZ, TWAS, T-FS
+[2022-06-27 13:22:30] in the          || TPH/-T -> TPH-T
+[2022-06-27 14:01:47] news            || TPHU/-S -> TPHUS, TPHAOUZ, TPHAOUS, TPH*US
+[2022-06-27 14:01:47] to the          || O/-T -> TOT, TO*T
+[2022-06-27 14:01:49] tourist         || TAOUR/EUFT -> TUFRT, TOUFRT
+[2022-06-27 14:02:00] for the         || TP-R/-T -> TP-RT
+[2022-06-27 14:02:06] symptom         || SEUPL/TOPL -> S*PLT, ST*PL
+[2022-06-27 14:02:06] symptoms        || SEUPL/TOPL/-S -> S*PLS, ST*PLS, STK*PLS, STP*PLS, ST*PLTS, ST*EUPLS, S*PLS/-S, ST*PLS/-S, SEUPL/TOPLS
+[2022-06-27 14:02:09] alive           || A/HRAOEUF -> SHRAOEUF
+[2022-06-27 14:02:10] It's a          || T-S/AEU -> TAEUS
+[2022-06-27 14:02:11] painless        || PAEUPB/-LS -> PAEUPBLS
+[2022-06-27 14:03:07] failure         || TPAEUL/KWRAOUR -> TPA*EURL, TPA*EUFRL
+[2022-06-27 14:03:15] patients        || PAEURBT/-S -> PAEURZ, PAEURBZ, TPAEURBZ, PA*EURBS, PAEURBSZ, PAEURBDZ, PAEURPBZ, PAEURBTS, PAEURBGZ, PAEURBGSZ
+[2022-06-27 14:04:02] coming          || K-PL/-G -> KO*G, KOPLG, KOPBLG, KPHEUPBG
+[2022-06-27 14:04:03] ing and         || -G/SKP -> SKP-G
+[2022-06-27 14:04:09] you can         || U/K -> UBG
+[2022-06-27 14:04:19] and be          || SKP/-B -> SKP-B
+[2022-06-27 14:04:25] telling         || TEL/-G -> TELG
+[2022-06-27 14:04:25] telling you     || TEL/-G/U -> TEL/UG
+[2022-06-27 17:30:03] .N              || TP-PL/SR-RS -> TPH*PD
+[2022-06-28 11:36:50] recommend       || REBG/PHEPBD -> REPL, REFPL
+[2022-06-28 11:36:51] recommendation  || REBG/PHEPBD/AEUGS -> REPLGS, REPL/TKAGS, REPL/SHUPB, REPL/TAEUGS, R-PL/TKAEUGS, REPL/TKAEUGS, REPLD/TKAEUGS
+[2022-06-28 11:38:19] 77              || -7/-7 -> -7D
+[2022-06-28 15:21:21] explain         || EBGS/PHRAEUPB -> SPHRAEUB, SPHRAEUPB, STPHRAEUPB
+[2022-06-28 15:21:22] to you          || O/U -> TOU
+[2022-06-28 15:21:25] come in         || K-PL/TPH -> TKPHOPL
+[2022-06-28 15:21:29] interrupt       || EUPBT/RUPT -> SPWRUPT
+[2022-06-28 15:21:35] breaking        || PWRAEBG/-G -> PWRAEG, PWRAOEBG
+[2022-06-28 15:21:42] conservation    || KAUPBS/SRAEUGS -> K*FRS, K*FRGS, KWEFRBGS
+[2022-06-28 15:21:45] concentration   || KAUPBS/TRAEUGS -> SKRAUGS, SKRAEUGS, SKRA*EUGS
+[2022-06-28 15:21:51] And it          || SKP/T -> TAPBD, SKPEUT
+[2022-06-28 15:21:55] back to         || PWABG/O -> TPWAOBG
+[2022-06-28 15:21:56] where I         || W-R/EU -> WR*EU
+[2022-06-28 15:21:56] I was           || EU/-FS -> EUFS
+[2022-06-28 15:24:14] greatest        || TKPWR-T/EFT -> TKPWRAEFT
+[2022-06-28 15:24:18] in the          || TPH/-T -> TPH-T
+[2022-06-28 15:24:29] standard        || STAPBD/ARD -> ST-D, 12-D
+[2022-06-28 15:24:31] living          || HREUF/-G -> HREUFG, HREUFPG
+[2022-06-28 17:07:03] attractive      || A/TRABGT/EUF -> A/TRAF
+[2022-06-28 17:07:07] words           || WORD/-S -> WOBDZ, WORSD, WORDZ, WORSDZ, WORBDZ
+[2022-06-28 17:07:12] lovely          || HR-F/HREU -> HRUFL, HROFL
+[2022-06-28 17:07:13] eyes            || AOEU/-S -> AO*EUS, AO*EUZ
+[2022-06-28 17:07:27] with the        || W/-T -> W-T
+[2022-06-28 17:07:41] his or her      || HEUS/OR/HER -> H*EUR
+[2022-06-28 17:07:43] fingers         || TPEURPBG/-S -> TPEURPBGS
+[2022-06-28 17:07:53] with the        || W/-T -> W-T
+[2022-06-28 17:07:57] that you        || THA/U -> THAU
+[2022-06-28 18:16:22] as it           || AS/T -> TAZ
+[2022-06-28 18:16:23] its             || T/-S -> EUTS, EUTSZ, EULTS
+[2022-06-28 18:16:24] it is           || T/S -> T-Z
+[2022-06-28 18:17:26] syllable        || SEUL/ABL -> SEUBL
+[2022-06-28 18:18:30] greedy          || TKPWRAOED/KWREU -> TKPWROEUD
+[2022-06-29 15:59:59] memory          || PHEPL/REU -> PHERPL, PHOEURPL
+[2022-06-29 18:46:28] alive           || A/HRAOEUF -> SHRAOEUF
+[2022-06-29 18:46:32] magical         || SKWREUBG/A*L -> PHA*LG
+[2022-06-29 18:46:34] or not          || OR/TPHOT -> ORPBT
+[2022-06-29 18:46:47] form of         || TPORPL/-F -> TPOFRPL
+[2022-06-29 18:47:06] emotion         || AOE/PHOEGS -> AO*ELG, AO*EGS, AO*EPLG
+[2022-06-29 18:47:08] emotional       || AOE/PHOEGS/A*L -> AO*ELGS, PHOERBL, AO*ELGTS, AO*ELG/A*L, AO*ELGS/A*L
+[2022-06-29 21:37:48] .I              || TP-PL/KPA*/EU -> *EUPD, *EUPLD
+[2022-06-29 21:37:50] learned         || HRERPB/-D -> HRERPBD
+[2022-06-29 21:37:51] ed to           || -D/O -> TOD, TOTD
+[2022-06-29 21:37:51] learned to      || HRERPB/-D/O -> THROERPBD
+[2022-06-29 21:37:53] I am            || EU/-PL -> O*EUPL, KWRAEUPL
+[2022-06-29 21:37:54] one of          || WUPB/-F -> WUFPB
+[2022-06-29 21:38:08] manage          || PHAPB/APBLG -> PHAPBG
+[2022-06-30 12:16:11] folder          || TPOLD/*ER -> TPOERLD
+[2022-06-30 12:16:14] is also         || S/HR-S -> S-LS, SHR-S
+[2022-06-30 12:16:18] repo            || RE/PO -> ROEUP
+[2022-06-30 12:16:19] for the         || TP-R/-T -> TP-RT
+[2022-06-30 12:16:21] reasons         || R-PB/-S -> R-PBS
+[2022-06-30 12:16:21] s.              || -S/TP-PL -> -PS
+[2022-06-30 12:16:29] I don't         || EU/TKOPBT -> KWROEU, KWROPBT
+[2022-06-30 12:16:45] using           || AOUS/-G -> AOUGS, AOUFG
+[2022-07-01 10:13:20] it is           || T/S -> T-Z
+[2022-07-01 10:13:21] is that         || S/THA -> STHA, STHAPBT
+[2022-07-01 10:13:22] makes           || PH-BG/-S -> PHAEUBGS
+[2022-07-01 10:13:23] love you        || HR-F/U -> HROUF
+[2022-07-01 10:13:28] want to         || WAPBT/O -> WA*PBT, TWAOPBT
+[2022-07-01 10:13:35] started         || START/-D -> STARTD, STA*RTD
+[2022-07-01 10:13:44] had a           || H/AEU -> HA*
+[2022-07-01 10:15:43] Modern          || PHOD/ERPB -> PHOERPB
+[2022-07-01 10:16:48] every night     || EFR/TPHAOEUT -> EFRPBT
+[2022-07-01 10:16:51] When is         || WH/S -> WH-S
+[2022-07-01 10:16:52] When the        || WH/-T -> WH-T, WHEPBT
+[2022-07-01 10:16:53] sets            || SET/-S -> SETS
+[2022-07-01 10:17:00] in the          || TPH/-T -> TPH-T
+[2022-07-01 10:17:02] shadows         || SHOEUD/-S -> SHO*EUDZ
+[2022-07-01 10:17:06] burned          || PWURPB/-D -> PWURPBD
+[2022-07-01 10:17:08] flames          || TPHRAEUPL/-S -> TPHRAEUPLS, TPHRAEUPLZ
+[2022-07-01 10:17:08] s.              || -S/TP-PL -> -PS
+[2022-07-01 10:17:09] We can't        || WE/K-PBT -> WEBGT
+[2022-07-01 10:17:25] s.              || -S/TP-PL -> -PS
+[2022-07-01 10:17:32] it's a          || T-S/AEU -> TAEUS
+[2022-07-01 10:19:25] If you          || TP/U -> TPU
+[2022-07-01 10:19:27] news            || TPHU/-S -> TPH*US, TPHUS, TPHAOUS, TPHAOUZ
+[2022-07-01 10:19:28] of the          || -F/-T -> -FT, -FTS, -FLT, -FTD
+[2022-07-01 10:20:23] If you          || TP/U -> TPU
+[2022-07-01 10:20:25] news            || TPHU/-S -> TPH*US, TPHUS, TPHAOUS, TPHAOUZ
+[2022-07-01 10:20:25] of the          || -F/-T -> -FT, -FTS, -FLT, -FTD
+[2022-07-01 10:20:28] of a            || -F/AEU -> AEUF
+[2022-07-01 10:20:38] in a            || TPH/AEU -> TPHA*EU, TPHRA*EU
+[2022-07-01 10:20:42] do not          || TKO/TPHOT -> TKPHOT, TKOPBLT
+[2022-07-01 10:20:45] and if          || SKP/TP -> TPAPBD
+[2022-07-01 10:20:47] breaks          || PWRAEBG/-S -> PWRAEBGS
+[2022-07-01 10:20:49] out of          || OUT/-F -> OUF, AOUFT
+[2022-07-01 10:20:49] in a            || TPH/AEU -> TPHA*EU, TPHRA*EU
+[2022-07-01 10:20:52] land in         || HRAPBD/TPH -> TPHRAPBD
+[2022-07-01 10:20:53] you are         || U/-R -> *UR, R*U
+[2022-07-01 10:20:54] do not          || TKO/TPHOT -> TKPHOT, TKOPBLT
+[2022-07-01 10:20:55] leave it        || HREF/T -> THREF
+[2022-07-01 10:21:48] is that         || S/THA -> STHA, STHAPBT
+[2022-07-01 10:21:48] that you        || THA/U -> THAU
+[2022-07-01 10:21:49] sort of         || SORT/-F -> SOFRT
+[2022-07-01 10:22:04] lucky           || HRUBG/KWREU -> HROEUBG, HRO*EUBG
+[2022-07-01 10:22:05] in the          || TPH/-T -> TPH-T
+[2022-07-01 10:22:07] that he         || THA/E -> THAE
+[2022-07-01 11:19:36] knowing         || TPHOE/-G -> TPHOEG, TPHO*EG
+[2022-07-01 11:19:41] knowing         || TPHOE/-G -> TPHOEG, TPHO*EG
+[2022-07-01 11:19:44] refusing        || RE/TPAOUS/-G -> RAO*UFG
+[2022-07-01 11:19:54] at least        || AT/HRAOEFT -> THRAES, THRA*ES, THRAO*ES, THRAOEFT
+[2022-07-01 11:19:55] You can't       || U/K-PBT -> UBGT
+[2022-07-01 11:19:56] if you          || TP/U -> TPU
+[2022-07-01 11:19:58] know.           || TPHOE/TP-PL -> TPHOEFPLT
+[2022-07-01 11:19:59] Acting          || ABGT/-G -> A*G
+[2022-07-01 11:20:01] knowing         || TPHOE/-G -> TPHOEG, TPHO*EG
+[2022-07-01 11:20:02] takes           || T-BG/-S -> TAEUBGS
+[2022-07-01 11:20:04] off the         || OF/-T -> OFT, AUFT
+[2022-07-01 11:52:54] irritating      || EUR/TAEUT/-G -> EUR/TAEUGT
+[2022-07-01 11:52:55] and it          || SKP/T -> TAPBD, SKPEUT
+[2022-07-01 11:52:55] gets            || TKPW-T/-S -> TKPWETS, TKPWETSZ
+[2022-07-01 11:52:57] everywhere      || EFR/W-R -> WEFR, WEFRB
+[2022-07-01 11:54:33] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-07-01 11:54:35] And he          || SKP/E -> SKPE
+[2022-07-01 11:54:36] And I           || SKP/EU -> SKPEU
+[2022-07-01 11:54:37] I think         || EU/THEU -> KWREUBG
+[2022-07-01 11:54:40] may be          || PHAEU/-B -> PHA*EUB
+[2022-07-01 11:54:40] be the          || -B/-T -> -BT
+[2022-07-01 11:54:42] pulls           || PUL/-S -> PULZ, P*ULS
+[2022-07-01 11:54:49] may be          || PHAEU/-B -> PHA*EUB
+[2022-07-01 11:54:49] be the          || -B/-T -> -BT
+[2022-07-01 11:54:52] keeps           || KAOEP/-S -> KAOEPS
+[2022-07-01 11:54:58] dangerous       || TKAEUPBLG/OUS -> TKAEUPBLGS, TKRAEURPBGS, TKAEURPBLGS
+[2022-07-01 11:55:03] painful         || PAEUPB/-FL -> PAEUFL, PAEUPBL, PAEUFPBL
+[2022-07-01 11:55:05] risky           || REUFBG/KWREU -> ROEUFBG
+[2022-07-01 11:55:08] making          || PH-BG/-G -> PHAEUG, PHA*EUG
+[2022-07-01 11:55:12] to the          || O/-T -> TOT, TO*T
+[2022-07-01 11:55:15] when has        || WH/HAS -> WH-Z
+[2022-07-01 11:58:15] Which is        || WEU/S -> SWEU, WEUS, KH-S
+[2022-07-01 11:58:16] is a            || S/AEU -> SA*EU
+[2022-07-01 11:58:22] which can       || WEU/K -> KH-BG
+[2022-07-01 12:04:56] supposed to     || SPOEFD/O -> STPOEFD
+[2022-07-01 12:04:59] what can        || WHA/K -> WHA*BG
+[2022-07-01 12:04:59] can you         || K/U -> KU, K*U
+[2022-07-01 12:05:02] what can        || WHA/K -> WHA*BG
+[2022-07-01 12:05:02] can you         || K/U -> KU, K*U
+[2022-07-01 12:05:03] you do          || U/TKO -> TKO*U
+[2022-07-01 12:05:09] comes           || K-PL/-S -> KOPLS
+[2022-07-01 12:05:13] of it           || -F/T -> T-F
+[2022-07-01 12:09:45] supposed to     || SPOEFD/O -> STPOEFD
+[2022-07-01 12:09:51] Beside          || PWE/SAOEUD -> SPWAOEUD
+[2022-07-01 12:09:52] Besides         || PWE/SAOEUD/-S -> PW-DZ, PW-DZ/-Z, PWE/SAOEUDZ, PWAOE/SAOEUDZ
+[2022-07-01 12:09:53] every time      || EFR/T-PL -> EFRPL
+[2022-07-01 12:09:58] pushes          || PURB/-S -> PURBS
+[2022-07-01 12:10:03] out of          || OUT/-F -> OUF, AOUFT
+[2022-07-01 12:10:07] when I          || WH/EU -> WHEU, WH*EU
+[2022-07-01 12:10:13] making          || PH-BG/-G -> PHAEUG, PHA*EUG
+[2022-07-01 12:10:17] and I           || SKP/EU -> SKPEU
+[2022-07-01 12:53:39] maker           || PH-BG/*ER -> PHAEURBG, PHA*EURBG
+[2022-07-01 12:53:49] telling         || TEL/-G -> TELG
+[2022-07-01 12:54:09] public          || PUB/HREUBG -> PHREUBG, PHROEUBG, PWHREUBG, PHR*EUBG, PHREUPBG
+[2022-07-01 12:54:14] I felt          || EU/TPELT -> EUFLT
+[2022-07-01 12:54:20] that I          || THA/EU -> THAEU
+[2022-07-01 12:54:31] No one          || TPHO/WUPB -> TPHOEUPB
+[2022-07-01 12:54:33] should have     || SHO/SR -> SHOUF
+[2022-07-01 12:54:33] have to         || SR/O -> STRO
+[2022-07-01 12:54:42] regard          || RE/TKPWARD -> RARD, RAOEGD
+[2022-07-01 12:55:01] ,               || TP-PL/KW-BG -> W-B, *RBGS
+[2022-07-01 12:55:28] I felt          || EU/TPELT -> EUFLT
+[2022-07-01 12:55:37] for the         || TP-R/-T -> TP-RT
+[2022-07-01 12:55:43] that I          || THA/EU -> THAEU
+[2022-07-01 12:55:51] should have     || SHO/SR -> SHOUF
+[2022-07-01 12:55:51] have to         || SR/O -> STRO
+[2022-07-01 12:55:57] who I           || WHO/SWR -> WHOEU, WHO*EU
+[2022-07-01 12:56:01] regard          || RE/TKPWARD -> RARD, RAOEGD
+[2022-07-01 12:56:20] I was           || EU/-FS -> EUFS
