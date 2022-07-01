@@ -14,16 +14,16 @@
          :spacing 3
          :height 300
 
-      (for ws in {wm_state[0]}
-        (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.index - 1}"
-                  ; :onrightclick "eww update ws_controls_visible='${!ws_controls_visible}'"
-                  :class "ws-cell ${ws.visible ? "ws-visible" : ""}"
-          (box :orientation "v"
-               :space-evenly "false"
-               :class "ws-cell-inner"
-               :spacing 4
-            (for c in {ws.clients}
-              (client :c c)))))))
+     (for ws in {wm_state[0]}
+       (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.index - 1}"
+                 ; :onrightclick "eww update ws_controls_visible='${!ws_controls_visible}'"
+                 :class "ws-cell ${ws.visible ? "ws-visible" : ""}"
+         (box :orientation "v"
+              :space-evenly "false"
+              :class "ws-cell-inner"
+              :spacing 4
+           (for c in {ws.clients}
+             (client :c c)))))))
             
           
         
