@@ -1,0 +1,6 @@
+[submodule ".config/awesome/libs/rubato"]
+	path = .config/awesome/libs/rubato
+	url = https://github.com/andOrlando/rubato
+[submodule ".config/awesome/libs/color"]
+	path = .config/awesome/libs/color
+	url = https://github.com/andOrlando/color
