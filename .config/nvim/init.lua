@@ -1,11 +1,12 @@
 require "dots.options"
-require "dots.keymaps"
 require "dots.plugins"
+require "dots.keymaps"
 require "dots.cmp"
 require "dots.lsp"
 require "dots.rnvimr"
 require "dots.treesitter"
 require "dots.bufferline"
+require "dots.markdown-preview"
 
 local cmd = vim.cmd  -- to execute Vim commands e.g. cmd('pwd')
 local fn = vim.fn    -- to call Vim functions e.g. fn.bufnr()
@@ -34,7 +35,7 @@ cmd [[
 " map <Down> g<Down>
 
 " Space Leader
-let mapleader=" "
+" let mapleader=" "
 
 " Leader stuff
 " nnoremap <Leader>w :w<cr>
@@ -42,7 +43,6 @@ let mapleader=" "
 " nnoremap <Leader>Q :q!<cr>
 " nnoremap <Leader>x :x<cr>
 " nnoremap <Leader>c :bd<cr>
-nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 
 " dd doesn't cut but deletes. Use Vx to cut line
 " nnoremap d "_d
@@ -69,6 +69,7 @@ nmap ga <Plug>(EasyAlign)
 " Sneak {{{
 
 let g:sneak#label = 1
+let g:sneak#target_labels = "tnseridhaofuwy"
 
 " case insensitive sneak
 let g:sneak#use_ic_scs = 1
@@ -103,6 +104,7 @@ nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " END Telescope }}}
+
 
 " Nerdcommenter stuff
 let NERDSpaceDelims=1 " Add spaces with comments

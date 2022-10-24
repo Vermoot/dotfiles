@@ -55,9 +55,8 @@ return packer.startup(function(use)
     'justinmk/vim-sneak',
     'alvan/vim-closetag',
     'tpope/vim-repeat',
-    'liuchengxu/vim-which-key',
+    { "folke/which-key.nvim", config = function() require("dots.which_key") end },
     'preservim/nerdcommenter',
-    'iamcco/markdown-preview.nvim',
     'kyazdani42/nvim-web-devicons',
     'akinsho/bufferline.nvim',
     'moll/vim-bbye',
@@ -67,6 +66,9 @@ return packer.startup(function(use)
     'eraserhd/parinfer-rust',
     'nvim-telescope/telescope.nvim',
     'kevinhwang91/rnvimr',
+
+    -- Markdown preview
+    { "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, },
 
     -- cmp
     'hrsh7th/nvim-cmp',
@@ -78,6 +80,7 @@ return packer.startup(function(use)
     'rafamadriz/friendly-snippets',
     'hrsh7th/cmp-nvim-lsp',
     'hrsh7th/cmp-nvim-lua',
+    'hrsh7th/cmp-emoji',
 
     -- LSP
     'neovim/nvim-lspconfig',

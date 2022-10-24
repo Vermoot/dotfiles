@@ -1,38 +1,54 @@
 -- Options
 local options = {
-  number = true,
-  fileencoding = "utf-8",
-  hlsearch = true,
-  ignorecase = true,
-  smartcase = true,
-  smartindent = true,
-  splitbelow = true,
-  splitright = true,
-  timeoutlen = 1000,
-  undofile = true,
-  foldmethod = "marker",
-  clipboard = "unnamedplus",
-  expandtab = true,
-  scrolloff = 4,
-  signcolumn = "yes",
+  number        = true,
+  fileencoding  = "utf-8",
+  hlsearch      = true,
+  ignorecase    = true,
+  smartcase     = true,
+  smartindent   = true,
+  splitbelow    = true,
+  splitright    = true,
+  timeoutlen    = 300,
+  undofile      = true,
+  foldmethod    = "marker",
+  clipboard     = "unnamedplus",
+  expandtab     = true,
+  scrolloff     = 4,
+  signcolumn    = "yes",
   sidescrolloff = 8,
-  wildmode = {'list', 'longest'},
-  wrap = true,
-  linebreak = true,
-  list = false, -- Don't wrap in the middle of a word
-  mouse = "a",
+  wildmode      = {'list', 'longest'},
+  wrap          = true,
+  linebreak     = true,
+  list          = false, -- Don't wrap in the middle of a word
+  mouse         = "a",
 
   -- Colors
   termguicolors = true,
   background = "dark",
 }
 
--- vim.opt.whichwrap:append('<>hl')
+vim.opt.whichwrap:append('<>hl')
 
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- setup must be called before loading the colorscheme
+-- Default options:
+require("gruvbox").setup({
+  undercurl            = true,
+  underline            = true,
+  bold                 = true,
+  italic               = false,
+  strikethrough        = true,
+  invert_selection     = false,
+  invert_signs         = false,
+  invert_tabline       = false,
+  invert_intend_guides = false,
+  inverse              = true, -- invert background for search, diffs, statuslines and errors
+  contrast             = "", -- can be "hard", "soft" or empty string
+  overrides            = {},
+})
 vim.cmd "colorscheme gruvbox"
 
 -- Highlight on yank
