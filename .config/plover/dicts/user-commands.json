@@ -1,5 +1,5 @@
 {
-"#": "{*+}",
+"#": "{PLOVER:SHELL:playerctl -p firefox play-pause}",
 "#*": "{*}",
 "SKWO*ET": "{:retro_single_quotes:1}",
 "SKWO*ET/SKWO*ET": "{:retro_single_quotes:2}",
