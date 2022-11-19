@@ -52,11 +52,13 @@ client.connect_signal("request::titlebars", function(c)
     local b_timed = rubato.timed {duration=0.2, pos=b}
 
     local function update_border_color ()
-      if c ~= nil then
-         c.border_color = "#"..color.utils.rgba_to_hex {math.max(r_timed.pos, 0),
-            math.max(g_timed.pos, 0),
-            math.max(b_timed.pos, 0)}
-      end
+        if c ~= nil then
+            c.border_color = "#"..color.utils.rgba_to_hex {
+                math.max(r_timed.pos, 0),
+                math.max(g_timed.pos, 0),
+                math.max(b_timed.pos, 0)
+            }
+        end
     end
 
     r_timed:subscribe(update_border_color)
@@ -69,19 +71,17 @@ client.connect_signal("request::titlebars", function(c)
 
     local function deco_button (c, button, focused_color, unfocused_color)
         local action_button = button(c)
-        --[[
-           [ action_button:connect_signal("mouse::enter", function ()
-           [     initial_border_color = client.focus == c and beautiful.border_focus or beautiful.border_normal
-           [     if c.focus then
-           [         set_border_color(c, focused_color)
-           [     else
-           [         set_border_color(c, unfocused_color)
-           [     end
-           [ end)
-           [ action_button:connect_signal("mouse::leave", function()
-           [     set_border_color(c, initial_border_color)
-           [ end)
-           ]]
+        -- action_button:connect_signal("mouse::enter", function ()
+        --     initial_border_color = client.focus == c and beautiful.border_focus or beautiful.border_normal
+        --     if c.focus then
+        --         set_border_color(c, focused_color)
+        --     else
+        --         set_border_color(c, unfocused_color)
+        --     end
+        -- end)
+        -- action_button:connect_signal("mouse::leave", function()
+        --     set_border_color(c, initial_border_color)
+        -- end)
         return action_button
     end
     -- }}}
@@ -90,44 +90,49 @@ client.connect_signal("request::titlebars", function(c)
     -- Left titlebar {{{
     awful.titlebar(c, { position="left", size = dpi(32)}) : setup
     {
-        { -- Top
-            {
-                deco_button(c, awful.titlebar.widget.closebutton,     "#fb4934", "#cc241d"),
-                deco_button(c, awful.titlebar.widget.maximizedbutton, "#fabd2f", "#d79921"),
-                deco_button(c, awful.titlebar.widget.minimizebutton,  "#b8bb26", "#98971a"),
-                spacing = dpi(6),
-                layout = wibox.layout.fixed.vertical,
+        {
+            { -- Top
+                {
+                    deco_button(c, awful.titlebar.widget.closebutton,     "#fb4934", "#cc241d"),
+                    deco_button(c, awful.titlebar.widget.maximizedbutton, "#fabd2f", "#d79921"),
+                    deco_button(c, awful.titlebar.widget.minimizebutton,  "#b8bb26", "#98971a"),
+                    spacing = dpi(6),
+                    layout = wibox.layout.fixed.vertical,
+                },
+                margins = dpi(8),
+                widget = wibox.container.margin
             },
-            margins = dpi(8),
-            widget = wibox.container.margin
+            { -- Middle
+                {
+                    { -- Title
+                        align  = "center",
+                        widget = awful.titlebar.widget.titlewidget(c)
+                    },
+                    direction = 'east',
+                    widget    = wibox.container.rotate
+                },
+                margins = 4,
+                opacity = 0,
+                buttons = buttons,
+                widget = wibox.container.margin,
+            },
+            { -- Bottom
+                {
+                    awful.titlebar.widget.iconwidget(c),
+                    layout  = wibox.layout.fixed.vertical(),
+                },
+                margins = 7,
+                widget = wibox.container.margin
+            },
+            layout = wibox.layout.align.vertical,
         },
         {
-            buttons = buttons,
-            widget = wibox.layout.flex.vertical
+            bg = "#ebdbb2",
+            fixed_width = 4,
+            fixed_height = 50,
+            widget = wibox.container.background,
         },
-        { -- Bottom
-            {
-                awful.titlebar.widget.iconwidget(c),
-                buttons = buttons,
-                layout  = wibox.layout.fixed.vertical(),
-            },
-            margins = 7,
-            widget = wibox.container.margin
-        },
-        { -- Middle
-            {
-                { -- Title
-                    align  = "center",
-                    widget = awful.titlebar.widget.titlewidget(c)
-                },
-                direction = 'east',
-                widget    = wibox.container.rotate
-            },
-            margins = 4,
-            widget = wibox.container.margin,
-            buttons = buttons,
-        },
-        layout = wibox.layout.align.vertical
+        layout = wibox.layout.align.horizontal
     }
     -- }}}
     else
@@ -145,9 +150,16 @@ client.connect_signal("request::titlebars", function(c)
             margins = dpi(8),
             widget = wibox.container.margin
         },
-        {
+        { -- Middle
+            { -- Title
+                align  = "center",
+                widget = awful.titlebar.widget.titlewidget(c)
+            },
+            margins = 4,
+            widget = wibox.container.margin,
+            opacity = 0,
             buttons = buttons,
-            widget = wibox.layout.flex.horizontal
+            layout  = wibox.layout.flex.vertical,
         },
         { -- Bottom
             {
@@ -158,19 +170,9 @@ client.connect_signal("request::titlebars", function(c)
             margins = dpi(8),
             widget = wibox.container.margin
         },
-        --[[
-               [ { -- Middle
-               [     { -- Title
-               [         align  = "center",
-               [         widget = awful.titlebar.widget.titlewidget(c)
-               [     },
-               [     margins = 4,
-               [     widget = wibox.container.margin,
-               [     buttons = buttons,
-               [     layout  = wibox.layout.flex.vertical
-               [ },
-               ]]
-        layout = wibox.layout.align.horizontal
+        
+        
+        layout = wibox.layout.align.horizontal,
     }
     -- }}}
     end
@@ -184,37 +186,30 @@ end
 -- Exported functions {{{
 titlebars.show = function(c)
     if c ~= nil then
-        awful.titlebar.show(c, titlebar_position(c))
         c.titlebar_shown = true
+        awful.titlebar.show(c, titlebar_position(c))
     end
 end
 
 titlebars.hide = function(c)
     if c ~= nil then
-        awful.titlebar.hide(c, "top")
-        naughty.notify({title="fuxk"})
-        -- awful.titlebar.hide(c, "left")
         c.titlebar_shown = false
+        awful.titlebar.hide(c, "top")
+        awful.titlebar.hide(c, "left")
     end
 end
 
 titlebars.toggle = function(c)
     if c ~= nil then
-        --[[
-           [ if c.titlebar_shown then
-           [     titlebars.hide(c)
-           [ else
-           [     titlebars.show(c)
-           [ end
-           ]]
-        -- awful.titlebar.toggle(c, titlebar_position(c))
-            awful.titlebar.hide(c, "top")
-            awful.titlebar.show(c, "left")
-        naughty.notify({title="fuck"})
-        -- c.titlebar_shown = not c.titlebar_shown
+        if c.titlebar_shown then
+            titlebars.hide(c)
+        else
+            titlebars.show(c)
+        end
     end
 end
 -- }}}
+
 local function update(c)
     if c.titlebar_shown then
         if c.width > c.height then
@@ -231,14 +226,5 @@ end
 
 client.connect_signal("property::width", update)
 client.connect_signal("property::height", update)
--- client.connect_signal("property::floating", update)
-
--- client.connect_signal("request::manage", function(c, context)
-  -- if c.maximized or c.fullscreen then
-    -- awful.titlebar.hide(c)
-  -- else
-    -- show(c)
-  -- end
--- end)
 
 return titlebars

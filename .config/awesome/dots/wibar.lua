@@ -8,71 +8,183 @@ local dpi       = require("beautiful.xresources").apply_dpi
 -- Widgets {{{
 
 -- Create a textclock widget
-local mytextclock = wibox.widget.textclock()
+
+local clock = wibox.widget {
+    {
+        {
+            {
+                align = "center",
+                valign = "center",
+                -- format = "%H",
+                widget = wibox.widget.textclock("<span font='SF Compact Rounded 15' font-weight='700'>%H</span>")
+            },
+            {
+                bg = "#928374",
+                forced_height = 3,
+                shape = function(cr, width, height)
+                    gears.shape.rounded_rect(cr, width, height, 5)
+                end,
+                widget = wibox.container.background
+            },
+            {
+                align = "center",
+                valign = "center",
+                -- format = "%M",
+                widget = wibox.widget.textclock("<span font='SF Compact Rounded 15' font-weight='700'>%M</span>")
+            },
+            spacing = -2,
+            layout = wibox.layout.fixed.vertical
+        },
+        margins = dpi(0),
+        widget = wibox.container.margin
+    },
+    fg = "#928374",
+    widget = wibox.container.background
+}
+
+local clock2 = wibox.widget {
+    {
+        {
+            {
+                align = "center",
+                valign = "center",
+                -- format = "%H",
+                widget = wibox.widget.textclock("<span font='SF Compact Rounded 12' font-weight='700'>%H</span>")
+            },
+            -- {
+            --     bg = "#3c3836",
+            --     forced_height = 2,
+            --     forced_width = 8,
+            --     shape = function(cr, width, height)
+            --         gears.shape.rounded_rect(cr, width, height, 5)
+            --     end,
+            --     widget = wibox.container.background
+            -- },
+            {
+                align = "center",
+                valign = "center",
+                -- format = "%M",
+                widget = wibox.widget.textclock("<span font='SF Compact Rounded 12' font-weight='700'>%M</span>")
+            },
+            spacing = -4,
+            layout = wibox.layout.fixed.vertical
+
+        },
+        margins = 0,
+        widget = wibox.container.margin
+    },
+    bg = "#665c54",
+    fg = "#282828",
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 5)
+    end,
+    widget = wibox.container.background
+}
+
+local date_tooltip = awful.tooltip {
+    objects = {clock2},
+    -- timer_function = function () return os.date("%d %B %Y") end,
+    markup = "<span font='SF Compact Rounded Medium 12'>" .. os.date("%A %d %B %Y") .. "</span>",
+    shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
+    border_width = 1,
+    border_color = "#3c3836",
+    bg = "#665c54",
+    fg = "#282828",
+    preferred_alignments = {"back"},
+    mode = "outside",
+    delay_show = 0.5,
+}
+
+-- local date_popup = awful.popup {
+--     {
+--         text = "heyo",
+--         widget = wibox.widget.textbox,
+--     },
+--     widget = wibox.container.background,
+-- }
+--
+-- date_popup:move_next_to(mouse.current_widget_geometry)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
-    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({}, 1, function(t) t:view_only() end),
     awful.button({ modkey }, 1, function(t)
         if client.focus then
             client.focus:move_to_tag(t)
         end
     end),
-    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({}, 3, awful.tag.viewtoggle),
     awful.button({ modkey }, 3, function(t)
         if client.focus then
             client.focus:toggle_tag(t)
         end
     end),
-    awful.button({ }, 4, function(t) awful.tag.viewprev(t.screen) end),
-    awful.button({ }, 5, function(t) awful.tag.viewnext(t.screen) end)
+    awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
+    awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end)
 )
 
 local tasklist_buttons = gears.table.join(
-    awful.button({ }, 1, function (c)
+    awful.button({}, 1, function(c)
         if c == client.focus then
             c.minimized = true
         else
             c:emit_signal(
                 "request::activate",
                 "tasklist",
-                {raise = true}
+                { raise = true }
             )
         end
     end),
-    awful.button({ }, 3, function()
+    awful.button({}, 3, function()
         awful.menu.client_list({ theme = { width = 250 } })
     end),
-    awful.button({ }, 5, function ()
+    awful.button({}, 5, function()
         awful.client.focus.byidx(1)
     end),
-    awful.button({ }, 4, function ()
+    awful.button({}, 4, function()
         awful.client.focus.byidx(-1)
     end))
 
 local systray = wibox.widget.systray()
+local systray_widget = wibox.widget {
+    {
+        systray,
+        -- margins = 2,
+        top = 4,
+        bottom = 4,
+        left = 2,
+        right =2,
+        widget = wibox.container.margin
+    },
+    widget = wibox.container.background,
+    bg = "#665c54",
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 5)
+    end,
+}
 systray:set_horizontal(false)
-systray:set_base_size(24)
-systray.border_width = 3
+-- systray:set_base_size(24)
+beautiful.bg_systray = "#665c54"
+beautiful.systray_icon_spacing = 4
 
 --}}}
 
 awful.screen.connect_for_each_screen(function(s)
 
     -- Create a tasklist widget
-    local tagtasklist = function (s, tag)
+    local tagtasklist = function(s, tag)
         s.mytasklist = awful.widget.tasklist {
-            screen  = s,
-            filter  = awful.widget.tasklist.filter.alltags,
-            buttons = tasklist_buttons,
-            layout   = { layout  = wibox.layout.fixed.vertical, spacing = 4 },
+            screen          = s,
+            filter          = awful.widget.tasklist.filter.alltags,
+            buttons         = tasklist_buttons,
+            layout          = { layout = wibox.layout.fixed.vertical, spacing = 4 },
             widget_template = {
                 {
                     {
                         layout = wibox.layout.fixed.vertical,
                     },
-                    left  = 4,
-                    right = 4,
+                    left   = 4,
+                    right  = 4,
                     widget = wibox.container.margin
                 },
                 bg = "#00aa00",
@@ -82,7 +194,7 @@ awful.screen.connect_for_each_screen(function(s)
                 shape = function(cr, width, height)
                     gears.shape.circle(cr, width, height)
                 end,
-                create_callback = function (self, c, index, objects)
+                create_callback = function(self, c, index, objects)
                     self.filter = function() return c.first_tag == tag end
                 end,
 
@@ -114,8 +226,8 @@ awful.screen.connect_for_each_screen(function(s)
             end
             yay_tasklist = tagtasklist(s, c3)
             self:connect_signal('mouse::enter', function()
-                self.border_backup     = self.shape_border_color
-                self.has_backup = true
+                self.border_backup = self.shape_border_color
+                self.has_backup    = true
                 if not c3.selected then self.shape_border_color = '#7c6f64' end
 
                 local w = mouse.current_wibox
@@ -152,10 +264,10 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
-        screen  = s,
-        filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons,
-        layout   = {
+        screen          = s,
+        filter          = awful.widget.taglist.filter.all,
+        buttons         = taglist_buttons,
+        layout          = {
             layout  = wibox.layout.fixed.vertical,
             spacing = 4,
         },
@@ -168,10 +280,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-        awful.button({ }, 1, function () awful.layout.inc( 1) end),
-        awful.button({ }, 3, function () awful.layout.inc(-1) end),
-        awful.button({ }, 4, function () awful.layout.inc( 1) end),
-        awful.button({ }, 5, function () awful.layout.inc(-1) end)
+        awful.button({}, 1, function() awful.layout.inc(1) end),
+        awful.button({}, 3, function() awful.layout.inc(-1) end),
+        awful.button({}, 4, function() awful.layout.inc(1) end),
+        awful.button({}, 5, function() awful.layout.inc(-1) end)
     ))
 
 
@@ -196,21 +308,24 @@ awful.screen.connect_for_each_screen(function(s)
         {
             {
                 layout = wibox.layout.align.vertical,
-                { -- Left widgets
+                { -- Top widgets
                     layout = wibox.layout.fixed.vertical,
+                    -- s.mylayoutbox,
                     s.mytaglist,
                 },
                 s.mytasklist, -- Middle widget
-                { -- Right widgets
+                { -- Bottom widgets
                     layout = wibox.layout.fixed.vertical,
-                    systray,
-                    mytextclock,
-                    s.mylayoutbox,
+                    spacing = 6,
+                    systray_widget,
+                    -- mytextclock,
+                    -- clock,
+                    clock2,
                 },
             },
             widget = wibox.container.margin,
-            top = 6,
-            bottom = 6,
+            top = 5,
+            bottom = 5,
             left = 4,
             right = 4,
             -- margins = 6,
@@ -221,7 +336,7 @@ awful.screen.connect_for_each_screen(function(s)
             gears.shape.rounded_rect(cr, width, height, 8)
         end,
         shape_border_width = 1,
-        shape_border_color = "#504945",
+        shape_border_color = "#665c54",
     }
 
     s.myBar:struts {
