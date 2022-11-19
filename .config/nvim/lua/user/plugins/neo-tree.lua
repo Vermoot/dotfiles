@@ -11,7 +11,7 @@ return {
   },
   filesystem = {
     filtered_items = {
-      hide_gitignored = false,
+      hide_gitignored = true,
     }
   }
 }

@@ -24,8 +24,7 @@
 
 return {
   { 'ellisonleao/gruvbox.nvim', config = function() require("user.plugins.gruvbox") end },
-  { "echasnovski/mini.nvim",    config = function() require("mini.align").setup() end },
   { "karb94/neoscroll.nvim",    config = function() require("user.plugins.neoscroll") end },
+  { "kylechui/nvim-surround",   config = function() require("user.plugins.nvim-surround") end, tag = "*" },
   { "junegunn/vim-easy-align" },
-  -- { "hrsh7th/cmp-cmdline",      config = function() require("user.plugins.cmp-cmdline") end},
 }
