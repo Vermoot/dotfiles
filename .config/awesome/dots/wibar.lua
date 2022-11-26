@@ -20,9 +20,9 @@ local clock = wibox.widget {
             },
             {
                 bg = "#928374",
-                forced_height = 3,
+                forced_height = dpi(3),
                 shape = function(cr, width, height)
-                    gears.shape.rounded_rect(cr, width, height, 5)
+                    gears.shape.rounded_rect(cr, width, height, dpi(5))
                 end,
                 widget = wibox.container.background
             },
@@ -32,7 +32,7 @@ local clock = wibox.widget {
                 -- format = "%M",
                 widget = wibox.widget.textclock("<span font='SF Compact Rounded 15' font-weight='700'>%M</span>")
             },
-            spacing = -2,
+            spacing = dpi(-2),
             layout = wibox.layout.fixed.vertical
         },
         margins = dpi(0),
@@ -53,10 +53,10 @@ local clock2 = wibox.widget {
             },
             -- {
             --     bg = "#3c3836",
-            --     forced_height = 2,
-            --     forced_width = 8,
+            --     forced_height = dpi(2),
+            --     forced_width = dpi(8),
             --     shape = function(cr, width, height)
-            --         gears.shape.rounded_rect(cr, width, height, 5)
+            --         gears.shape.rounded_rect(cr, width, height, dpi(5))
             --     end,
             --     widget = wibox.container.background
             -- },
@@ -66,17 +66,17 @@ local clock2 = wibox.widget {
                 -- format = "%M",
                 widget = wibox.widget.textclock("<span font='SF Compact Rounded 12' font-weight='700'>%M</span>")
             },
-            spacing = -4,
+            spacing = dpi(-4),
             layout = wibox.layout.fixed.vertical
 
         },
-        margins = 0,
+        margins = dpi(0),
         widget = wibox.container.margin
     },
     bg = "#665c54",
     fg = "#282828",
     shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, 5)
+        gears.shape.rounded_rect(cr, width, height, dpi(5))
     end,
     widget = wibox.container.background
 }
@@ -85,8 +85,8 @@ local date_tooltip = awful.tooltip {
     objects = {clock2},
     -- timer_function = function () return os.date("%d %B %Y") end,
     markup = "<span font='SF Compact Rounded Medium 12'>" .. os.date("%A %d %B %Y") .. "</span>",
-    shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, 4) end,
-    border_width = 1,
+    shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(4)) end,
+    border_width = dpi(1),
     border_color = "#3c3836",
     bg = "#665c54",
     fg = "#282828",
@@ -149,23 +149,23 @@ local systray = wibox.widget.systray()
 local systray_widget = wibox.widget {
     {
         systray,
-        -- margins = 2,
-        top = 4,
-        bottom = 4,
-        left = 2,
-        right =2,
+        -- margins = dpi(2),
+        top = dpi(4),
+        bottom = dpi(4),
+        left = dpi(2),
+        right =dpi(2),
         widget = wibox.container.margin
     },
     widget = wibox.container.background,
     bg = "#665c54",
     shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, 5)
+        gears.shape.rounded_rect(cr, width, height, dpi(5))
     end,
 }
 systray:set_horizontal(false)
 -- systray:set_base_size(24)
 beautiful.bg_systray = "#665c54"
-beautiful.systray_icon_spacing = 4
+beautiful.systray_icon_spacing = dpi(4)
 
 --}}}
 
@@ -177,19 +177,19 @@ awful.screen.connect_for_each_screen(function(s)
             screen          = s,
             filter          = awful.widget.tasklist.filter.alltags,
             buttons         = tasklist_buttons,
-            layout          = { layout = wibox.layout.fixed.vertical, spacing = 4 },
+            layout          = { layout = wibox.layout.fixed.vertical, spacing = dpi(4) },
             widget_template = {
                 {
                     {
                         layout = wibox.layout.fixed.vertical,
                     },
-                    left   = 4,
-                    right  = 4,
+                    left   = dpi(4),
+                    right  = dpi(4),
                     widget = wibox.container.margin
                 },
                 bg = "#00aa00",
-                forced_height = 12,
-                forced_width = 12,
+                forced_height = dpi(12),
+                forced_width = dpi(12),
                 widget = wibox.container.background,
                 shape = function(cr, width, height)
                     gears.shape.circle(cr, width, height)
@@ -214,7 +214,7 @@ awful.screen.connect_for_each_screen(function(s)
         forced_height = dpi(24),
         widget = wibox.container.background,
         shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(4)) end,
-        shape_border_width = 2,
+        shape_border_width = dpi(2),
         shape_border_color = "#aa0000",
 
         -- Add support for hover colors and an index label
@@ -269,7 +269,7 @@ awful.screen.connect_for_each_screen(function(s)
         buttons         = taglist_buttons,
         layout          = {
             layout  = wibox.layout.fixed.vertical,
-            spacing = 4,
+            spacing = dpi(4),
         },
         widget_template = tag_widget,
     }
@@ -299,7 +299,7 @@ awful.screen.connect_for_each_screen(function(s)
         y = s.geometry.y + 2 * beautiful.useless_gap,
         screen = s,
         shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, 8)
+            gears.shape.rounded_rect(cr, width, height, dpi(8))
         end
     }
 
@@ -316,7 +316,7 @@ awful.screen.connect_for_each_screen(function(s)
                 s.mytasklist, -- Middle widget
                 { -- Bottom widgets
                     layout = wibox.layout.fixed.vertical,
-                    spacing = 6,
+                    spacing = dpi(6),
                     systray_widget,
                     -- mytextclock,
                     -- clock,
@@ -324,18 +324,18 @@ awful.screen.connect_for_each_screen(function(s)
                 },
             },
             widget = wibox.container.margin,
-            top = 5,
-            bottom = 5,
-            left = 4,
-            right = 4,
-            -- margins = 6,
+            top = dpi(5),
+            bottom = dpi(5),
+            left = dpi(4),
+            right = dpi(4),
+            -- margins = dpi(6),
         },
         widget = wibox.container.background,
         bg = "#3c3836",
         shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, 8)
+            gears.shape.rounded_rect(cr, width, height, dpi(8))
         end,
-        shape_border_width = 1,
+        shape_border_width = dpi(1),
         shape_border_color = "#665c54",
     }
 

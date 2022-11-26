@@ -186,6 +186,11 @@ overflow: hidden !important;
 display: none !important;
 }
 
+#sidebar-box {
+  min-width: unset !important;
+  width: var(--sidebar-min-width) !important;
+}
+
 #sidebar,
 #sidebar-header {
 position: relative !important;

@@ -49,10 +49,10 @@ end
 local slider = wibox.widget.slider {
     bar_shape           = gears.shape.rounded_rect,
     bar_active_color    = "#689d6a",
-    bar_height          = 6,
+    bar_height          = dpi(6),
     bar_color           = "#ebdbb2",
     handle_shape        = gears.shape.circle,
-    handle_width        = 6,
+    handle_width        = dpi(6),
     handle_color        = "#689d6a",
     value               = volume_value,
 }
@@ -69,12 +69,12 @@ volume_hud : setup {
         {
             volume_icon,
             slider,
-            spacing = 12,
+            spacing = dpi(12),
             layout = wibox.layout.fixed.horizontal
         },
         widget = wibox.container.margin,
-        left = 16,
-        right = 16,
+        left = dpi(16),
+        right = dpi(16),
     },
     widget = wibox.container.background,
         bg = "#504945",
