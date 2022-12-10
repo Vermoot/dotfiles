@@ -1,21 +1,22 @@
-local gears     = require("gears")
-local wibox     = require("wibox")
-local awful     = require("awful")
-local beautiful = require("beautiful")
-local dpi       = require("beautiful.xresources").apply_dpi
-local naughty   = require("naughty")
-local rubato    = require("libs.rubato")
+local gears        = require("gears")
+local wibox        = require("wibox")
+local awful        = require("awful")
+local beautiful    = require("beautiful")
+local dpi          = require("beautiful.xresources").apply_dpi
+local naughty      = require("naughty")
+local rubato       = require("libs.rubato")
 
 
-local volume = {}
+local volume       = {}
 
 local hud_screen   = awful.screen.focused()
-local hud_width    = dpi(250)
-local hud_height   = dpi(40)
-local hud_margin   = dpi(32)
+local hud_width    = dpi(160)
+local hud_height   = dpi(50)
+local hud_margin   = dpi(-15)
 local hud_radius   = dpi(12)
 local hud_border   = dpi(2)
-local hud_duration = 2
+local hud_duration = 0.5
+local hud_x        = 2010
 
 local volume_hud = wibox {
     visible = true,
@@ -24,7 +25,7 @@ local volume_hud = wibox {
     ontop   = true,
     height  = hud_height,
     width   = hud_width,
-    x       = (hud_screen.geometry.width / 2) - hud_width / 2,
+    x       = hud_x,
     y       = hud_screen.geometry.y + hud_screen.geometry.height,
     shape   = function(cr, width, height)
         gears.shape.rounded_rect(cr, width, height, hud_radius)
@@ -60,29 +61,31 @@ local slider = wibox.widget.slider {
 local volume_icon = wibox.widget {
                 align = "center",
                 valign = "center",
-                font = "19",
+                font = "18",
                 widget = wibox.widget.textbox
 }
 
 volume_hud : setup {
     {
         {
-            volume_icon,
+            -- volume_icon,
             slider,
             spacing = dpi(12),
-            layout = wibox.layout.fixed.horizontal
+            top = 10,
+            bottom = 30,
+            layout = wibox.container.margin
         },
         widget = wibox.container.margin,
         left = dpi(16),
         right = dpi(16),
     },
     widget = wibox.container.background,
-        bg = "#504945",
-        shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, hud_radius)
-        end,
-        shape_border_width = hud_border,
-        shape_border_color = "#a89984",
+    bg = "#504945",
+    shape = function(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, hud_radius)
+    end,
+    shape_border_width = hud_border,
+    shape_border_color = "#a89984",
 
 }
 
