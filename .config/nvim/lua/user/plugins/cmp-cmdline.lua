@@ -17,10 +17,10 @@ return {
           end
         end
         local mappings = cmp.mapping.preset.cmdline {
-          ["<C-j>"] = { c = select_next },
-          ["<C-k>"] = { c = select_prev },
+          ["<C-j>"]  = { c = select_next },
+          ["<C-k>"]  = { c = select_prev },
           ["<Down>"] = { c = select_next },
-          ["<Up>"] = { c = select_prev },
+          ["<Up>"]   = { c = select_prev },
         }
         cmp.setup.cmdline(":", {
           mapping = mappings,

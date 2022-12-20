@@ -11,4 +11,5 @@ require("gruvbox").setup({
   inverse              = true, -- invert background for search, diffs, statuslines and errors
   contrast             = "", -- can be "hard", "soft" or empty string
   overrides            = {},
+  transparent_mode = true,
 })

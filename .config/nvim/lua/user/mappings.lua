@@ -8,8 +8,8 @@ return {
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
-      ["<M-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
+      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
 
       -- Movement across windows
       ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
@@ -18,8 +18,8 @@ return {
       -- Smooth PageUp/Down
       -- ["<PageUp>"]   = { "<C-b>" },
       -- ["<PageDown>"] = { "<C-f>" },
-      ["<PageUp>"]   = false,
-      ["<PageDown>"] = false,
+      ["<PageUp>"]   = {"<C-u>"},
+      ["<PageDown>"] = {"<C-d>"},
 
       -- Move across wrapped lines
       ["j"]      = { "gj" },
@@ -45,23 +45,24 @@ return {
   -- INSERT MODE {{{
     i = {
       -- Move across buffers
-      ["<M-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
+      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
     },
   -- END INSERT MODE }}}
 
   -- VISUAL MODE {{{
     v = {
       -- Move across buffers
-      ["<M-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
+      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
 
       -- Easy-Align
       ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
 
       -- Suppress yanking on operations
-      d = "\"_d",
-      c = "\"_c",
+      ["d"] = { "\"_d" },
+      ["p"] = {"\"_dP"},
+      ["c"] = { "\"_c" },
 
     },
   -- END VISUAL MODE }}}

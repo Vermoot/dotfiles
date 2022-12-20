@@ -1,7 +1,7 @@
 return {
   opt = {
     -- set to true or false etc.
-    spell = false, -- sets vim.opt.spell
+    spell          = false, -- sets vim.opt.spell
 
     number         = true,
     relativenumber = true,
@@ -21,16 +21,17 @@ return {
     signcolumn     = "yes",
     sidescrolloff  = 8,
     wildmode       = { 'list', 'longest' },
+    virtualedit    = "all",
 
-    wrap      = true,
-    linebreak = true,
-    list      = false, -- Don't wrap in the middle of a word
+    wrap           = true,
+    linebreak      = true,
+    list           = false, -- Don't wrap in the middle of a word
 
-    mouse = "a",
+    mouse          = "a",
 
     -- Colors
-    termguicolors = true,
-    background = "dark",
+    termguicolors  = true,
+    background     = "dark",
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
