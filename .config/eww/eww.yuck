@@ -6,7 +6,7 @@
 
 ')
 
-(defwidget workspaces []
+(defwidget workspaces [screen]
   ; (eventbox
     (box :orientation "v"
          :space-evenly "false"
@@ -14,7 +14,7 @@
          :spacing 3
          :height 300
 
-     (for ws in {wm_state[0]}
+     (for ws in {wm_state[screen]}
        (eventbox :cursor "pointer" :onclick "wmctrl -s ${ws.index - 1}"
                  ; :onrightclick "eww update ws_controls_visible='${!ws_controls_visible}'"
                  :class "ws-cell ${ws.visible ? "ws-visible" : ""}"
@@ -24,13 +24,6 @@
               :spacing 4
            (for c in {ws.clients}
              (client :c c)))))))
-            
-          
-        
-      
-    
-  
-; )
           
 (defvar client_controls_visible "false")
 (defvar ws_controls_visible "false")
@@ -125,7 +118,7 @@
 
 (defwindow bar
   :monitor 0
-  :geometry (geometry :x "8px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
+  :geometry (geometry :x "48px" :y "0px" :width "32px" :height "1080px" :anchor "left center")
   ; :stacking "fg"
   :wm-ignore false
   :reserve (struts :distance "40px" :side "left")
@@ -139,7 +132,7 @@
       :valign "fill"
       :space-evenly false
       ; (appmenu)
-      (workspaces))
+      (workspaces :screen 1))
     
     (box :class "bar-mid")
     (box :class "bar-bot"
@@ -155,8 +148,7 @@
 
 (defwindow bar2
   :monitor 1
-  :geometry (geometry :x "8px" :y "0px" :width "32px" :height "1050px")
-  :anchor "left center"
+  :geometry (geometry :x "8px" :y "0px" :width "32px" :height "1050px" :anchor "left center")
   ; :stacking "fg"
   :wm-ignore false
   :reserve (struts :distance "40px" :side "left")
@@ -165,7 +157,12 @@
   (box :class "bar-window" 
     :orientation "v"
     :space-evenly true
-    (box :class "bar-top")
+    (box :class "bar-top"
+      :orientation "v"
+      :valign "fill"
+      :space-evenly false
+      ; (appmenu)
+      (workspaces :screen 1))
     (box :class "bar-mid")
     (box :class "bar-bot"
          :valign "end"
