@@ -15,7 +15,7 @@ local hud_height   = dpi(40)
 local hud_margin   = dpi(32)
 local hud_radius   = dpi(12)
 local hud_border   = dpi(2)
-local hud_duration = 2
+local hud_duration = 0.5
 
 local volume_hud = wibox {
     visible = true,
@@ -60,7 +60,7 @@ local slider = wibox.widget.slider {
 local volume_icon = wibox.widget {
                 align = "center",
                 valign = "center",
-                font = "19",
+                font = "SF Compact Rounded 19",
                 widget = wibox.widget.textbox
 }
 

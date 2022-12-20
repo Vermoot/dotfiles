@@ -176,7 +176,7 @@ local function set_wallpaper(s)
     if type(wallpaper) == "function" then
       wallpaper = wallpaper(s)
     end
-    gears.wallpaper.maximized(wallpaper, s, true)
+    gears.wallpaper.maximized(wallpaper, s, false)
   end
 end
 
@@ -209,6 +209,7 @@ awful.rules.rules = {
       maximized_horizontal = false,
       maximized_vertical = false,
       maximized = false,
+      size_hints_honor = true,
     }
   },
 
@@ -260,8 +261,8 @@ awful.rules.rules = {
   -- properties = { titlebars_enabled = true, focusable = false }
   -- },
 
-  { rule = { class = { "yabridge-host.exe.so" } },
-    properties = { border_width = 0 }
+  { rule_any = { class = { "yabridge-host.exe.so" } },
+    properties = { border_width = 0, focusable = false }
   },
 
   -- Case-by-case basis
@@ -276,15 +277,16 @@ awful.rules.rules = {
   -- Desktop
   {
     rule       = { class = "plasmashell", type = "desktop" },
-    properties = { floating = true, border_width = 0, sticky = true, focusable = true, titlebars_enabled = false, },
+    properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true, titlebars_enabled = false, },
     callback   = function(c)
-      c:geometry({ width = 1920, height = 1080, x = 0, y = 0 })
+      -- c:geometry({ width = c.screen.width, height = c.screen.height, x = c.screen.x, y = c.screen.y })
+      c:geometry(c.screen.geometry)
     end,
   },
-  { rule_any = { class = { "krunner" } }, properties = { floating = true } },
-  { rule_any = { class = { "latte-dock" } }, properties = { floating = true, border_width = 0, sticky = true } },
+  -- { rule_any = { class = { "krunner" } }, properties = { floating = true } },
+  -- { rule_any = { class = { "latte-dock" } }, properties = { floating = true, border_width = 0, sticky = true } },
 
-  -- Panels
+  -- -- Panels
   { rule = { class = "plasmashell", type = "dock" },
     properties = {
       border_width = 0, focusable = false
@@ -353,10 +355,18 @@ client.connect_signal("manage", function(c, context)
         return
       end
     end
-    titlebars.show(c)
-    if c.transient_for == nil then
+    if c.class == "plasmashell" then
+      print(c.size_hints.user_position.x)
+      c.x = c.size_hints.user_position.x
+      c.y = c.size_hints.user_position.y
+      c.border_width = 1
+      awful.placement.no_offscreen(c)
+      return
+    end
+    if c.transient_for == nil and c.class ~= "yabridge-host.ex" then
       awful.placement.centered(c)
     else
+      titlebars.show(c)
       awful.placement.centered(c, { parent = c.transient_for })
     end
     awful.placement.no_offscreen(c)

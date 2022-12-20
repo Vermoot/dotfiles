@@ -146,22 +146,27 @@ local tasklist_buttons = gears.table.join(
     end))
 
 local systray = wibox.widget.systray()
-local systray_widget = wibox.widget {
-    {
-        systray,
-        -- margins = dpi(2),
-        top = dpi(4),
-        bottom = dpi(4),
-        left = dpi(2),
-        right =dpi(2),
-        widget = wibox.container.margin
-    },
-    widget = wibox.container.background,
-    bg = "#665c54",
-    shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-    end,
-}
+local systray_widget = function (s)
+    if s.index == 1 then
+        return wibox.widget {
+            {
+                systray,
+                -- margins = dpi(2),
+                top = dpi(4),
+                bottom = dpi(4),
+                left = dpi(2),
+                right =dpi(2),
+                widget = wibox.container.margin
+            },
+            widget = wibox.container.background,
+            bg = "#665c54",
+            visible = function (s) return s.index == 1 end,
+            shape = function(cr, width, height)
+                gears.shape.rounded_rect(cr, width, height, dpi(5))
+            end,
+        }
+    end
+end
 systray:set_horizontal(false)
 -- systray:set_base_size(24)
 beautiful.bg_systray = "#665c54"
@@ -297,6 +302,8 @@ awful.screen.connect_for_each_screen(function(s)
         -- x = s.geometry.x + 2*beautiful.useless_gap,
         x = s.geometry.x + 2 * beautiful.useless_gap,
         y = s.geometry.y + 2 * beautiful.useless_gap,
+        bg = "aa0000",
+        type = "normal",
         screen = s,
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, dpi(8))
@@ -317,7 +324,7 @@ awful.screen.connect_for_each_screen(function(s)
                 { -- Bottom widgets
                     layout = wibox.layout.fixed.vertical,
                     spacing = dpi(6),
-                    systray_widget,
+                    systray_widget(s),
                     -- mytextclock,
                     -- clock,
                     clock2,
@@ -331,12 +338,12 @@ awful.screen.connect_for_each_screen(function(s)
             -- margins = dpi(6),
         },
         widget = wibox.container.background,
-        bg = "#3c3836",
+        bg = "#3c3836aa",
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, dpi(8))
         end,
         shape_border_width = dpi(1),
-        shape_border_color = "#665c54",
+        shape_border_color = "#79740e",
     }
 
     s.myBar:struts {

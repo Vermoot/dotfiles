@@ -11,8 +11,10 @@ local titlebars = require("dots.titlebars")
 
 -- Functions {{{
 local function noti_type()
-    local c = client.focus
-    awful.util.spawn("notify-send -t 0 '" .. c.name .. c.type .. "'")
+    local c = awful.mouse.client_under_pointer()
+    naughty.notify({title = "Class", text=c.class})
+    naughty.notify({title = "Name", text=c.name})
+    naughty.notify({title = "Type", text=c.type})
 end
 
 local function move_to_previous_tag()
@@ -259,8 +261,8 @@ clientbuttons = gears.table.join(
 root.buttons(gears.table.join(
     awful.button({}, 3, function() mymainmenu:toggle() end),
     awful.button({}, 12, function() naughty.notify({title="CLICK"}) end),
-    awful.button({}, 4, awful.tag.viewnext),
-    awful.button({}, 5, awful.tag.viewprev)
+    awful.button({}, 6, awful.tag.viewnext),
+    awful.button({}, 7, awful.tag.viewprev)
 ))
 
 firefox_buttons = gears.table.join(

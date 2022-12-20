@@ -1,7 +1,7 @@
 -------------------------------
 --  "Zenburn" awesome theme  --
 --    By Adrian C. (anrxc)   --
--------------------------------
+-----------------------------
 
 local theme_path = "/home/vermoot/.config/awesome/theme/"
 local dpi = require("beautiful.xresources").apply_dpi
@@ -27,9 +27,9 @@ theme.bg_systray = theme.bg_normal
 -- {{{ Borders
 theme.useless_gap   = dpi(4)
 theme.gap_single_client = true
-theme.border_width  = dpi(2)
-theme.border_normal = "#665c54"
-theme.border_focus  = "#ebdbb2"
+theme.border_width  = dpi(3)
+theme.border_normal = "#98971a"
+theme.border_focus  = "#fb4934"
 theme.border_marked = "#CC9393"
 -- }}}
 
