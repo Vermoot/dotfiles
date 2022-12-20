@@ -8,7 +8,7 @@ ZSH_THEME="robbyrussell"
 HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 plugins=(git)
 
@@ -51,3 +51,5 @@ export PATH=$PATH:/home/vermoot/.spicetify
 __git_files () { 
     _wanted files expl 'local files' _files     
 }
+
+eval $(thefuck --alias)
