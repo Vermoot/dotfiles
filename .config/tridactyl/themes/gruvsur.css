@@ -55,6 +55,11 @@
 		--tridactyl-of-fg: var(--bg-primary);
 }
 
+@keyframes scale-up {
+    0% {scale: 0;}
+    100% {scale: 1;}
+}
+
 :root #command-line-holder {
     order: 1;
     color: var(--tridactyl-cmdl-bg);
@@ -156,6 +161,13 @@
 :root span.TridactylHint {
     border: solid 1px var(--tridactyl-fg) !important;
     border-radius: 4px !important;
+    animation-name: scale-up !important;
+    animation-duration: 0.15s;
+    animation-timing-function: cubic-bezier(.56,-0.02,.32,1.62);
+}
+
+:root .TridactylHintElem {
+    outline: none !important;
 }
 
 :root .TridactylStatusIndicator {
