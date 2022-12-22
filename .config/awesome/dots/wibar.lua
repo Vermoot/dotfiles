@@ -303,7 +303,7 @@ awful.screen.connect_for_each_screen(function(s)
         x = s.geometry.x + 2 * beautiful.useless_gap,
         y = s.geometry.y + 2 * beautiful.useless_gap,
         bg = "aa0000",
-        type = "normal",
+        type = "Normal",
         screen = s,
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, dpi(8))

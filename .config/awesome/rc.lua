@@ -213,6 +213,34 @@ awful.rules.rules = {
     }
   },
 
+  -- Fullscreen
+  { rule = { fullscreen = true },
+  callback = function (c)
+    gears.timer.delayed_call(function()
+      if c.valid then
+        c:geometry(c.screen.geometry)
+      end
+    end)
+  end
+  },
+
+  -- Floating but not transient
+  { rule = { floating = true, transient_for = nil },
+    except_any = { type = "splash", "dock", "desktop"},
+    properties =
+     { placement = awful.placement.centered + awful.placement.no_offscreen }
+  },
+
+  -- Floating and transient
+  { rule = { floating = true },
+    except = { transient_for = nil},
+    callback = function (c)
+      awful.placement.centered(c, { parent = c.transient_for })
+      awful.placement.no_offscreen(c)
+    end,
+    properties = { titlebars_enabled = true }
+  },
+
   { rule = { class = "firefox" },
     properties = {
       keys = gears.table.join(clientkeys, firefox_keys),
@@ -228,15 +256,6 @@ awful.rules.rules = {
     properties = { sticky = true, ontop = true }
   },
 
-  { rule = { class = "trayer" },
-    properties = { ontop = true, border_width = 0 }
-  },
-
-  --[[
-      [ { rule = { class = "wezterm" },
-      [    properties = { titlebars_enabled = true }
-      [ },
-      ]]
 
   -- Floating clients.
   { rule_any = {
@@ -266,25 +285,41 @@ awful.rules.rules = {
   },
 
   -- Case-by-case basis
-  { rule_any = { name = { "plank" } }, properties = { ontop = true } },
-  { rule_any = { class = { "eww" } }, properties = { border_width = 0 } },
-  { rule_any = { class = { "tint2" } }, properties = { border_width = 0 } },
-  { rule_any = { name = { "xfce4-panel" } }, properties = { ontop = true } },
+  { rule_any = { name  = { "plank"       } }, properties = { ontop        = true } },
+  { rule_any = { class = { "eww"         } }, properties = { focusable = false, border_width = 0    } },
+  { rule_any = { class = { "tint2"       } }, properties = { border_width = 0    } },
+  { rule_any = { name  = { "xfce4-panel" } }, properties = { ontop        = true } },
   -- { rule_any = { name =  { "menu"        } }, properties = { border_width=4 } },
   { rule_any = { class = { "floatingfeh" } }, properties = { floating = true,
     placement = awful.placement.centered() } },
+
   -- Plasma Stuff {{{
   -- Desktop
+  { rule = { class = "plasmashell"},
+    properties = {},
+    callback = function (c)
+      c.honor_workarea = false
+      c.x = c.size_hints.user_position.x
+      c.y = c.size_hints.user_position.y
+      c.border_width = 1
+      awful.placement.no_offscreen(c)
+    end
+  },
+
   {
     rule       = { class = "plasmashell", type = "desktop" },
     properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true, titlebars_enabled = false, },
     callback   = function(c)
       -- c:geometry({ width = c.screen.width, height = c.screen.height, x = c.screen.x, y = c.screen.y })
       c:geometry(c.screen.geometry)
+      c:lower()
     end,
   },
   -- { rule_any = { class = { "krunner" } }, properties = { floating = true } },
   -- { rule_any = { class = { "latte-dock" } }, properties = { floating = true, border_width = 0, sticky = true } },
+  -- { rule = { class = "plasmashell" },
+  --   properties = { honor_workarea = false }
+  -- },
 
   -- -- Panels
   { rule = { class = "plasmashell", type = "dock" },
@@ -313,8 +348,6 @@ awful.rules.rules = {
   },
   -- END Plasma Stuff }}}
 
-  { rule = { class = "eww" }, properties = { focusable = false, } },
-
 }
 -- }}}
 
@@ -339,38 +372,37 @@ client.connect_signal("manage", function(c, context)
     awful.placement.no_offscreen(c)
   end
 
-  if c.fullscreen then
-    gears.timer.delayed_call(function()
-      if c.valid then
-        c:geometry(c.screen.geometry)
-      end
-    end)
-  end
+  -- if c.fullscreen then
+  --   gears.timer.delayed_call(function()
+  --     if c.valid then
+  --       c:geometry(c.screen.geometry)
+  --     end
+  --   end)
+  -- end
 
-  if c.floating then
-    -- awful.titlebar.show(c, titlebar_position(c))
-    -- c:emit_signal("request::titlebars")
-    for _, type in ipairs({"splash", "dock", "desktop"}) do
-      if c.type == type then
-        return
-      end
-    end
-    if c.class == "plasmashell" then
-      print(c.size_hints.user_position.x)
-      c.x = c.size_hints.user_position.x
-      c.y = c.size_hints.user_position.y
-      c.border_width = 1
-      awful.placement.no_offscreen(c)
-      return
-    end
-    if c.transient_for == nil and c.class ~= "yabridge-host.ex" then
-      awful.placement.centered(c)
-    else
-      titlebars.show(c)
-      awful.placement.centered(c, { parent = c.transient_for })
-    end
-    awful.placement.no_offscreen(c)
-  end
+  -- if c.floating then
+  --   -- awful.titlebar.show(c, titlebar_position(c))
+  --   -- c:emit_signal("request::titlebars")
+  --   for _, type in ipairs({"splash", "dock", "desktop"}) do
+  --     if c.type == type then
+  --       return
+  --     end
+  --   end
+  --   if c.class == "plasmashell" then
+  --     -- c.x = c.size_hints.user_position.x
+  --     -- c.y = c.size_hints.user_position.y
+  --     -- c.border_width = 1
+  --     -- awful.placement.no_offscreen(c)
+  --     return
+  --   end
+  --   if c.transient_for == nil and c.class ~= "yabridge-host.ex" then
+  --     awful.placement.centered(c)
+  --   else
+  --     titlebars.show(c)
+  --     awful.placement.centered(c, { parent = c.transient_for })
+  --   end
+  --   awful.placement.no_offscreen(c)
+  -- end
 
   if c.transient_for ~= nil and string.find(c.transient_for.name, "Bitwig") then
 
