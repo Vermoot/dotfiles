@@ -4,3 +4,6 @@
 [submodule ".config/awesome/libs/color"]
 	path = .config/awesome/libs/color
 	url = https://github.com/andOrlando/color
+[submodule ".config/ranger/plugins/ranger-archives"]
+	path = .config/ranger/plugins/ranger-archives
+	url = https://github.com/maximtrp/ranger-archives
