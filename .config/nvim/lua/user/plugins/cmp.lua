@@ -10,5 +10,6 @@ return {
   },
   mapping = {
     ["<Right>"] = cmp.mapping.confirm { select = false },
+    ["<Tab>"] = nil,
   },
 }

@@ -23,8 +23,19 @@
 -- }}}
 
 return {
-  { 'ellisonleao/gruvbox.nvim', config = function() require("user.plugins.gruvbox") end },
-  { "karb94/neoscroll.nvim",    config = function() require("user.plugins.neoscroll") end },
-  { "kylechui/nvim-surround",   config = function() require("user.plugins.nvim-surround") end, tag = "*" },
+  { 'ellisonleao/gruvbox.nvim',  config = function() require("user.plugins.gruvbox") end },
+  -- { "karb94/neoscroll.nvim",  config = function() require("user.plugins.neoscroll") end },
+  { 'echasnovski/mini.nvim',     branch = "stable" },
+  { 'echasnovski/mini.animate',  config = function() require('user.plugins.mini-animate') end,  branch = "stable" },
+  { "kylechui/nvim-surround",    config = function() require("user.plugins.nvim-surround") end, tag = "*" },
   { "junegunn/vim-easy-align" },
+  { "jackMort/ChatGPT.nvim",     config = function() require("user.plugins.chatgpt") end,
+                                 requires = {
+                                   "MunifTanjim/nui.nvim",
+                                   "nvim-lua/plenary.nvim",
+                                   "nvim-telescope/telescope.nvim"
+                                 }
+  },
+  { "aduros/ai.vim"},
+  { "Exafunction/codeium.vim" },
 }

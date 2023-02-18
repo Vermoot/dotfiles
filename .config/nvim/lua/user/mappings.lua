@@ -8,11 +8,12 @@ return {
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
-      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<C-M-S-m>"] = { "<cmd>BufferLineCyclePrev<cr>" },
+      ["<C-M-S-i>"] = { "<cmd>BufferLineCycleNext<cr>" },
 
       -- Movement across windows
       ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
+      ["<CR>"] = { "" },
       ["<C-i>"] = { "<C-w>w", desc = "Move focus to the next window" },
 
       -- Smooth PageUp/Down
@@ -38,15 +39,14 @@ return {
       ["d"] = {"\"_d"},
       ["x"] = {"\"_x"},
       ["c"] = {"\"_c"},
-
     },
   -- END NORMAL MODE }}}
 
   -- INSERT MODE {{{
     i = {
       -- Move across buffers
-      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<C-M-S-m>"] = { "<cmd>BufferLineCyclePrev<cr>" },
+      ["<C-M-S-i>"] = { "<cmd>BufferLineCycleNext<cr>" },
     },
   -- END INSERT MODE }}}
 
