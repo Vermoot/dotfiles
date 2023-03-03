@@ -1,3 +1,7 @@
+local function meh (key)
+  return "<C-M-S-" .. key .. ">"
+end
+
 return {
 
   -- NORMAL MODE {{{
@@ -8,13 +12,14 @@ return {
       ["<leader>bj"] = { "<cmd>BufferLinePick<cr>", desc = "Pick to jump" },
       ["<leader>bt"] = { "<cmd>BufferLineSortByTabs<cr>", desc = "Sort by tabs" },
 
-      ["<C-M-S-m>"] = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<C-M-S-i>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      [meh("m")] = { "<cmd>BufferLineCyclePrev<cr>" },
+      [meh("i")] = { "<cmd>BufferLineCycleNext<cr>" },
 
       -- Movement across windows
       ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
-      ["<CR>"] = { "" },
       ["<C-i>"] = { "<C-w>w", desc = "Move focus to the next window" },
+      ["<CR>"] = { "" },
+      ["<Tab>"] = {""},
 
       -- Smooth PageUp/Down
       -- ["<PageUp>"]   = { "<C-b>" },
@@ -39,22 +44,28 @@ return {
       ["d"] = {"\"_d"},
       ["x"] = {"\"_x"},
       ["c"] = {"\"_c"},
+
+      -- ChatGPT
+      ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+      ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
     },
   -- END NORMAL MODE }}}
 
   -- INSERT MODE {{{
     i = {
       -- Move across buffers
-      ["<C-M-S-m>"] = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<C-M-S-i>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      [meh("m")] = { "<cmd>BufferLineCyclePrev<cr>" },
+      [meh("i")] = { "<cmd>BufferLineCycleNext<cr>" },
+      ["<C-i>"] = {"<C-i>"},
+      -- ["<CR>"] = {"<CR>"},
     },
   -- END INSERT MODE }}}
 
   -- VISUAL MODE {{{
     v = {
       -- Move across buffers
-      ["<M-S-CR>"]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      ["<M-S-Tab>"] = { "<cmd>BufferLineCycleNext<cr>" },
+      [meh("m")]  = { "<cmd>BufferLineCyclePrev<cr>" },
+      [meh("i")] = { "<cmd>BufferLineCycleNext<cr>" },
 
       -- Easy-Align
       ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
@@ -63,6 +74,9 @@ return {
       ["d"] = { "\"_d" },
       ["p"] = {"\"_dP"},
       ["c"] = { "\"_c" },
+
+      -- ChatGPT
+      ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
 
     },
   -- END VISUAL MODE }}}
@@ -78,6 +92,8 @@ return {
 
   -- TERMINAL MODE {{{
     t = {
+      ["<CR>"] = { "<CR>" },
+      ["<Tab>"] = { "<Tab>" },
       ["<C-m>"] = { "<C-w>W" },
       ["<C-i>"] = { "<C-w>w" },
       -- setting a mapping to false will disable it
