@@ -23,6 +23,20 @@ local titlebars = require("dots.titlebars")
 
 -- Notification library
 local naughty = require("naughty")
+naughty.config.padding = dpi(16)
+naughty.config.spacing = dpi(8)
+naughty.config.presets.low.timeout = 5
+naughty.config.presets.normal.timeout = 6
+naughty.config.presets.critical.timeout = 12
+naughty.config.presets.critical.bg = "#aa4444"
+naughty.config.defaults.shape = function(cr, width, height)
+    gears.shape.rounded_rect(cr, width, height, dpi(8))
+end
+naughty.config.defaults.screen = screen.primary
+naughty.config.defaults.padding = dpi(30)
+naughty.config.defaults.max_height = dpi(300)
+naughty.config.defaults.max_width = dpi(400)
+naughty.config.defaults.icon_size = dpi(64)
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- local ezconfig = require('libs.ezconfig')
@@ -227,8 +241,24 @@ awful.rules.rules = {
   -- Floating but not transient
   { rule = { floating = true, transient_for = nil },
     except_any = { type = "splash", "dock", "desktop"},
-    properties =
-     { placement = awful.placement.centered + awful.placement.no_offscreen }
+    properties = {},
+    callback = function (c)
+      if c.size_hints ~= nil then
+        local s = c.screen
+        if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
+          c.x = c.size_hints.program_position.x
+          c.y = c.size_hints.program_position.y
+        elseif c.size_hints.user_position ~= nil and c.size_hints.user_position.x ~= 0 then
+          c.x = c.size_hints.user_position.x
+          c.y = c.size_hints.user_position.y
+        end
+        c.screen = s
+      else
+        awful.placement.centered(c)
+        awful.placement.no_offscreen(c)
+      end
+    end
+
   },
 
   -- Floating and transient
@@ -248,7 +278,7 @@ awful.rules.rules = {
     }
   },
 
-  { rule = { class = "discord" },
+  { rule_any = { class = {"discord", "WebCord" } },
     properties = { keys = gears.table.join(clientkeys, discord_keys), }
   },
 
@@ -280,17 +310,22 @@ awful.rules.rules = {
   -- properties = { titlebars_enabled = true, focusable = false }
   -- },
 
-  { rule_any = { class = { "yabridge-host.exe.so" } },
+  { rule = { class =  "yabridge-host.exe.so"  },
     properties = { border_width = 0, focusable = false }
   },
 
+  { rule = { class = "yabridge-host.exe.so"},
+    except = { name = "menu" },
+    properties = { hidden = true },
+  },
+
   -- Case-by-case basis
-  { rule_any = { name  = { "plank"       } }, properties = { ontop        = true } },
-  { rule_any = { class = { "eww"         } }, properties = { focusable = false, border_width = 0    } },
-  { rule_any = { class = { "tint2"       } }, properties = { border_width = 0    } },
-  { rule_any = { name  = { "xfce4-panel" } }, properties = { ontop        = true } },
+  { rule = { name  =  "plank"        }, properties = { ontop        = true } },
+  { rule = { class =  "eww"          }, properties = { focusable = false, border_width = 0    } },
+  { rule = { class =  "tint2"        }, properties = { border_width = 0    } },
+  { rule = { name  =  "xfce4-panel"  }, properties = { ontop        = true } },
   -- { rule_any = { name =  { "menu"        } }, properties = { border_width=4 } },
-  { rule_any = { class = { "floatingfeh" } }, properties = { floating = true,
+  { rule = { class =  "floatingfeh"  }, properties = { floating = true,
     placement = awful.placement.centered() } },
 
   -- Plasma Stuff {{{
@@ -372,6 +407,12 @@ client.connect_signal("manage", function(c, context)
     awful.placement.no_offscreen(c)
   end
 
+  -- if not c.fullscreen then
+  --   c.shape = function(cr,w,h)
+  --         gears.shape.rounded_rect(cr,w,h,12)
+  --   end
+  -- end
+  --
   -- if c.fullscreen then
   --   gears.timer.delayed_call(function()
   --     if c.valid then
@@ -406,14 +447,37 @@ client.connect_signal("manage", function(c, context)
 
   if c.transient_for ~= nil and string.find(c.transient_for.name, "Bitwig") then
 
-    -- c:emit_signal("request::titlebars")
-    titlebars.show(c)
+    c:emit_signal("request::titlebars")
+    -- titlebars.show(c)
     if vst_clients[c.pid] ~= nil then
       c.x = vst_clients[c.pid].x
       c.y = vst_clients[c.pid].y
     end
 
   end
+
+  local r, g, b = color.utils.hex_to_rgba(c.border_color)
+  local r_timed = rubato.timed {duration=0.2, pos=r}
+  local g_timed = rubato.timed {duration=0.2, pos=g}
+  local b_timed = rubato.timed {duration=0.2, pos=b}
+
+  local function update_border_color ()
+    if c ~= nil then
+      c.border_color = "#"..color.utils.rgba_to_hex {
+        math.max(r_timed.pos, 0),
+        math.max(g_timed.pos, 0),
+        math.max(b_timed.pos, 0)
+      }
+    end
+  end
+
+  r_timed:subscribe(update_border_color)
+  g_timed:subscribe(update_border_color)
+  b_timed:subscribe(update_border_color)
+
+  awful.client.property.set(c, "set_border_color",  function(new_color)
+    r_timed.target, g_timed.target, b_timed.target = color.utils.hex_to_rgba(new_color)
+  end)
 
 end)
 
@@ -431,13 +495,21 @@ end)
 -- c:emit_signal("request::activate", "mouse_enter", {raise = false})
 -- end)
 
+
+
+
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
+  -- c.set_border_color(beautiful.border_focus)
+  -- awful.client.property.get(c, "set_border_color")(beautiful.border_focus)
 end)
 
 client.connect_signal("unfocus", function(c)
+  -- c.set_border_color(beautiful.border_normal)
+  -- awful.client.property.get(c, "set_border_color")(beautiful.border_normal)
   c.border_color = beautiful.border_normal
 end)
+
 -- client.connect_signal("property::geometry", function(c)
 -- if awful.titlebar(c) ~= nil then
 -- if c.height >= c.width then

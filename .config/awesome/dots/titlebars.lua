@@ -3,7 +3,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
-local naughty = require("naughty")
 
 local rubato = require ("libs.rubato")
 local color = require("libs.color")

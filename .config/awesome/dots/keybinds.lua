@@ -15,6 +15,7 @@ local function noti_type()
     naughty.notify({title = "Class", text=c.class})
     naughty.notify({title = "Name", text=c.name})
     naughty.notify({title = "Type", text=c.type})
+    naughty.notify({title = "Transient for", text=c.transient_for ~= nil and c.transient_for.name or "nil"})
 end
 
 local function move_to_previous_tag()
@@ -147,6 +148,7 @@ globalkeys = gears.table.join(
                 , false)
         end),
     awful.key({ modkey, }, "r", function() awful.spawn.with_shell("replay-sorcery save", false) end),
+    awful.key({ modkey, "Shift" }, "semicolon", function() awful.spawn.with_shell("emoji-picker", false) end),
     awful.key({ modkey, "Control" }, "space",
         function() awful.spawn.with_shell("~/.config/eww/modules/menu/menu.sh", false) end),
 -- awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("scrot -s -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png", false) end)
@@ -226,14 +228,14 @@ firefox_keys = gears.table.join(
 )
 
 discord_keys = gears.table.join(
-    awful.key(meh, "n", function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Down") end),
-    awful.key(meh, "e", function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Up") end),
+    awful.key(meh, "n",    function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Down")         end),
+    awful.key(meh, "e",    function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Up")           end),
 
-    awful.key(meh, "Down", function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Shift+Down") end),
-    awful.key(meh, "Up", function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Shift+Up") end),
+    awful.key(meh, "Down", function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Shift+Down")   end),
+    awful.key(meh, "Up",   function(c) awful.util.spawn("xdotool key --clearmodifiers Alt+Shift+Up")     end),
 
-    awful.key(meh, "m", function(c) awful.util.spawn("xdotool key --clearmodifiers Control+Alt+Down") end),
-    awful.key(meh, "i", function(c) awful.util.spawn("xdotool key --clearmodifiers Control+Alt+Up") end)
+    awful.key(meh, "m",    function(c) awful.util.spawn("xdotool key --clearmodifiers Control+Alt+Down") end),
+    awful.key(meh, "i",    function(c) awful.util.spawn("xdotool key --clearmodifiers Control+Alt+Up")   end)
 )
 
 -- Set keys
