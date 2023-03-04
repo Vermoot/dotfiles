@@ -1,9 +1,15 @@
-[submodule ".config/awesome/libs/rubato"]
-	path = .config/awesome/libs/rubato
-	url = https://github.com/andOrlando/rubato
-[submodule ".config/awesome/libs/color"]
-	path = .config/awesome/libs/color
-	url = https://github.com/andOrlando/color
 [submodule ".config/ranger/plugins/ranger-archives"]
 	path = .config/ranger/plugins/ranger-archives
 	url = https://github.com/maximtrp/ranger-archives
+[submodule ".config/awesome/libs/libs/rubato"]
+	path = .config/awesome/libs/libs/rubato
+	url = https://github.com/andOrlando/rubato
+[submodule ".config/awesome/libs/libs/color"]
+	path = .config/awesome/libs/libs/color
+	url = https://github.com/andOrlando/color
+[submodule ".config/awesome/libs/color"]
+	path = .config/awesome/libs/color
+	url = https://github.com/andOrlando/color
+[submodule ".config/awesome/libs/rubato"]
+	path = .config/awesome/libs/rubato
+	url = https://github.com/andOrlando/rubato
