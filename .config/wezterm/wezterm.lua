@@ -8,7 +8,8 @@ return {
   },
   allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace",
   warn_about_missing_glyphs = false,
-  enable_csi_u_key_encoding = true,
+  modifyOtherKeys = true,
+  -- enable_csi_u_key_encoding = true,
   -- enable_kitty_keyboard = true,
   -- }}}
 
@@ -20,16 +21,15 @@ return {
     top = "20pt",
     bottom = "20pt",
   },
-  window_background_opacity=0.9,
+  window_background_opacity=1,
   --}}}
 
   -- Font {{{
   font = wezterm.font_with_fallback({
-    -- "Fira Code Nerd Font",
-    -- "FantasqueSansMono Nerd Font",
+    -- {family = "Monoid", weight = 300},
+    -- {family = "Source Code Pro", weight = 400},
+    -- {family = "Inconsolata", weight = 400},
     {family = "Terminus (TTF)", weight = 400},
-    -- "TerminessTTF Nerd Font Mono",
-    -- "JetBrainsMono Nerd Font"
   }),
   font_size = 12,
   -- }}}

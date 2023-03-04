@@ -13,6 +13,7 @@ ENABLE_CORRECTION="false"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.env
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 
@@ -34,7 +35,7 @@ export RANGER_DEVICONS_SEPARATOR="  "
 alias zshrc="nvim ~/.zshrc"
 alias yabairc="nvim ~/.config/yabai/yabairc"
 alias skhdrc="nvim ~/.config/skhd/skhdrc"
-alias nvimrc="ranger ~/.config/nvim"
+alias nvimrc="ranger ~/.config/astronvim/lua/user"
 alias cxmonad="nvim ~/.config/xmonad/xmonad.hs"
 alias cpicom="nvim ~/.config/picom/picom.conf"
 alias cawesome="cd ~/.config/awesome && nvim ~/.config/awesome/rc.lua"
