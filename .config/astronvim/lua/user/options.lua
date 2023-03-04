@@ -2,11 +2,26 @@
 return {
   opt = {
     -- set to true or false etc.
-    relativenumber = true, -- sets vim.opt.relativenumber
-    number = true, -- sets vim.opt.number
-    spell = false, -- sets vim.opt.spell
-    signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-    wrap = false, -- sets vim.opt.wrap
+    spell          = false, -- sets vim.opt.spell
+    number         = true,
+    relativenumber = true,
+    fileencoding   = "utf-8",
+    hlsearch       = true,
+    ignorecase     = true,
+    smartcase      = true,
+    smartindent    = true,
+    splitbelow     = true,
+    splitright     = true,
+    timeoutlen     = 300,
+    undofile       = true,
+    foldmethod     = "marker",
+    clipboard      = "unnamedplus",
+    expandtab      = true,
+    scrolloff      = 4,
+    signcolumn     = "yes",
+    sidescrolloff  = 8,
+    wildmode       = { 'list', 'longest' },
+    virtualedit    = "all",
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader

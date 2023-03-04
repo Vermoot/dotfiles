@@ -1,2 +1,2 @@
 -- Set colorscheme to use
-return "astrodark"
+return "gruvbox"
