@@ -12,10 +12,10 @@ return {
 
   -- NORMAL MODE {{{
     n = {
-      ["<leader><leader"] = { "", desc = "More..." },
+      ["<leader><leader>"] = { name = "More..." },
       -- Buffers
-      [meh("m")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
-      [meh("i")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
+      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
 
       -- Movement across windows
       ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
@@ -36,12 +36,8 @@ return {
       ["-"] = { "<c-x>", desc = "Descrement number" },
       ["+"] = { "<c-a>", desc = "Increment number" },
 
-      -- Suppress yanking on operations
-      -- ["d"] = {"\"_d"},
-      -- ["x"] = {"\"_x"},
-      -- ["c"] = {"\"_c"},
-
       -- ChatGPT
+      ["<leader><leader>c"] = { name = "ChatGPT" },
       ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
       ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
     },
@@ -50,8 +46,8 @@ return {
   -- INSERT MODE {{{
     i = {
       -- Move across buffers
-      [meh("m")] = { "<cmd>BufferLineCyclePrev<cr>" },
-      [meh("i")] = { "<cmd>BufferLineCycleNext<cr>" },
+      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
       ["<C-i>"] = {"<C-i>"},
       -- ["<CR>"] = {"<CR>"},
     },
@@ -59,19 +55,17 @@ return {
 
   -- VISUAL MODE {{{
     v = {
+      ["<leader><leader>"] = { name = "More..." },
       -- Move across buffers
-      [meh("m")]  = { "<cmd>BufferLineCyclePrev<cr>" },
-      [meh("i")] = { "<cmd>BufferLineCycleNext<cr>" },
+      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
 
       -- Easy-Align
       ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
 
-      -- Suppress yanking on operations
-      -- ["d"] = { "\"_d" },
-      -- ["p"] = {"\"_dP"},
-      -- ["c"] = { "\"_c" },
-
       -- ChatGPT
+      ["<leader><leader>c"] = { name = "ChatGPT" },
+      ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
       ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
 
     },

@@ -2,4 +2,5 @@
 return {
   -- styling choices for each heirline element, check possible attributes with `:h attr-list`
   git_branch = { bold = true }, -- bold the git branch statusline component
+  mode = { bold = true },
 }
