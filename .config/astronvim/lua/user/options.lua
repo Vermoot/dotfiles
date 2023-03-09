@@ -14,7 +14,7 @@ return {
     splitright     = true,
     timeoutlen     = 300,
     undofile       = true,
-    foldmethod     = "marker",
+    -- foldmethod     = "marker",
     clipboard      = "unnamedplus",
     expandtab      = true,
     scrolloff      = 4,
@@ -25,7 +25,7 @@ return {
   },
   g = {
     mapleader = " ", -- sets vim.g.mapleader
-    autoformat_enabled = true, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
+    autoformat_enabled = false, -- enable or disable auto formatting at start (lsp.formatting.format_on_save must be enabled)
     cmp_enabled = true, -- enable completion at start
     autopairs_enabled = true, -- enable autopairs at start
     diagnostics_enabled = true, -- enable diagnostics at start

@@ -5,90 +5,105 @@
 -- automatically pick-up stored data by this setting.)
 
 local function meh (key)
-  return "<C-M-S-" .. key .. ">"
+    return "<C-M-S-" .. key .. ">"
 end
 
 return {
 
-  -- NORMAL MODE {{{
-    n = {
-      ["<leader><leader>"] = { name = "More..." },
-      -- Buffers
-      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
-      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
+    -- NORMAL MODE {{{
+        n = {
 
-      -- Movement across windows
-      ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
-      ["<C-i>"] = { "<C-w>w", desc = "Move focus to the next window" },
-      ["<CR>"] = { "" },
-      -- ["<Tab>"] = {""},
+            ["<leader><leader>"] = { name = "More..." },
 
-      -- Move across wrapped lines
-      ["j"]      = { "gj" },
-      ["k"]      = { "gk" },
-      ["<Up>"]   = { "g<Up>" },
-      ["<Down>"] = { "g<Down>" },
+            -- Buffers
+            [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+            [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
 
-      -- Easy-Align
-      ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
+            -- Movement across windows
+            ["<C-m>"] = { "<C-w>W", desc = "Move focus to the previous window" },
+            ["<C-i>"] = { "<C-w>w", desc = "Move focus to the next window" },
+            ["<CR>"]  = { "" },
+            ["<Tab>"] = {"<Tab>"},
 
-      -- Better increment/decrement
-      ["-"] = { "<c-x>", desc = "Descrement number" },
-      ["+"] = { "<c-a>", desc = "Increment number" },
+            -- Move across wrapped lines
+            ["j"]      = { "gj" },
+            ["k"]      = { "gk" },
+            ["<Up>"]   = { "g<Up>" },
+            ["<Down>"] = { "g<Down>" },
 
-      -- ChatGPT
-      ["<leader><leader>c"] = { name = "ChatGPT" },
-      ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
-      ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
-    },
-  -- END NORMAL MODE }}}
+            -- Easy-Align
+            ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
 
-  -- INSERT MODE {{{
-    i = {
-      -- Move across buffers
-      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
-      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
-      ["<C-i>"] = {"<C-i>"},
-      -- ["<CR>"] = {"<CR>"},
-    },
-  -- END INSERT MODE }}}
+            -- Better increment/decrement
+            ["-"] = { "<c-x>", desc = "Descrement number" },
+            ["+"] = { "<c-a>", desc = "Increment number" },
 
-  -- VISUAL MODE {{{
-    v = {
-      ["<leader><leader>"] = { name = "More..." },
-      -- Move across buffers
-      [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
-      [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
+            -- ChatGPT
+            ["<leader><leader>c"]  = { name = "ChatGPT" },
+            ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+            ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
 
-      -- Easy-Align
-      ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
+            -- Suppress yanking on operations
+            ["d"] = {"\"_d"},
+            ["x"] = {"\"_x"},
+            ["c"] = {"\"_c"},
 
-      -- ChatGPT
-      ["<leader><leader>c"] = { name = "ChatGPT" },
-      ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
-      ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
+            -- Mental health
+            ["q:"] = ":",
+        },
+        -- END NORMAL MODE }}}
 
-    },
-  -- END VISUAL MODE }}}
+        -- INSERT MODE {{{
+            i = {
+                -- Move across buffers
+                [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+                [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
+                ["<C-i>"] = {"<C-i>"},
+                ["<Tab>"] = {"<Tab>"},
+                -- ["<CR>"] = {"<CR>"},
+            },
+            -- END INSERT MODE }}}
 
-  -- COMMAND MODE {{{
-    c = {
-      ["<PageUp>"]   = {"<Up>"},
-      ["<PageDown>"] = {"<Down>"},
-    },
+            -- VISUAL MODE {{{
+                v = {
+                    ["<leader><leader>"] = { name = "More..." },
+                    -- Move across buffers
+                    [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
+                    [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
+
+                    -- Easy-Align
+                    ["ga"] = { "<Plug>(EasyAlign)", desc = "Easy Align" },
+
+                    -- ChatGPT
+                    ["<leader><leader>c"] = { name = "ChatGPT" },
+                    ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
+                    ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
+
+                    -- Suppress yanking on operations
+                    ["d"] = {"\"_d"},
+                    ["p"] = {"\"_p"},
+                    ["c"] = {"\"_c"},
+                },
+                -- END VISUAL MODE }}}
+
+                -- COMMAND MODE {{{
+                    c = {
+                        ["<PageUp>"]   = {"<Up>"},
+                        ["<PageDown>"] = {"<Down>"},
+                    },
 
 
-  -- END COMMAND MODE }}}
+                    -- END COMMAND MODE }}}
 
-  -- TERMINAL MODE {{{
-    t = {
-      ["<CR>"] = { "<CR>" },
-      ["<Tab>"] = { "<Tab>" },
-      ["<C-m>"] = { "<C-w>W" },
-      ["<C-i>"] = { "<C-w>w" },
-      -- setting a mapping to false will disable it
-      -- ["<esc>"] = false,
-    },
-  -- END TERMINAL MODE }}}
+                    -- TERMINAL MODE {{{
+                        t = {
+                            ["<CR>"] = { "<CR>" },
+                            ["<Tab>"] = { "<Tab>" },
+                            ["<C-m>"] = { "<C-w>W" },
+                            ["<C-i>"] = { "<C-w>w" },
+                            -- setting a mapping to false will disable it
+                            -- ["<esc>"] = false,
+                        },
+                        -- END TERMINAL MODE }}}
 
-}
+                    }

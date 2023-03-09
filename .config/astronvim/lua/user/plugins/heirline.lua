@@ -87,11 +87,12 @@ local mode = require("astronvim.utils.status").component.mode({
 
 
         -- statuscolumn
-        opts.statuscolumn = { -- statuscolumn
+        opts.statuscolumn = vim.fn.has "nvim-0.9" == 1 and {
           status.component.foldcolumn(),
+          status.component.fill(),
           status.component.numbercolumn(),
           status.component.signcolumn(),
-        }
+        } or nil
 
         -- return the final configuration table
         return opts

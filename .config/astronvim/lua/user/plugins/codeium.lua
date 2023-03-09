@@ -4,7 +4,7 @@ return {
   init = function()
     vim.g.codeium_enabled = 1
     vim.g.codeium_disable_bindings = 1
-    vim.g.codeium_idle_delay = 1500
+    vim.g.codeium_idle_delay = 0
   end,
   config = function()
     vim.keymap.set("i", "<C-i>", function() return vim.fn["codeium#Accept"]() end, { expr = true })
