@@ -7,6 +7,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 local naughty = require("naughty")
 local volume = require("dots.volume")
 local titlebars = require("dots.titlebars")
+local revelation = require("libs.revelation")
 -- END Imports }}}
 
 -- Functions {{{
@@ -89,6 +90,7 @@ globalkeys = gears.table.join(
 -- Move across tags
     awful.key({ modkey, }, "e", awful.tag.viewprev),
     awful.key({ modkey, }, "n", awful.tag.viewnext),
+    awful.key({ modkey, }, "k", revelation),
 
     awful.key({ modkey, "Mod1" }, "o", function() swap_screens() end),
     awful.key({ modkey, }, "j", function() noti_type() end),

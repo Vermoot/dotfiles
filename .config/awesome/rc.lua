@@ -11,7 +11,9 @@ local dpi = require("beautiful.xresources").apply_dpi
 local rubato = require("libs.rubato")
 local color = require("libs.color")
 local beautiful = require("beautiful")
+local revelation = require("libs.revelation")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
+revelation.init()
 require("awful.autofocus")
 require("awful.remote")
 
