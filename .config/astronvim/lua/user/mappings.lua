@@ -58,8 +58,8 @@ return {
                 -- Move across buffers
                 [meh("i")] = { function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
                 [meh("m")] = { function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer"},
-                ["<C-i>"] = {"<C-i>"},
                 ["<Tab>"] = {"<Tab>"},
+                ["<C-i>"] = {"<C-i>"},
                 -- ["<CR>"] = {"<CR>"},
             },
             -- END INSERT MODE }}}
@@ -81,7 +81,7 @@ return {
 
                     -- Suppress yanking on operations
                     ["d"] = {"\"_d"},
-                    ["p"] = {"\"_p"},
+                    ["p"] = {"P"},
                     ["c"] = {"\"_c"},
                 },
                 -- END VISUAL MODE }}}
