@@ -30,6 +30,7 @@ return {
     -- {family = "Source Code Pro", weight = 400},
     -- {family = "Inconsolata", weight = 400},
     {family = "Terminus (TTF)", weight = 400},
+    {family = "TerminessTTF Nerd Font", weight = 400},
   }),
   font_size = 12,
   -- }}}
@@ -58,7 +59,7 @@ return {
     -- The color of the split lines between panes
     split = "#444444",
 
-    ansi = { "#282828", "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#a89984" },
+    ansi    = { "#282828", "#cc241d", "#98971a", "#d79921", "#458588", "#b16286", "#689d6a", "#a89984" },
     brights = { "#928374", "#fb4934", "#b8bb26", "#fabd2f", "#83a598", "#d3869b", "#8ec07c", "#ebdbb2" },
 
     -- Arbitrary colors of the palette in the range from 16 to 255
