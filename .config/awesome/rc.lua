@@ -230,15 +230,15 @@ awful.rules.rules = {
   },
 
   -- Fullscreen
-  { rule = { fullscreen = true },
-  callback = function (c)
-    gears.timer.delayed_call(function()
-      if c.valid then
-        c:geometry(c.screen.geometry)
-      end
-    end)
-  end
-  },
+  -- { rule = { fullscreen = true },
+  -- callback = function (c)
+  --   gears.timer.delayed_call(function()
+  --     if c.valid then
+  --       c:geometry(c.screen.geometry)
+  --     end
+  --   end)
+  -- end
+  -- },
 
   -- Floating but not transient
   { rule = { floating = true, transient_for = nil },
@@ -267,6 +267,10 @@ awful.rules.rules = {
   { rule = { floating = true },
     except = { transient_for = nil},
     callback = function (c)
+      naughty.notify({
+        title = "Floating and transient",
+        text = c.name .. c.transient_for.name
+      })
       awful.placement.centered(c, { parent = c.transient_for })
       awful.placement.no_offscreen(c)
     end,
@@ -333,13 +337,8 @@ awful.rules.rules = {
   -- Plasma Stuff {{{
   -- Desktop
   { rule = { class = "plasmashell"},
-    properties = {},
+    properties = { border_width = 1, placement = awful.placement.centered(), },
     callback = function (c)
-      c.honor_workarea = false
-      c.x = c.size_hints.user_position.x
-      c.y = c.size_hints.user_position.y
-      c.border_width = 1
-      awful.placement.no_offscreen(c)
     end
   },
 
@@ -349,7 +348,7 @@ awful.rules.rules = {
     callback   = function(c)
       -- c:geometry({ width = c.screen.width, height = c.screen.height, x = c.screen.x, y = c.screen.y })
       c:geometry(c.screen.geometry)
-      c:lower()
+      -- c:lower()
     end,
   },
   -- { rule_any = { class = { "krunner" } }, properties = { floating = true } },
@@ -458,28 +457,28 @@ client.connect_signal("manage", function(c, context)
 
   end
 
-  local r, g, b = color.utils.hex_to_rgba(c.border_color)
-  local r_timed = rubato.timed {duration=0.2, pos=r}
-  local g_timed = rubato.timed {duration=0.2, pos=g}
-  local b_timed = rubato.timed {duration=0.2, pos=b}
-
-  local function update_border_color ()
-    if c ~= nil then
-      c.border_color = "#"..color.utils.rgba_to_hex {
-        math.max(r_timed.pos, 0),
-        math.max(g_timed.pos, 0),
-        math.max(b_timed.pos, 0)
-      }
-    end
-  end
-
-  r_timed:subscribe(update_border_color)
-  g_timed:subscribe(update_border_color)
-  b_timed:subscribe(update_border_color)
-
-  awful.client.property.set(c, "set_border_color",  function(new_color)
-    r_timed.target, g_timed.target, b_timed.target = color.utils.hex_to_rgba(new_color)
-  end)
+  -- local r, g, b = color.utils.hex_to_rgba(c.border_color)
+  -- local r_timed = rubato.timed {duration=0.2, pos=r}
+  -- local g_timed = rubato.timed {duration=0.2, pos=g}
+  -- local b_timed = rubato.timed {duration=0.2, pos=b}
+  --
+  -- local function update_border_color ()
+  --   if c ~= nil then
+  --     c.border_color = "#"..color.utils.rgba_to_hex {
+  --       math.max(r_timed.pos, 0),
+  --       math.max(g_timed.pos, 0),
+  --       math.max(b_timed.pos, 0)
+  --     }
+  --   end
+  -- end
+  --
+  -- r_timed:subscribe(update_border_color)
+  -- g_timed:subscribe(update_border_color)
+  -- b_timed:subscribe(update_border_color)
+  --
+  -- awful.client.property.set(c, "set_border_color",  function(new_color)
+  --   r_timed.target, g_timed.target, b_timed.target = color.utils.hex_to_rgba(new_color)
+  -- end)
 
 end)
 
@@ -534,4 +533,18 @@ client.connect_signal("property::urgent", function(c)
   c:jump_to()
 end)
 
+client.connect_signal("property::fullscreen", function(c)
+  c.screen.myBar.ontop = not c.fullscreen
+    if c.fullscreen then
+        gears.timer.delayed_call(function()
+            if c.valid then
+                c:geometry(c.screen.geometry)
+            end
+        end)
+    end
+end)
+
+client.connect_signal("property::active", function(c)
+  c.screen.myBar.ontop = not c.fullscreen
+end)
 -- }}}

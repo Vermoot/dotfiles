@@ -297,9 +297,8 @@ awful.screen.connect_for_each_screen(function(s)
         -- bg = "#FF0000",
         -- position = "left",
         width = dpi(32),
-        -- ontop = true,
+        ontop = true,
         visible = true,
-        -- x = s.geometry.x + 2*beautiful.useless_gap,
         x = s.geometry.x + 2 * beautiful.useless_gap,
         y = s.geometry.y + 2 * beautiful.useless_gap,
         bg = "aa0000",
@@ -338,7 +337,7 @@ awful.screen.connect_for_each_screen(function(s)
             -- margins = dpi(6),
         },
         widget = wibox.container.background,
-        bg = "#3c3836aa",
+        bg = "#3c3836dd",
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, dpi(8))
         end,
