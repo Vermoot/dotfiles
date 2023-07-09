@@ -95,15 +95,6 @@ local date_tooltip = awful.tooltip {
     delay_show = 0.5,
 }
 
--- local date_popup = awful.popup {
---     {
---         text = "heyo",
---         widget = wibox.widget.textbox,
---     },
---     widget = wibox.container.background,
--- }
---
--- date_popup:move_next_to(mouse.current_widget_geometry)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -176,8 +167,10 @@ beautiful.systray_icon_spacing = dpi(4)
 
 awful.screen.connect_for_each_screen(function(s)
 
+
+
     -- Create a tasklist widget
-    local tagtasklist = function(s, tag)
+    local tagtasklist2 = function(s, tag)
         s.mytasklist = awful.widget.tasklist {
             screen          = s,
             filter          = awful.widget.tasklist.filter.alltags,
@@ -192,7 +185,7 @@ awful.screen.connect_for_each_screen(function(s)
                     right  = dpi(4),
                     widget = wibox.container.margin
                 },
-                bg = "#00aa00",
+                bg = "#665c54",
                 forced_height = dpi(12),
                 forced_width = dpi(12),
                 widget = wibox.container.background,
@@ -209,41 +202,79 @@ awful.screen.connect_for_each_screen(function(s)
         return s.mytasklist
     end
 
+    -- Create a tasklist widget
+    local tagtasklist = function(s, tag)
+        s.mytasklist = awful.widget.tasklist {
+            screen          = s,
+            filter          = function (c, s) return c.first_tag == s.selected_tag end,
+            buttons         = tasklist_buttons,
+            layout          = { layout = wibox.layout.fixed.vertical, spacing = dpi(4) },
+            widget_template = {
+                {
+                    {
+                        {
+                            id     = "icon_role",
+                            widget = wibox.widget.imagebox,
+                        },
+                        widget = wibox.container.margin,
+                        margins = 4,
+                    },
+                    layout = wibox.layout.fixed.vertical,
+                },
+                id     = "background_role",
+                widget = wibox.container.background,
+            },
+            -- create_callback = function (self, c, index, objects)
+            --     self.filter = function() return c.first_tag == s.selected_tag end
+            -- end
+        }
+        return s.mytasklist
+    end
 
     local yay_tasklist
     local tag_widget = {
         {
-            yay_tasklist,
+            s.mytasklist,
             layout = wibox.layout.fixed.vertical,
         },
-        forced_height = dpi(24),
+        forced_height = dpi(32),
         widget = wibox.container.background,
-        shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(4)) end,
-        shape_border_width = dpi(2),
+        bg = "#3c3836",
+        shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(3)) end,
+        shape_border_width = dpi(1),
         shape_border_color = "#aa0000",
 
         -- Add support for hover colors and an index label
         create_callback = function(self, c3, index, objects) --luacheck: no unused args
             if c3.selected then
                 self.shape_border_color = "#ebdbb2"
+                self.bg = "#665c54"
             else
                 self.shape_border_color = "#665c54"
+                self.bg = "#3c3836"
             end
-            yay_tasklist = tagtasklist(s, c3)
+            self.yay_tasklist = tagtasklist2(s, c3)
             self:connect_signal('mouse::enter', function()
                 self.border_backup = self.shape_border_color
+                self.bg_backup = self.bg
                 self.has_backup    = true
-                if not c3.selected then self.shape_border_color = '#7c6f64' end
+                if not c3.selected then
+                    self.shape_border_color = '#524F4D'
+                    self.bg = '#504945'
+                end
 
                 local w = mouse.current_wibox
-                if w and not c3.selected then
+                if w then
                     old_cursor, old_wibox = w.cursor, w
                     w.cursor = "hand1"
                 end
 
             end)
             self:connect_signal('mouse::leave', function()
-                if self.has_backup and not c3.selected then self.shape_border_color = self.border_backup end
+                if self.has_backup and not c3.selected then
+                    self.shape_border_color = self.border_backup
+                    self.bg = self.bg_backup
+                end
 
                 local w = mouse.current_wibox
                 if old_wibox then
@@ -256,9 +287,11 @@ awful.screen.connect_for_each_screen(function(s)
 
         update_callback = function(self, c3, index, objects) --luacheck: no unused args
             if c3.selected then
-                self.shape_border_color = "#ebdbb2"
+                self.shape_border_color = "#7c6f64"
+                self.bg = "#665c54"
             else
-                self.shape_border_color = "#665c54"
+                self.shape_border_color = "#423e3c"
+                self.bg = "#3c3836"
             end
             if old_wibox then
                 old_wibox.cursor = old_cursor
@@ -296,7 +329,7 @@ awful.screen.connect_for_each_screen(function(s)
         height = s.geometry.height - 4 * beautiful.useless_gap,
         -- bg = "#FF0000",
         -- position = "left",
-        width = dpi(32),
+        width = dpi(42),
         ontop = true,
         visible = true,
         x = s.geometry.x + 2 * beautiful.useless_gap,
@@ -319,7 +352,13 @@ awful.screen.connect_for_each_screen(function(s)
                     -- s.mylayoutbox,
                     s.mytaglist,
                 },
-                s.mytasklist, -- Middle widget
+                tagtasklist(s, "1"),
+                -- s.mytasklist, -- Middle widget
+                -- {
+                --     {},
+                --     widget = wibox.container.background,
+                --     layout = wibox.layout.ratio
+                -- },
                 { -- Bottom widgets
                     layout = wibox.layout.fixed.vertical,
                     spacing = dpi(6),
@@ -330,19 +369,19 @@ awful.screen.connect_for_each_screen(function(s)
                 },
             },
             widget = wibox.container.margin,
-            top = dpi(5),
+            top = dpi(6),
             bottom = dpi(5),
-            left = dpi(4),
-            right = dpi(4),
+            left = dpi(5),
+            right = dpi(5),
             -- margins = dpi(6),
         },
         widget = wibox.container.background,
-        bg = "#3c3836dd",
+        bg = "#282828",
         shape = function(cr, width, height)
             gears.shape.rounded_rect(cr, width, height, dpi(8))
         end,
         shape_border_width = dpi(1),
-        shape_border_color = "#79740e",
+        shape_border_color = "#665c54",
     }
 
     s.myBar:struts {

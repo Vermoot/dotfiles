@@ -5,13 +5,10 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-local gmath = require("gears.math")
-local wibox = require("wibox")
 local dpi = require("beautiful.xresources").apply_dpi
-local rubato = require("libs.rubato")
-local color = require("libs.color")
 local beautiful = require("beautiful")
 local revelation = require("libs.revelation")
+local ruled = require("ruled")
 beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
 revelation.init()
 require("awful.autofocus")
@@ -25,24 +22,24 @@ local titlebars = require("dots.titlebars")
 
 -- Notification library
 local naughty = require("naughty")
-naughty.config.padding = dpi(16)
-naughty.config.spacing = dpi(8)
-naughty.config.presets.low.timeout = 5
-naughty.config.presets.normal.timeout = 6
-naughty.config.presets.critical.timeout = 12
-naughty.config.presets.critical.bg = "#aa4444"
-naughty.config.defaults.shape = function(cr, width, height)
-    gears.shape.rounded_rect(cr, width, height, dpi(8))
-end
-naughty.config.defaults.screen = screen.primary
-naughty.config.defaults.padding = dpi(30)
-naughty.config.defaults.max_height = dpi(300)
-naughty.config.defaults.max_width = dpi(400)
-naughty.config.defaults.icon_size = dpi(64)
+-- naughty.config.padding = dpi(16)
+-- naughty.config.spacing = dpi(8)
+-- naughty.config.presets.low.timeout = 5
+-- naughty.config.presets.normal.timeout = 6
+-- naughty.config.presets.critical.timeout = 12
+-- naughty.config.presets.critical.bg = "#aa4444"
+-- naughty.config.defaults.shape = function(cr, width, height)
+--     gears.shape.rounded_rect(cr, width, height, dpi(8))
+-- end
+-- naughty.config.defaults.screen = screen.primary
+-- naughty.config.defaults.padding = dpi(30)
+-- naughty.config.defaults.max_height = dpi(300)
+-- naughty.config.defaults.max_width = dpi(400)
+-- naughty.config.defaults.icon_size = dpi(64)
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- local ezconfig = require('libs.ezconfig')
-package.loaded["naughty.dbus"] = {}
+-- package.loaded["naughty.dbus"] = {}
 
 local capi =
 {
@@ -58,7 +55,7 @@ local capi =
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-  naughty.notify({ preset = naughty.config.presets.critical,
+  naughty.notification({ preset = naughty.config.presets.critical,
     title = "Oops, there were errors during startup!",
     text = awesome.startup_errors })
 end
@@ -245,7 +242,12 @@ awful.rules.rules = {
     except_any = { type = "splash", "dock", "desktop"},
     properties = {},
     callback = function (c)
-      if c.size_hints ~= nil then
+      if c.transient_for ~= nil and c.class ~= "plasmashell" then
+        awful.placement.centered(c, { parent = c.transient_for })
+        awful.placement.no_offscreen(c)
+        c:emit_signal("request::titlebars")
+      elseif c.size_hints ~= nil then
+          c.size_hints.program_position = nil
         local s = c.screen
         if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
           c.x = c.size_hints.program_position.x
@@ -263,19 +265,19 @@ awful.rules.rules = {
 
   },
 
-  -- Floating and transient
-  { rule = { floating = true },
-    except = { transient_for = nil},
-    callback = function (c)
-      naughty.notify({
-        title = "Floating and transient",
-        text = c.name .. c.transient_for.name
-      })
-      awful.placement.centered(c, { parent = c.transient_for })
-      awful.placement.no_offscreen(c)
-    end,
-    properties = { titlebars_enabled = true }
-  },
+  -- -- Floating and transient
+  -- { rule   = { floating = true },
+  --   except = { transient_for = nil},
+  --   callback = function (c)
+  --       naughty.notify({
+  --         title = "Floating and transient",
+  --         text = c.name .. c.transient_for.name
+  --       })
+  --       awful.placement.centered(c, { parent = c.transient_for })
+  --       awful.placement.no_offscreen(c)
+  --   end,
+  --   properties = { titlebars_enabled = true }
+  -- },
 
   { rule = { class = "firefox" },
     properties = {
@@ -311,6 +313,25 @@ awful.rules.rules = {
     properties = { border_width = 0 }
   },
 
+  { rule = { class = "fusion360.exe" },
+    properties = {
+      sticky = false,
+    },
+  },
+
+  { rule = { class = "fusion360.exe", type = "dialog" },
+    properties = {
+      border_width = 0,
+    },
+  },
+
+  { rule = { class = "fusion360.exe" },
+    except = { transient_for = nil }, 
+    properties = {
+      sticky = false
+    },
+  },
+
   -- Add titlebars to default-to-floating clients
   -- { rule = {floating = true, class = nil,}, except = {class = "yabridge-host.exe.so"},
   -- properties = { titlebars_enabled = true, focusable = false }
@@ -333,9 +354,9 @@ awful.rules.rules = {
   -- { rule_any = { name =  { "menu"        } }, properties = { border_width=4 } },
   { rule = { class =  "floatingfeh"  }, properties = { floating = true,
     placement = awful.placement.centered() } },
+{ rule = { name = "Untapped.gg Overlay"}, properties = { floating = true, border_width = 0, focusable = false, ontop = true }},
 
   -- Plasma Stuff {{{
-  -- Desktop
   { rule = { class = "plasmashell"},
     properties = { border_width = 1, placement = awful.placement.centered(), },
     callback = function (c)
@@ -346,13 +367,25 @@ awful.rules.rules = {
     rule       = { class = "plasmashell", type = "desktop" },
     properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true, titlebars_enabled = false, },
     callback   = function(c)
+      -- if c.size_hints ~= nil then
+      --   local s = c.screen
+      --   if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
+      --     c.x = c.size_hints.program_position.x
+      --     c.y = c.size_hints.program_position.y
+      --   elseif c.size_hints.user_position ~= nil and c.size_hints.user_position.x ~= 0 then
+      --     c.x = c.size_hints.user_position.x
+      --     c.y = c.size_hints.user_position.y
+      --   end
+      --   c.screen = s
+      -- end
       -- c:geometry({ width = c.screen.width, height = c.screen.height, x = c.screen.x, y = c.screen.y })
       c:geometry(c.screen.geometry)
-      -- c:lower()
+      c:lower()
     end,
   },
   -- { rule_any = { class = { "krunner" } }, properties = { floating = true } },
-  -- { rule_any = { class = { "latte-dock" } }, properties = { floating = true, border_width = 0, sticky = true } },
+  { rule = { class = "lattedock", type = "dock" },
+    properties = { border_width = 0 } },
   -- { rule = { class = "plasmashell" },
   --   properties = { honor_workarea = false }
   -- },
@@ -511,24 +544,9 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal
 end)
 
--- client.connect_signal("property::geometry", function(c)
--- if awful.titlebar(c) ~= nil then
--- if c.height >= c.width then
--- awful.titlebar.hide(c, "top")
--- awful.titlebar.show(c, "left")
--- else
--- awful.titlebar.hide(c, "left")
--- awful.titlebar.show(c, "top")
--- end
--- end
--- end)
 
--- Focus firefox when clicking on a link
+-- Focus urgent clients
 client.connect_signal("property::urgent", function(c)
-  -- if c.class == "firefox" then
-  -- c.minimized = false
-  -- c:jump_to()
-  -- end
   c.minimized = false
   c:jump_to()
 end)
@@ -547,4 +565,21 @@ end)
 client.connect_signal("property::active", function(c)
   c.screen.myBar.ontop = not c.fullscreen
 end)
+
+ruled.notification.connect_signal('request::rules', function()
+    -- All notifications will match this rule.
+    ruled.notification.append_rule {
+        rule       = { },
+        properties = {
+            screen           = awful.screen.preferred,
+            implicit_timeout = 5,
+        }
+    }
+end)
+
+naughty.connect_signal("request::display", function(n)
+    -- naughty.notify({ title = "yo" })
+    naughty.layout.box { notification = n }
+end)
+
 -- }}}

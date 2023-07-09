@@ -14,6 +14,7 @@ client.connect_signal("request::titlebars", function(c)
 
     -- Mouse buttons on titlebars {{{
     function double_click_event_handler(double_click_event)
+        local double_click_timer = nil
         if double_click_timer then
             double_click_timer:stop()
             double_click_timer = nil

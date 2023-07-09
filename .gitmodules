@@ -7,6 +7,12 @@
 [submodule ".config/awesome/libs/libs/color"]
 	path = .config/awesome/libs/libs/color
 	url = https://github.com/andOrlando/color
+[submodule ".config/awesome2/modules/rubato"]
+	path = .config/awesome2/modules/rubato
+	url = https://github.com/andOrlando/rubato
+[submodule ".config/awesome2/modules/color"]
+	path = .config/awesome2/modules/color
+	url = https://github.com/andOrlando/color
 [submodule ".config/awesome/libs/color"]
 	path = .config/awesome/libs/color
 	url = https://github.com/andOrlando/color

@@ -122,7 +122,8 @@ volume.update = function (value)
                 volume_muted = false
                 restyle(false)
                 volume_value = tonumber(new_volume)
-                rubato_timer.target = tonumber(new_volume)
+                -- rubato_timer.target = tonumber(new_volume)
+                slider.value = tonumber(new_volume)
                 volume_hud.y = hud_screen.geometry.y + hud_screen.geometry.height - hud_height - hud_margin
                 timer:again()
             end)
