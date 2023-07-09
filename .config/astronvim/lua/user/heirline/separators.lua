@@ -2,10 +2,13 @@
 return {
   breadcrumbs = " > ",
   -- tab = {"▐", "▌"},
-  none = {"w", "p"},
+  none = {"", ""},
   tab = {"▒", "▒"},
-  left = {"", ""},
+  -- left = {"", " "},
+  left = {"", " "},
+  -- mode = {"", ""},
+  mode = {"", " "},
   git_branch = {"uu", "ll"},
   center = {"l", "u"},
-  right = {"f", "b"},
+  right = {" ", ""},
 }

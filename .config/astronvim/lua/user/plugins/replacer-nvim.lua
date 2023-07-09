@@ -1,0 +1,3 @@
+return {
+  "gabrielpoca/replacer.nvim",
+}

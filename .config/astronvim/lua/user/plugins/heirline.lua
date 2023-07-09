@@ -1,18 +1,25 @@
-local mode = require("astronvim.utils.status").component.mode({
-  mode_text = { padding = { left = 1, right = 1 } },
-  surround = { separator = "left" },
+local status = require("astronvim.utils.status")
+local mode = status.component.mode({
+  mode_text = { padding = {left = 1} },
+  surround = { separator = "mode" },
+})
+
+local git_branch = require("astronvim.utils.status").component.git_branch({
+  -- hl = { bg = "red", fg = "yellow"},
+  surround = {separator = "left"},
 })
 
  return {
     {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
-        local status = require("astronvim.utils.status")
+        -- local status = require("astronvim.utils.status")
         opts.statusline = { -- statusline
-          hl = { fg = "fg", bg = "bg" },
+          hl = { bg = "#3c3836" },
           -- status.component.mode(),
           mode,
-          status.component.git_branch(),
+          -- status.component.git_branch(),
+          git_branch,
           status.component.file_info { filetype = {}, filename = false, file_modified = false },
           status.component.git_diff(),
           status.component.diagnostics(),
@@ -22,7 +29,7 @@ local mode = require("astronvim.utils.status").component.mode({
           status.component.lsp(),
           status.component.treesitter(),
           status.component.nav(),
-          status.component.mode { surround = { separator = "right" } },
+          -- status.component.mode { surround = { separator = "right" } },
         }
 
         -- winbar

@@ -1,5 +1,9 @@
 return { "gruvbox.nvim",
   opts = {
-    italic = false
+    italic = {
+      strings = false,
+      comments = true,
+      operators = false,
+    },
   }
 }
