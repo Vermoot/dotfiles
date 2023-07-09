@@ -1,0 +1,26 @@
+.clock {
+  // margin-bottom: 4px;
+  // font-family: "Rounded Mplus 1c Bold";
+  font-family: "SF Compact Rounded";
+  font-weight: 700;
+  font-size: 16px;
+  color: $gb-bg0;
+  border-radius: 5px;
+  background-color: $gb-bg3;
+  margin: 4px;
+}
+
+.clock-text {
+  // margin: -2px;
+}
+.hour {
+  // background: red;
+  margin-bottom: -3px;
+}
+
+.clock-separator {
+  background-color: $gb-gray;
+  border-radius: 2px;
+  padding-top:3px;
+  margin: 0px 3px 0px;
+}

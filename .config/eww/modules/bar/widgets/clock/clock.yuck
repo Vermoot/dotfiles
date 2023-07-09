@@ -1,0 +1,12 @@
+(defpoll hour :interval "1s" "date +%H")
+(defpoll min  :interval "1s" "date +%M")
+(defpoll date :interval "3600s" "date")
+
+(defwidget clock []
+  (eventbox :tooltip date
+    (box :orientation "v"
+         :space-evenly false
+         :class "clock"
+     (box :class "clock-text hour" hour)
+     ;; (box :class "clock-separator" :height 1 :width 1)
+     (box :class "clock-text min" min))))

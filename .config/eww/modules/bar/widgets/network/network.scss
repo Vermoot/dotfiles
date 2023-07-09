@@ -1,0 +1,37 @@
+.net-tooltip {
+  background-color: $gb-bg2;
+  border: 1px solid $gb-bg4;
+  border-radius: 8px;
+  font-family: "Rounded Mplus 1c Bold";
+  font-size: 14px;
+  color: $gb-gray;
+  padding: 5px 8px 5px;
+}
+
+.netmonitor {
+  margin-bottom: 5px;
+  color: $gb-gray;
+}
+
+.network-arrow {
+  font-family: "SF Compact Rounded";
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 -2px 0;
+}
+
+.net-gray {
+  color: $gb-gray;
+}
+
+.net-green {
+  color: $gb-green;
+}
+
+.net-yellow {
+  color: $gb-yellow;
+}
+
+.net-red {
+  color: $gb-light-red;
+}

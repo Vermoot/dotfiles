@@ -1,0 +1,56 @@
+(deflisten network "~/n.sh")
+
+(defwidget netmonitor []
+  (eventbox :onhover "eww open network-monitor-tooltip"
+            :onhoverlost "eww close network-monitor-tooltip"
+   ; (transform :scale-x "90%"
+    (box :orientation "h"
+         :space-evenly false
+         :halign "center"
+         :class "netmonitor"
+      (box :class "network-arrow ${EWW_NET["wlp35s0"]["NET_UP"] < 100000     ? "net-gray" :
+                                   EWW_NET["wlp35s0"]["NET_UP"] < 1000000    ? "net-green" :
+                                   EWW_NET["wlp35s0"]["NET_UP"] < 10000000   ? "net-yellow" :
+                                   "net-red" }" "↑")
+
+      (box :class "network-arrow ${EWW_NET["wlp35s0"]["NET_DOWN"] < 100000   ? "net-gray" :
+                                   EWW_NET["wlp35s0"]["NET_DOWN"] < 1000000  ? "net-green" :
+                                   EWW_NET["wlp35s0"]["NET_DOWN"] < 10000000 ? "net-yellow" :
+                                   "net-red" }" "↓"))))
+
+      
+    
+  
+
+
+(defwindow network-monitor-tooltip
+  :monitor 0
+  :geometry (geometry :x "100px" :y "-35px" :width "110px" :height "50px" :anchor "left bottom")
+  :anchor "left center"
+  :wm-ignore true
+  :windowtype "normal"
+
+  (box :class "net-tooltip" :orientation "v" :space-evenly true
+
+    (box :space-evenly false
+      (box :halign "start" "↑")
+      (box :space-evenly false :orientation "h" :halign "end" :hexpand true
+        { EWW_NET["wlp35s0"]["NET_UP"] > 1000000 ?
+         round(EWW_NET["wlp35s0"]["NET_UP"] / 1000000, 1)
+         : round(EWW_NET["wlp35s0"]["NET_UP"] / 1000, 1)}
+        
+        { EWW_NET["wlp35s0"]["NET_UP"] > 1000000 ?
+            " Mo/s"
+          : " ko/s"}))
+
+
+    (box :space-evenly false 
+      (box :halign "start" "↓")
+      (box :space-evenly false :orientation "h" :halign "end" :hexpand true
+        { EWW_NET["wlp35s0"]["NET_DOWN"] > 1000000 ?
+         round(EWW_NET["wlp35s0"]["NET_DOWN"] / 1000000, 1)
+         : round(EWW_NET["wlp35s0"]["NET_DOWN"] / 1000, 1)}
+        
+        { EWW_NET["wlp35s0"]["NET_DOWN"] > 1000000 ?
+            " Mo/s"
+          : " ko/s"}))))
