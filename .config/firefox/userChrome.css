@@ -166,7 +166,7 @@ background: url(https://seeklogo.com/images/M/motogp-2007-logo-6BF53CF637-seeklo
 */
 
 :root {
---sidebar-min-width: 33px;
+--sidebar-min-width: 41px;
 --sidebar-visible-width: 300px;
 }
 
