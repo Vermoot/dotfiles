@@ -8,7 +8,7 @@ return {
   },
   allow_square_glyphs_to_overflow_width = "WhenFollowedBySpace",
   warn_about_missing_glyphs = false,
-  modifyOtherKeys = true,
+  -- modifyOtherKeys = true,
   -- enable_csi_u_key_encoding = true,
   -- enable_kitty_keyboard = true,
   -- }}}
