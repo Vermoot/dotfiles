@@ -239,15 +239,15 @@ awful.rules.rules = {
 
   -- Floating but not transient
   { rule = { floating = true, transient_for = nil },
-    except_any = { type = "splash", "dock", "desktop"},
+    except_any = { type = "splash", "dock", "desktop" },
     properties = {},
-    callback = function (c)
+    callback = function(c)
       if c.transient_for ~= nil and c.class ~= "plasmashell" then
         awful.placement.centered(c, { parent = c.transient_for })
         awful.placement.no_offscreen(c)
         c:emit_signal("request::titlebars")
       elseif c.size_hints ~= nil then
-          c.size_hints.program_position = nil
+        c.size_hints.program_position = nil
         local s = c.screen
         if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
           c.x = c.size_hints.program_position.x
@@ -286,7 +286,7 @@ awful.rules.rules = {
     }
   },
 
-  { rule_any = { class = {"discord", "WebCord" } },
+  { rule_any = { class = { "discord", "WebCord" } },
     properties = { keys = gears.table.join(clientkeys, discord_keys), }
   },
 
@@ -326,7 +326,7 @@ awful.rules.rules = {
   },
 
   { rule = { class = "fusion360.exe" },
-    except = { transient_for = nil }, 
+    except = { transient_for = nil },
     properties = {
       sticky = false
     },
@@ -337,36 +337,38 @@ awful.rules.rules = {
   -- properties = { titlebars_enabled = true, focusable = false }
   -- },
 
-  { rule = { class =  "yabridge-host.exe.so"  },
+  { rule = { class = "yabridge-host.exe.so" },
     properties = { border_width = 0, focusable = false }
   },
 
-  { rule = { class = "yabridge-host.exe.so"},
+  { rule = { class = "yabridge-host.exe.so" },
     except = { name = "menu" },
     properties = { hidden = true },
   },
 
   -- Case-by-case basis
-  { rule = { name  =  "plank"        }, properties = { ontop        = true } },
-  { rule = { class =  "eww"          }, properties = { focusable = false, border_width = 0    } },
-  { rule = { class =  "tint2"        }, properties = { border_width = 0    } },
-  { rule = { class =  "albert"        }, properties = { border_width = 0    } },
-  { rule = { name  =  "xfce4-panel"  }, properties = { ontop        = true } },
+  { rule = { name = "plank" }, properties = { ontop = true } },
+  { rule = { class = "eww" }, properties = { focusable = false, border_width = 0 } },
+  { rule = { class = "tint2" }, properties = { border_width = 0 } },
+  { rule = { class = "albert", type = "utility" }, properties = { border_width = 0 } },
+  { rule = { name = "xfce4-panel" }, properties = { ontop = true } },
   -- { rule_any = { name =  { "menu"        } }, properties = { border_width=4 } },
-  { rule = { class =  "floatingfeh"  }, properties = { floating = true,
+  { rule = { class = "floatingfeh" }, properties = { floating = true,
     placement = awful.placement.centered() } },
-{ rule = { name = "Untapped.gg Overlay"}, properties = { floating = true, border_width = 0, focusable = false, ontop = true }},
+  { rule = { name = "Untapped.gg Overlay" },
+    properties = { floating = true, border_width = 0, focusable = false, ontop = true } },
 
   -- Plasma Stuff {{{
-  { rule = { class = "plasmashell"},
+  { rule = { class = "plasmashell" },
     properties = { border_width = 1, placement = awful.placement.centered(), },
-    callback = function (c)
+    callback = function(c)
     end
   },
 
   {
     rule       = { class = "plasmashell", type = "desktop" },
-    properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true, titlebars_enabled = false, },
+    properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true,
+      titlebars_enabled = false, },
     callback   = function(c)
       -- if c.size_hints ~= nil then
       --   local s = c.screen
@@ -554,13 +556,13 @@ end)
 
 client.connect_signal("property::fullscreen", function(c)
   c.screen.myBar.ontop = not c.fullscreen
-    if c.fullscreen then
-        gears.timer.delayed_call(function()
-            if c.valid then
-                c:geometry(c.screen.geometry)
-            end
-        end)
-    end
+  if c.fullscreen then
+    gears.timer.delayed_call(function()
+      if c.valid then
+        c:geometry(c.screen.geometry)
+      end
+    end)
+  end
 end)
 
 client.connect_signal("property::active", function(c)
@@ -568,19 +570,19 @@ client.connect_signal("property::active", function(c)
 end)
 
 ruled.notification.connect_signal('request::rules', function()
-    -- All notifications will match this rule.
-    ruled.notification.append_rule {
-        rule       = { },
-        properties = {
-            screen           = awful.screen.preferred,
-            implicit_timeout = 5,
-        }
+  -- All notifications will match this rule.
+  ruled.notification.append_rule {
+    rule       = {},
+    properties = {
+      screen           = awful.screen.preferred,
+      implicit_timeout = 5,
     }
+  }
 end)
 
 naughty.connect_signal("request::display", function(n)
-    -- naughty.notify({ title = "yo" })
-    naughty.layout.box { notification = n }
+  -- naughty.notify({ title = "yo" })
+  naughty.layout.box { notification = n }
 end)
 
 -- }}}
