@@ -350,6 +350,7 @@ awful.rules.rules = {
   { rule = { name  =  "plank"        }, properties = { ontop        = true } },
   { rule = { class =  "eww"          }, properties = { focusable = false, border_width = 0    } },
   { rule = { class =  "tint2"        }, properties = { border_width = 0    } },
+  { rule = { class =  "albert"        }, properties = { border_width = 0    } },
   { rule = { name  =  "xfce4-panel"  }, properties = { ontop        = true } },
   -- { rule_any = { name =  { "menu"        } }, properties = { border_width=4 } },
   { rule = { class =  "floatingfeh"  }, properties = { floating = true,
@@ -383,7 +384,7 @@ awful.rules.rules = {
       c:lower()
     end,
   },
-  -- { rule_any = { class = { "krunner" } }, properties = { floating = true } },
+  { rule_any = { class = { "krunner" } }, properties = { floating = true } },
   { rule = { class = "lattedock", type = "dock" },
     properties = { border_width = 0 } },
   -- { rule = { class = "plasmashell" },

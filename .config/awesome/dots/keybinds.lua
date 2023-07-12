@@ -143,8 +143,8 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioForward", function() awful.util.spawn("playerctl -p spotify next", false) end),
 
     -- Utils
-    awful.key({ modkey, }, "space",
-        function() awful.util.spawn("rofi -m -4 -combi-modi 'window,drun' -show combi -modi combi", false) end),
+    -- awful.key({ modkey, }, "space",
+    --     function() awful.util.spawn("rofi -m -4 -combi-modi 'window,drun' -show combi -modi combi", false) end),
     awful.key({ modkey, }, "s",
         function() awful.spawn.with_shell("scrot -s -f -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png"
                 , false)
