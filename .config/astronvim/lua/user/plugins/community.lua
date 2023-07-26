@@ -6,7 +6,7 @@ return {
 
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.scrolling.mini-animate"},
-  { import = "astrocommunity.colorscheme.gruvbox"},
+  { import = "astrocommunity.colorscheme.gruvbox-nvim"},
   { import = "astrocommunity.editing-support.mini-splitjoin"},
   -- { import = "astrocommunity.completion.copilot-lua-cmp" },
 }
