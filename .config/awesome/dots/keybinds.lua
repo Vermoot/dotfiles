@@ -5,8 +5,8 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local dpi = require("beautiful.xresources").apply_dpi
 local naughty = require("naughty")
-local volume = require("dots.volume")
-local titlebars = require("dots.titlebars")
+local volume = require("UI.volume")
+local titlebars = require("UI.titlebars")
 local revelation = require("libs.revelation")
 -- END Imports }}}
 

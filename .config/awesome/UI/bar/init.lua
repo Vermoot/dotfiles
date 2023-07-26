@@ -4,96 +4,10 @@ local awful     = require("awful")
 local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
 
+local battery = require("UI.bar.widgets.battery")
+local clock   = require("UI.bar.widgets.clock")
+local systray = require("UI.bar.widgets.systray")
 
--- Widgets {{{
-
--- Create a textclock widget
-
-local clock = wibox.widget {
-    {
-        {
-            {
-                align = "center",
-                valign = "center",
-                -- format = "%H",
-                widget = wibox.widget.textclock("<span font='SF Compact Rounded 15' font-weight='700'>%H</span>")
-            },
-            {
-                bg = "#928374",
-                forced_height = dpi(3),
-                shape = function(cr, width, height)
-                    gears.shape.rounded_rect(cr, width, height, dpi(5))
-                end,
-                widget = wibox.container.background
-            },
-            {
-                align = "center",
-                valign = "center",
-                -- format = "%M",
-                widget = wibox.widget.textclock("<span font='SF Compact Rounded 15' font-weight='700'>%M</span>")
-            },
-            spacing = dpi(-2),
-            layout = wibox.layout.fixed.vertical
-        },
-        margins = dpi(0),
-        widget = wibox.container.margin
-    },
-    fg = "#928374",
-    widget = wibox.container.background
-}
-
-local clock2 = wibox.widget {
-    {
-        {
-            {
-                align = "center",
-                valign = "center",
-                -- format = "%H",
-                widget = wibox.widget.textclock("<span font='SF Compact Rounded 12' font-weight='700'>%H</span>")
-            },
-            -- {
-            --     bg = "#3c3836",
-            --     forced_height = dpi(2),
-            --     forced_width = dpi(8),
-            --     shape = function(cr, width, height)
-            --         gears.shape.rounded_rect(cr, width, height, dpi(5))
-            --     end,
-            --     widget = wibox.container.background
-            -- },
-            {
-                align = "center",
-                valign = "center",
-                -- format = "%M",
-                widget = wibox.widget.textclock("<span font='SF Compact Rounded 12' font-weight='700'>%M</span>")
-            },
-            spacing = dpi(-4),
-            layout = wibox.layout.fixed.vertical
-
-        },
-        margins = dpi(0),
-        widget = wibox.container.margin
-    },
-    bg = "#665c54",
-    fg = "#282828",
-    shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-    end,
-    widget = wibox.container.background
-}
-
-local date_tooltip = awful.tooltip {
-    objects = {clock2},
-    -- timer_function = function () return os.date("%d %B %Y") end,
-    markup = "<span font='SF Compact Rounded Medium 12'>" .. os.date("%A %d %B %Y") .. "</span>",
-    shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(4)) end,
-    border_width = dpi(1),
-    border_color = "#3c3836",
-    bg = "#665c54",
-    fg = "#282828",
-    preferred_alignments = {"back"},
-    mode = "outside",
-    delay_show = 0.5,
-}
 
 
 -- Create a wibox for each screen and add it
@@ -136,32 +50,6 @@ local tasklist_buttons = gears.table.join(
         awful.client.focus.byidx(-1)
     end))
 
-local systray = wibox.widget.systray()
-local systray_widget = function (s)
-    if s.index == 1 then
-        return wibox.widget {
-            {
-                systray,
-                -- margins = dpi(2),
-                top = dpi(4),
-                bottom = dpi(4),
-                left = dpi(2),
-                right =dpi(2),
-                widget = wibox.container.margin
-            },
-            widget = wibox.container.background,
-            bg = "#665c54",
-            visible = function (s) return s.index == 1 end,
-            shape = function(cr, width, height)
-                gears.shape.rounded_rect(cr, width, height, dpi(5))
-            end,
-        }
-    end
-end
-systray:set_horizontal(false)
--- systray:set_base_size(24)
-beautiful.bg_systray = "#665c54"
-beautiful.systray_icon_spacing = dpi(4)
 
 --}}}
 
@@ -362,10 +250,11 @@ awful.screen.connect_for_each_screen(function(s)
                 { -- Bottom widgets
                     layout = wibox.layout.fixed.vertical,
                     spacing = dpi(6),
-                    systray_widget(s),
+                    systray.widget(s),
                     -- mytextclock,
                     -- clock,
-                    clock2,
+                    battery.widget,
+                    clock.widget,
                 },
             },
             widget = wibox.container.margin,

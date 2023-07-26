@@ -14,7 +14,7 @@ revelation.init()
 require("awful.autofocus")
 require("awful.remote")
 
-local titlebars = require("dots.titlebars")
+local titlebars = require("UI.titlebars")
 -- Widget and layout library
 
 -- Theme handling library
@@ -100,62 +100,8 @@ awful.mouse.snap.client_enabled = false
 
 
 local keybinds = require("dots.keybinds")
-local volume = require("dots.volume")
-local myBar = require("dots.wibar")
--- local resize_borders = require("dots.resize_borders")
-
--- Bar function {{{
-
---[[
-   [ local function update_state (noti)
-   [ 
-   [     local wm_state = {}
-   [ 
-   [     for s in screen do
-   [         this_screen = {}
-   [         for _, t in ipairs(s.tags) do
-   [             this_tag = {index=t.index, name=t.name, visible=t.selected, clients={}}
-   [             for _,c in ipairs(s:get_all_clients(false)) do
-   [                 -- if c.type == "normal" then
-   [             -- for _, c in ipairs(client.get(0, true)) do
-   [                 if (c.type == "normal" or c.type == "dialog") and c.first_tag == t then
-   [                     table.insert(this_tag["clients"], {name=c.name,
-   [                                                        id=c.window,
-   [                                                        class=c.class,
-   [                                                        focused = c == client.focus,
-   [                                                        minimized=c.minimized,
-   [                                                        maximized=c.maximized,
-   [                                                        floating=c.floating,
-   [                                                        oncurrenttag = c:isvisible()})
-   [                 end
-   [             end
-   [             table.insert(this_screen, this_tag)
-   [         end
-   [         table.insert(wm_state, this_screen)
-   [     end
-   [     json_wm_state = json.encode(wm_state)
-   [     -- This is janky as shit, but single quotes in client names trip everything up.
-   [     -- Maybe find a solution one day.
-   [     json_wm_state = json_wm_state:gsub("'", "")
-   [     awful.spawn.with_shell("eww update wm_state='"..json_wm_state.."'")
-   [     awful.spawn.with_shell("echo '"..json_wm_state.."' > ~/.config/eww/wm_state_example.json")
-   [ 
-   [     if noti then
-   [         awful.util.spawn("notify-send '" .. json_wm_state .. "'")
-   [         awful.spawn.with_shell("echo '"..json_wm_state.."' | xsel -b")
-   [     end
-   [ end
-   [ 
-   [ client.connect_signal("focus", function () update_state() end)
-   [ client.connect_signal("property::position", function () update_state() end)
-   [ client.connect_signal("list", function () update_state() end)
-   [ client.connect_signal("request::geometry", function () update_state() end)
-   [ client.connect_signal("unfocus", function () update_state() end)
-   [ screen.connect_signal("tag::history::update", function () update_state() end)
-   ]]
-
-
---}}}
+local volume = require("UI.volume")
+local myBar = require("UI.bar")
 
 -- {{{ Menu
 -- Create a launcher widget and a main menu
@@ -359,29 +305,25 @@ awful.rules.rules = {
     properties = { floating = true, border_width = 0, focusable = false, ontop = true } },
 
   -- Plasma Stuff {{{
-  { rule = { class = "plasmashell" },
-    properties = { border_width = 1, placement = awful.placement.centered(), },
-    callback = function(c)
-    end
-  },
+  -- { rule = { class = "plasmashell" },
+  --   properties = { border_width = 1, placement = awful.placement.centered(), },
+  --   callback = function(c)
+  --   end
+  -- },
 
   {
-    rule       = { class = "plasmashell", type = "desktop" },
-    properties = { floating = true, below = true, border_width = 0, sticky = true, focusable = true,
-      titlebars_enabled = false, },
-    callback   = function(c)
-      -- if c.size_hints ~= nil then
-      --   local s = c.screen
-      --   if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
-      --     c.x = c.size_hints.program_position.x
-      --     c.y = c.size_hints.program_position.y
-      --   elseif c.size_hints.user_position ~= nil and c.size_hints.user_position.x ~= 0 then
-      --     c.x = c.size_hints.user_position.x
-      --     c.y = c.size_hints.user_position.y
-      --   end
-      --   c.screen = s
-      -- end
-      -- c:geometry({ width = c.screen.width, height = c.screen.height, x = c.screen.x, y = c.screen.y })
+    rule       = {
+      class = "plasmashell",
+      type  = "desktop" },
+    properties = {
+      floating          = true,
+      below             = true,
+      border_width      = 0,
+      sticky            = true,
+      focusable         = true,
+      titlebars_enabled = false,
+    },
+    callback = function(c)
       c:geometry(c.screen.geometry)
       c:lower()
     end,
