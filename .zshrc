@@ -26,17 +26,14 @@ export EDITOR=nvim
 export PATH="${HOME}/.local/bin:${PATH}"
 
 export MOZ_USE_XINPUT2=1
-export RANGER_DEVICONS_SEPARATOR="  "
+export RANGER_DEVICONS_SEPARATOR=" "
 
 # -------------------------------------------------- }}}
 
 # ------------------ Aliases ----------------------- {{{
 
 alias zshrc="nvim ~/.zshrc"
-alias yabairc="nvim ~/.config/yabai/yabairc"
-alias skhdrc="nvim ~/.config/skhd/skhdrc"
 alias nvimrc="ranger ~/.config/astronvim/lua/user"
-alias cxmonad="nvim ~/.config/xmonad/xmonad.hs"
 alias cpicom="nvim ~/.config/picom/picom.conf"
 alias cawesome="cd ~/.config/awesome && nvim ~/.config/awesome/rc.lua"
 
