@@ -5,6 +5,7 @@ local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
 local naughty   = require("naughty")
 local rubato    = require("libs.rubato")
+local helpers   = require("ui.helpers")
 
 
 local volume = {}
@@ -26,9 +27,7 @@ local volume_hud = wibox {
     width   = hud_width,
     x       = (hud_screen.geometry.width / 2) - hud_width / 2,
     y       = hud_screen.geometry.y + hud_screen.geometry.height,
-    shape   = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, hud_radius)
-    end,
+    shape   = helpers.rounded(hud_radius),
 }
 
 local volume_muted = false
@@ -78,9 +77,7 @@ volume_hud : setup {
     },
     widget = wibox.container.background,
         bg = "#504945",
-        shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, hud_radius)
-        end,
+        shape = helpers.rounded(hud_radius),
         shape_border_width = hud_border,
         shape_border_color = "#a89984",
 

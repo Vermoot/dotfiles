@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local gears     = require("gears")
 local dpi       = require("beautiful.xresources").apply_dpi
 local naughty   = require("naughty")
+local helpers   = require("ui.helpers")
 
 local M = {}
 
@@ -23,9 +24,7 @@ M.widget = function (s)
             widget = wibox.container.background,
             bg = "#665c54",
             visible = function (s) return s.index == 1 end,
-            shape = function(cr, width, height)
-                gears.shape.rounded_rect(cr, width, height, dpi(5))
-            end,
+            shape = helpers.rounded(5),
         }
     end
 end

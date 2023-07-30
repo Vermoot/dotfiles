@@ -4,6 +4,7 @@ local beautiful = require("beautiful")
 local gears     = require("gears")
 local dpi       = require("beautiful.xresources").apply_dpi
 local naughty   = require("naughty")
+local helpers    = require("ui.helpers")
 
 local M = {}
 
@@ -29,12 +30,8 @@ M.widget = wibox.widget {
       paddings      = dpi(2),
       -- paddings      = 0,
       widget        = wibox.widget.progressbar,
-      shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-      end,
-      bar_shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-      end,
+      shape = helpers.rounded(5),
+      bar_shape = helpers.rounded(5),
       color = colors().foreground,
       background_color = colors().background,
       id = "battery_progress_bar",

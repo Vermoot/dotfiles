@@ -5,6 +5,8 @@ local gears     = require("gears")
 local dpi       = require("beautiful.xresources").apply_dpi
 local naughty   = require("naughty")
 
+local helpers = require("ui.helpers")
+
 local M = {}
 
 M.widget = wibox.widget {
@@ -40,17 +42,16 @@ M.widget = wibox.widget {
     },
     bg = "#665c54",
     fg = "#282828",
-    shape = function(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-    end,
+    shape = helpers.rounded(5),
     widget = wibox.container.background
 }
+helpers.hover_cursor(M.widget, "hand1")
 
 local date_tooltip = awful.tooltip {
     objects = {M.widget},
     -- timer_function = function () return os.date("%d %B %Y") end,
     markup = "<span font='SF Compact Rounded Medium 12'>" .. os.date("%A %d %B %Y") .. "</span>",
-    shape = function(cr, width, height) gears.shape.rounded_rect(cr, width, height, dpi(4)) end,
+    shape = helpers.rounded(4),
     border_width = dpi(1),
     border_color = "#3c3836",
     bg = "#665c54",

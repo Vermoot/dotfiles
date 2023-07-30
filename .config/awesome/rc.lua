@@ -182,6 +182,18 @@ client.connect_signal("manage", function(c, context)
       c.y = vst_clients[c.pid].y
     end
   end
+
+  local cairo = require("lgi").cairo
+  local default_icon = "/home/vermoot/Téléchargements/icons8-application-96.png"
+  if c and c.valid and not c.icon then
+    local s = gears.surface(default_icon)
+    local img = cairo.ImageSurface.create(cairo.Format.ARGB32, s:get_width(), s:get_height())
+    local cr = cairo.Context(img)
+    cr:set_source_surface(s, 0, 0)
+    cr:paint()
+    c.icon = img._native
+  end
+
 end)
 
 
@@ -206,7 +218,7 @@ client.connect_signal("property::urgent", function(c)
 end)
 
 client.connect_signal("property::fullscreen", function(c)
-  c.screen.myBar.ontop = not c.fullscreen
+  c.screen.bar.ontop = not c.fullscreen
   if c.fullscreen then
     gears.timer.delayed_call(function()
       if c.valid then
@@ -217,7 +229,7 @@ client.connect_signal("property::fullscreen", function(c)
 end)
 
 client.connect_signal("property::active", function(c)
-  c.screen.myBar.ontop = not c.fullscreen
+  c.screen.bar.ontop = not c.fullscreen
 end)
 
 ruled.notification.connect_signal('request::rules', function()

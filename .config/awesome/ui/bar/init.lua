@@ -3,14 +3,15 @@ local wibox     = require("wibox")
 local awful     = require("awful")
 local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
+local helpers = require("ui.helpers")
 
-local battery = require("ui.bar.widgets.battery")
-local clock   = require("ui.bar.widgets.clock")
-local systray = require("ui.bar.widgets.systray")
-local taglist = require("ui.bar.widgets.taglist")
+local battery     = require("ui.bar.widgets.battery")
+local clock       = require("ui.bar.widgets.clock")
+local systray     = require("ui.bar.widgets.systray")
+local tagtasklist = require("ui.bar.widgets.tagtasklist")
 
 awful.screen.connect_for_each_screen(function(s)
-    s.myBar = wibox {
+    s.bar = wibox {
         height  = s.geometry.height - 4 * beautiful.useless_gap,
         width   = dpi(42),
         ontop   = true,
@@ -20,21 +21,22 @@ awful.screen.connect_for_each_screen(function(s)
         bg      = "aa0000",
         type    = "Normal",
         screen  = s,
-        shape   = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, dpi(8))
-        end
+        shape   = helpers.rounded(8),
     }
 
     -- Add widgets to the wibox
-    s.myBar:setup {
+    s.bar:setup {
         {
             {
                 layout = wibox.layout.align.vertical,
                 { -- Top widgets
-                    taglist.taglist(s),
-                    layout = wibox.layout.fixed.vertical,
+                    -- taglist.taglist(s),
+                    -- fancy_taglist.new({screen = s}),
+                    tagtasklist.widget(s),
+                    layout = wibox.layout.flex.vertical,
                 },
-                taglist.tasklist(s, "1"),
+                -- tasklist.widget(s, "1"),
+                {layout=wibox.layout.fixed.vertical},
                 { -- Bottom widgets
                     systray.widget(s),
                     battery.widget,
@@ -45,21 +47,19 @@ awful.screen.connect_for_each_screen(function(s)
             },
             widget = wibox.container.margin,
             top    = dpi(6),
-            bottom = dpi(5),
+            bottom = dpi(6),
             left   = dpi(5),
             right  = dpi(5),
         },
         widget = wibox.container.background,
         bg = "#282828",
-        shape = function(cr, width, height)
-            gears.shape.rounded_rect(cr, width, height, dpi(8))
-        end,
+        shape = helpers.rounded(8),
         shape_border_width = dpi(1),
         shape_border_color = "#665c54",
     }
 
-    s.myBar:struts {
-        left = s.myBar.width + 2 * beautiful.useless_gap
+    s.bar:struts {
+        left = s.bar.width + 2 * beautiful.useless_gap
     }
 
 end)
