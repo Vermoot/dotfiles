@@ -8,12 +8,17 @@ local naughty = require("naughty")
 local M = {}
 
 local function reset_hover(w)
-  local mw = mouse.current_wibox
   if w.before then
-    w.shape_border_color = w.before.shape_border_color
-    w.bg                 = w.before.bg
-    mw.cursor            = w.before.cursor
-    w.before             = nil
+    for property, _ in pairs(w.before) do
+      if property == "cursor" then
+        w.mw = mouse.current_wibox
+        w.mw.cursor = w.before.cursor
+        w.before.cursor = nil
+      else
+        w[property] = w.before[property]
+        w.before[property] = nil
+      end
+    end
   end
 end
 
@@ -73,7 +78,14 @@ local create_callback = function(self, tag, _, _)
   tagbox.shape_border_width = 2
   self:get_children_by_id("placeholder")[1]:add(tasklist(tag.screen, tag))
   update_callback(self, tag, _, _)
-  helpers.hover_properties(tagbox, function() return tag.selected end)
+  helpers.hover(tagbox,
+    {
+      inhibitor = function() return tag.selected end,
+      shape_border_color = "#524f4d",
+      bg = "#504945",
+      cursor = "hand1",
+    }
+  )
 end
 
 local tag_template = {
@@ -89,9 +101,9 @@ local tag_template = {
     widget = wibox.container.background,
     id = "tagbox",
     shape = helpers.rounded(3),
-    hover_shape_border_color = "#524f4d",
-    hover_bg = "#504945",
-    hover_cursor = "hand1",
+    -- hover_shape_border_color = "#524f4d",
+    -- hover_bg = "#504945",
+    -- hover_cursor = "hand1",
   },
   left  = 2,
   right = 2,

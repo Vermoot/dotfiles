@@ -13,31 +13,22 @@ M.rounded = function (radius)
   end
 end
 
-M.hover_properties = function (w, inhibitor)
-
-  inhibitor = inhibitor or function() return false end
+M.hover = function (w, args)
 
   w:connect_signal('mouse::enter', function()
 
-    if inhibitor() then return end
+    if args.inhibitor and args.inhibitor() then return end
 
     w.before = w.before or {}
 
-    if w.hover_shape_border_color then
-      w.before.shape_border_color = w.shape_border_color
-      w.shape_border_color = w.hover_shape_border_color
-    end
-
-    if w.hover_bg then
-      w.before.bg = w.bg
-      w.bg = w.hover_bg
-    end
-
-    if w.hover_cursor then
-      w.mw = mouse.current_wibox
-      if w.mw then
+    for property, value in pairs(args) do
+      if property == "cursor" then
+        w.mw = mouse.current_wibox
         w.before.cursor = w.mw.cursor
-        w.mw.cursor = w.hover_cursor
+        w.mw.cursor = value
+      else
+        w.before[property] = w[property]
+        w[property] = value
       end
     end
 
@@ -45,21 +36,23 @@ M.hover_properties = function (w, inhibitor)
 
   w:connect_signal('mouse::leave', function()
 
-    if inhibitor() then return end
+    if args.inhibitor and args.inhibitor() then return end
 
-    if w.before.shape_border_color then
-      w.shape_border_color = w.before.shape_border_color
+    w.before = w.before or {}
+
+    for property, _ in pairs(args) do
+      if property == "cursor" then
+        w.mw = mouse.current_wibox
+        w.mw.cursor = w.before.cursor
+        w.before.cursor = nil
+      else
+        w[property] = w.before[property]
+        w.before[property] = nil
+      end
     end
 
-    if w.before.bg then
-      w.bg = w.before.bg
-    end
 
-    if w.before.cursor then
-      if w.mw then w.mw.cursor = w.before.cursor end
-    end
-
-    w.before = nil
+    -- w.before = nil
   end)
 end
 
