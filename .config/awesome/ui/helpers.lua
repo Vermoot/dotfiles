@@ -3,6 +3,7 @@ local wibox     = require("wibox")
 local awful     = require("awful")
 local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
+local naughty   = require("naughty")
 
 local M = {}
 
@@ -12,41 +13,53 @@ M.rounded = function (radius)
   end
 end
 
-M.hover_cursor = function (widget, cursor)
-  widget:connect_signal('mouse::enter', function()
-    local w = mouse.current_wibox
-    if w then
-      old_cursor, wibox_before_cursor = w.cursor, w
-      w.cursor = cursor
+M.hover_properties = function (w, inhibitor)
+
+  inhibitor = inhibitor or function() return false end
+
+  w:connect_signal('mouse::enter', function()
+
+    if inhibitor() then return end
+
+    w.before = w.before or {}
+
+    if w.hover_shape_border_color then
+      w.before.shape_border_color = w.shape_border_color
+      w.shape_border_color = w.hover_shape_border_color
     end
+
+    if w.hover_bg then
+      w.before.bg = w.bg
+      w.bg = w.hover_bg
+    end
+
+    if w.hover_cursor then
+      w.mw = mouse.current_wibox
+      if w.mw then
+        w.before.cursor = w.mw.cursor
+        w.mw.cursor = w.hover_cursor
+      end
+    end
+
   end)
 
-  widget:connect_signal('mouse::leave', function()
-    local w = mouse.current_wibox
-    if wibox_before_cursor then
-      wibox_before_cursor.cursor = old_cursor
-      wibox_before_cursor = nil
-    end
-  end)
-end
+  w:connect_signal('mouse::leave', function()
 
-M.hover_colors = function (widget, new_border, new_bg)
-  widget:connect_signal('mouse::enter', function()
-    -- local w = mouse.current_wibox
-    -- if w then
-      old_border, old_bg, wibox_before_colors = widget.shape_border_color, widget.bg, widget
-      widget.shape_border_color = new_border
-      widget.bg = new_bg
-    -- end
-  end)
+    if inhibitor() then return end
 
-  widget:connect_signal('mouse::leave', function()
-    -- local w = mouse.current_wibox
-    if wibox_before_colors then
-      wibox_before_colors.shape_border_color = old_border
-      wibox_before_colors.bg = old_bg
-      wibox_before_colors = nil
+    if w.before.shape_border_color then
+      w.shape_border_color = w.before.shape_border_color
     end
+
+    if w.before.bg then
+      w.bg = w.before.bg
+    end
+
+    if w.before.cursor then
+      if w.mw then w.mw.cursor = w.before.cursor end
+    end
+
+    w.before = nil
   end)
 end
 

@@ -43,9 +43,8 @@ M.widget = wibox.widget {
     bg = "#665c54",
     fg = "#282828",
     shape = helpers.rounded(5),
-    widget = wibox.container.background
+    widget = wibox.container.background,
 }
-helpers.hover_cursor(M.widget, "hand1")
 
 local date_tooltip = awful.tooltip {
     objects = {M.widget},

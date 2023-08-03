@@ -14,7 +14,7 @@ local hud_screen   = awful.screen.focused()
 local hud_width    = dpi(250)
 local hud_height   = dpi(40)
 local hud_margin   = dpi(32)
-local hud_radius   = dpi(12)
+local hud_radius   = 12
 local hud_border   = dpi(2)
 local hud_duration = 0.5
 

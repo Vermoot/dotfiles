@@ -1,11 +1,21 @@
-local awful     = require("awful")
-local wibox     = require("wibox")
-local gears     = require("gears")
-local dpi       = require("beautiful.xresources").apply_dpi
+local awful   = require("awful")
+local wibox   = require("wibox")
+local gears   = require("gears")
+local dpi     = require("beautiful.xresources").apply_dpi
 local helpers = require("ui.helpers")
-local naughty   = require("naughty")
+local naughty = require("naughty")
 
 local M = {}
+
+local function reset_hover(w)
+  local mw = mouse.current_wibox
+  if w.before then
+    w.shape_border_color = w.before.shape_border_color
+    w.bg                 = w.before.bg
+    mw.cursor            = w.before.cursor
+    w.before             = nil
+  end
+end
 
 local function tasklist (s, tag)
   local function only_this_tag(c, _)
@@ -29,9 +39,9 @@ local function tasklist (s, tag)
       update_callback = function(self, c, _, _)
         -- Do something to differentiate between active and inactive
         if c.active then
-          self.bg = "#ebdbb233"
+          -- self.bg = "#ebdbb233"
         else
-          self.bg = "#ebdbb200"
+          -- self.bg = "#ebdbb200"
         end
       end,
       create_callback = function(self, c, _, _)
@@ -44,6 +54,7 @@ end
 local update_callback = function(self, tag, _, _)
   local tagbox = self:get_children_by_id("tagbox")[1]
   if tag.selected then
+    reset_hover(tagbox)
     tagbox.shape_border_color = "#7c6f64"
     tagbox.bg = "#665c54"
   else
@@ -62,8 +73,7 @@ local create_callback = function(self, tag, _, _)
   tagbox.shape_border_width = 2
   self:get_children_by_id("placeholder")[1]:add(tasklist(tag.screen, tag))
   update_callback(self, tag, _, _)
-  helpers.hover_cursor(self, "hand1")
-  helpers.hover_colors(tagbox, "#524f4d", "#504945")
+  helpers.hover_properties(tagbox, function() return tag.selected end)
 end
 
 local tag_template = {
@@ -79,6 +89,9 @@ local tag_template = {
     widget = wibox.container.background,
     id = "tagbox",
     shape = helpers.rounded(3),
+    hover_shape_border_color = "#524f4d",
+    hover_bg = "#504945",
+    hover_cursor = "hand1",
   },
   left  = 2,
   right = 2,
@@ -89,7 +102,9 @@ local tag_template = {
 }
 
 local taglist_buttons = gears.table.join(
-    awful.button({}, 1, function(t) t:view_only() end),
+    awful.button({}, 1, function(t)
+    t:view_only()
+  end),
     awful.button({ modkey }, 1, function(t)
         if client.focus then
             client.focus:move_to_tag(t)
