@@ -15,8 +15,6 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 source $HOME/.env
 
-export HOMEBREW_NO_AUTO_UPDATE=1
-
 eval "$(starship init zsh)"
 export STARSHIP_CONFIG=~/.config/starship
 
