@@ -4,6 +4,7 @@ local awful     = require("awful")
 local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
 local naughty   = require("naughty")
+local dragndropper = require("ui.dragndropper")
 
 local M = {}
 
@@ -24,8 +25,10 @@ M.hover = function (w, args)
     for property, value in pairs(args) do
       if property == "cursor" then
         w.mw = mouse.current_wibox
-        w.before.cursor = w.mw.cursor
-        w.mw.cursor = value
+        if w.mw then
+          w.before.cursor = w.mw.cursor
+          w.mw.cursor = value
+        end
       else
         w.before[property] = w[property]
         w[property] = value
@@ -43,8 +46,10 @@ M.hover = function (w, args)
     for property, _ in pairs(args) do
       if property == "cursor" then
         w.mw = mouse.current_wibox
-        w.mw.cursor = w.before.cursor
-        w.before.cursor = nil
+        if w.mw then
+          w.mw.cursor = w.before.cursor
+          w.before.cursor = nil
+        end
       else
         w[property] = w.before[property]
         w.before[property] = nil
