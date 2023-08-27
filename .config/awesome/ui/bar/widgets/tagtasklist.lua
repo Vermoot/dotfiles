@@ -4,6 +4,7 @@ local gears   = require("gears")
 local dpi     = require("beautiful.xresources").apply_dpi
 local helpers = require("ui.helpers")
 local naughty = require("naughty")
+local dragndropper = require("ui.dragndropper")
 
 local M = {}
 
@@ -86,6 +87,7 @@ local create_callback = function(self, tag, _, _)
       cursor = "hand1",
     }
   )
+  -- dragndropper.test(tagbox)
 end
 
 local tag_template = {
