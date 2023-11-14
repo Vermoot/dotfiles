@@ -40,8 +40,22 @@ return {
 
             -- ChatGPT
             ["<leader><leader>c"]  = { name = "ChatGPT" },
-            ["<leader><leader>cc"] = {"<cmd>ChatGPT<cr>", desc = "ChatGPT" },
-            ["<leader><leader>ce"] = {"<cmd>ChatGPTEditWithInstruction<cr>", desc = "ChatGPT Edit" },
+            ["<leader><leader>cc"] = { "<cmd>ChatGPT<CR>", desc = "ChatGPT" },
+            ["<leader><leader>ce"] = { "<cmd>ChatGPTEditWithInstruction<CR>", desc = "ChatGPT Edit" },
+
+            -- Arduino
+            ["<leader>a"]   = { name = "Arduino" },
+            ["<leader>aa"]  = { "<cmd>ArduinoAttach<CR>", desc = "Arduino Attach" },
+            ["<leader>av"]  = { "<cmd>ArduinoVerify<CR>", desc = "Arduino Verify" },
+            ["<leader>ai"]  = { "<cmd>ArduinoInfo<CR>", desc = "Arduino Info" },
+            ["<leader>aI"]  = { "<cmd>ArduinoGetInfo<CR>", desc = "Arduino Get Info" },
+            ["<leader>au"]  = { "<cmd>ArduinoUpload<CR>", desc = "Arduino Upload" },
+            ["<leader>aU"] = { "<cmd>ArduinoUploadAndSerial<CR>", desc = "Arduino Upload and Serial" },
+            ["<leader>as"]  = { "<cmd>ArduinoSerial<CR>", desc = "Arduino Serial" },
+            ["<leader>ab"]  = { "<cmd>ArduinoChooseBoard<CR>", desc = "Arduino Choose Board" },
+            ["<leader>ap"]  = { "<cmd>ArduinoChoosePort<CR>", desc = "Arduino Choose Port" },
+            ["<leader>aP"]  = { "<cmd>ArduinoChooseProgrammer<CR>", desc = "Arduino Choose Programmer" },
+
 
             -- Suppress yanking on operations
             ["d"] = {"\"_d"},
