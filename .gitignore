@@ -20,3 +20,7 @@
 .config/plover/.cache
 .config/plover/plover.log.5
 .config/plover/plover.log.6
+.config/awesome/Vermoot/libs
+.config/awesome/Vermoot/theme
+.config/awesome/Vermoot
+.config/awesome/configs/material
