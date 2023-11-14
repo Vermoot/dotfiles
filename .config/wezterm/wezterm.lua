@@ -26,13 +26,15 @@ return {
 
   -- Font {{{
   font = wezterm.font_with_fallback({
+    -- {family = "JetBrains Mono Nerd Font", weight = 300},
+    -- {family = "Iosevka", weight = 300},
     -- {family = "Monoid", weight = 300},
     -- {family = "Source Code Pro", weight = 400},
     -- {family = "Inconsolata", weight = 400},
     {family = "Terminus (TTF)", weight = 400},
     {family = "TerminessTTF Nerd Font", weight = 400},
   }),
-  font_size = 12,
+  font_size = 10.5,
   -- }}}
 
   -- Colors {{{
