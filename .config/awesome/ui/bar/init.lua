@@ -5,7 +5,7 @@ local beautiful = require("beautiful")
 local dpi       = require("beautiful.xresources").apply_dpi
 local helpers = require("ui.helpers")
 
-local battery     = require("ui.bar.widgets.battery")
+-- local battery     = require("ui.bar.widgets.battery")
 local clock       = require("ui.bar.widgets.clock")
 local systray     = require("ui.bar.widgets.systray")
 local tagtasklist = require("ui.bar.widgets.tagtasklist")
@@ -39,7 +39,7 @@ awful.screen.connect_for_each_screen(function(s)
                 {layout=wibox.layout.fixed.vertical},
                 { -- Bottom widgets
                     systray.widget(s),
-                    battery.widget,
+                    -- battery.widget,
                     clock.widget,
                     spacing = dpi(6),
                     layout = wibox.layout.fixed.vertical,

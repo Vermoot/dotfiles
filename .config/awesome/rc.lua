@@ -1,4 +1,3 @@
--- Imports {{{
 -- pcall(require, "luarocks.loader")
 -- json = require("json")
 
@@ -7,39 +6,14 @@ local gears = require("gears")
 local awful = require("awful")
 local dpi = require("beautiful.xresources").apply_dpi
 local beautiful = require("beautiful")
+-- local naughty = require("naughty")
+
 local revelation = require("libs.revelation")
-local ruled = require("ruled")
-beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
 revelation.init()
+
+beautiful.init(gears.filesystem.get_configuration_dir() .. "theme/theme.lua")
 require("awful.autofocus")
 require("awful.remote")
-
-local titlebars = require("ui.titlebars")
--- Widget and layout library
-
--- Theme handling library
---
-
--- Notification library
-local naughty = require("naughty")
--- naughty.config.padding = dpi(16)
--- naughty.config.spacing = dpi(8)
--- naughty.config.presets.low.timeout = 5
--- naughty.config.presets.normal.timeout = 6
--- naughty.config.presets.critical.timeout = 12
--- naughty.config.presets.critical.bg = "#aa4444"
--- naughty.config.defaults.shape = function(cr, width, height)
---     gears.shape.rounded_rect(cr, width, height, dpi(8))
--- end
--- naughty.config.defaults.screen = screen.primary
--- naughty.config.defaults.padding = dpi(30)
--- naughty.config.defaults.max_height = dpi(300)
--- naughty.config.defaults.max_width = dpi(400)
--- naughty.config.defaults.icon_size = dpi(64)
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- local ezconfig = require('libs.ezconfig')
--- package.loaded["naughty.dbus"] = {}
 
 local capi =
 {
@@ -49,83 +23,18 @@ local capi =
   awesome = awesome,
   root = root,
 }
--- END Imports }}}
 
--- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
-if awesome.startup_errors then
-  naughty.notification({ preset = naughty.config.presets.critical,
-    title = "Oops, there were errors during startup!",
-    text = awesome.startup_errors })
-end
+local options = require("options")
 
--- Handle runtime errors after startup
-do
-  local in_error = false
-  awesome.connect_signal("debug::error", function(err)
-    -- Make sure we don't go into an endless error loop
-    if in_error then return end
-    in_error = true
-
-    naughty.notify({ preset = naughty.config.presets.critical,
-      title = "Oops, an error happened!",
-      text = tostring(err) })
-    in_error = false
-  end)
-end
--- }}}
-
--- DEFAULTS {{{
-
-beautiful.gap_single_client = true
-
-terminal   = "wezterm"
-editor     = os.getenv("EDITOR") or "nvim"
-editor_cmd = terminal .. " -e " .. editor
-modkey     = "Mod4"
-meh        = { "Control", "Shift", "Mod1" }
-
--- Table of layouts to cover with awful.layout.inc, order matters.
-awful.layout.layouts = {
-  awful.layout.suit.tile,
-  awful.layout.suit.spiral.dwindle,
-  awful.layout.suit.max,
-  awful.layout.suit.magnifier,
-  awful.layout.suit.floating,
-}
-awful.mouse.snap.edge_enabled = false
-awful.mouse.snap.client_enabled = false
--- }}}
-
+local titlebars     = require("ui.titlebars")
+local volume        = require("ui.volume")
+local myBar         = require("ui.bar")
+local notifications = require("ui.notifications")
+local menu          = require("ui.menu")
+-- local resize_borders = require("ui.resize_borders")
 
 local keybinds = require("dots.keybinds")
-local volume = require("ui.volume")
-local myBar = require("ui.bar")
 
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-  { "manual", terminal .. " -e man awesome" },
-  { "edit config", editor_cmd .. " " .. awesome.conffile },
-  { "restart", awesome.restart },
-  { "quit", function() awesome.quit() end },
-}
-
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-  { "open terminal", terminal }
-}
-})
-
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-  menu = mymainmenu })
-
--- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
--- {{{ Setup
 
 local function set_wallpaper(s)
   -- Wallpaper
@@ -184,14 +93,30 @@ client.connect_signal("manage", function(c, context)
   end
 
   local cairo = require("lgi").cairo
-  local app_icon = "/home/vermoot/Téléchargements/icons8-application-96.png"
-  if c and c.valid and not c.icon then
-    local s = gears.surface(app_icon)
-    local img = cairo.ImageSurface.create(cairo.Format.ARGB32, s:get_width(), s:get_height())
+
+  -- Create a function to draw a circle
+  local function create_circle(radius, color)
+    local img = cairo.ImageSurface.create(cairo.Format.ARGB32, 2 * radius, 2 * radius)
     local cr = cairo.Context(img)
-    cr:set_source_surface(s, 0, 0)
-    cr:paint()
-    c.icon = img._native
+
+    -- Set the fill color for the circle
+    cr:set_source_rgba(color.red, color.green, color.blue, color.alpha)
+
+    -- Draw a circle
+    cr:arc(radius, radius, radius, 0, 2 * math.pi)
+    cr:fill()
+
+    return img._native
+  end
+
+  -- Define the circle's radius and color (change as needed)
+  local circle_radius = 16
+  local circle_color = { red = 235/255, green = 219/255, blue = 178/255, alpha = 1.0 }
+
+  -- Check if the client (c) is valid and does not have an icon
+  if c and c.valid and not c.icon then
+    -- Create a circle image and set it as the client's icon
+    c.icon = create_circle(circle_radius, circle_color)
   end
 
 end)
@@ -230,21 +155,6 @@ end)
 
 client.connect_signal("property::active", function(c)
   c.screen.bar.ontop = not c.fullscreen
-end)
-
-ruled.notification.connect_signal('request::rules', function()
-  -- All notifications will match this rule.
-  ruled.notification.append_rule {
-    rule       = {},
-    properties = {
-      screen           = awful.screen.preferred,
-      implicit_timeout = 5,
-    }
-  }
-end)
-
-naughty.connect_signal("request::display", function(n)
-  naughty.layout.box { notification = n }
 end)
 
 -- }}}

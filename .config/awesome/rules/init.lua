@@ -120,10 +120,25 @@ awful.rules.rules = {
   { rule = { class = "fusion360.exe", type = "dialog" },
     properties = {
       border_width = 0,
+      titlebars_enabled = false,
+    },
+  },
+
+  { rule = { name = "Fusion360", type = "dialog" },
+    properties = {
+      border_width = 0,
+      titlebars_enabled = false,
     },
   },
 
   { rule = { class = "fusion360.exe" },
+    except = { transient_for = nil },
+    properties = {
+      sticky = false
+    },
+  },
+
+  { rule = { name = "Fusion360" },
     except = { transient_for = nil },
     properties = {
       sticky = false

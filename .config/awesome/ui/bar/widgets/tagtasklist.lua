@@ -11,10 +11,12 @@ local M = {}
 local function reset_hover(w)
   if w.before then
     for property, _ in pairs(w.before) do
-      if property == "cursor" then
+      if property == "cursor" and w.before.cursor then
         w.mw = mouse.current_wibox
-        w.mw.cursor = w.before.cursor
-        w.before.cursor = nil
+        if w.mw then
+          w.mw.cursor = w.before.cursor
+          w.before.cursor = nil
+        end
       else
         w[property] = w.before[property]
         w.before[property] = nil
@@ -23,13 +25,37 @@ local function reset_hover(w)
   end
 end
 
+local tasklist_buttons = gears.table.join(
+                     awful.button({ }, 1, function (c)
+                                              if c == client.focus then
+                                                  c.minimized = true
+                                              else
+                                                  c:emit_signal(
+                                                      "request::activate",
+                                                      "tasklist",
+                                                      {raise = true}
+                                                  )
+                                              end
+                                          end),
+                     awful.button({ }, 3, function()
+                                              awful.menu.client_list({ theme = { width = 250 } })
+                                          end),
+                     awful.button({ }, 4, function ()
+                                              awful.client.focus.byidx(1)
+                                          end),
+                     awful.button({ }, 5, function ()
+                                              awful.client.focus.byidx(-1)
+                                          end)
+)
+
 local function tasklist (s, tag)
   local function only_this_tag(c, _)
-    if c.type == "utility" then return false end
-    for _, t in ipairs(c:tags()) do if t == tag then return true end end
+    if c.type == "utility" or c.class == "plasmashell" then return false end
+    for _, t in ipairs(c:tags()) do return t == tag end
     return false
   end
   return awful.widget.tasklist {
+    buttons = tasklist_buttons,
     filter          = only_this_tag,
     screen = s,
     -- buttons         = tasklist_buttons,
@@ -76,7 +102,7 @@ end
 
 local create_callback = function(self, tag, _, _)
   local tagbox = self:get_children_by_id("tagbox")[1]
-  tagbox.shape_border_width = 2
+  tagbox.shape_border_width = 1
   self:get_children_by_id("placeholder")[1]:add(tasklist(tag.screen, tag))
   update_callback(self, tag, _, _)
   helpers.hover(tagbox,

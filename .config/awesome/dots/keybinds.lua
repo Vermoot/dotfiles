@@ -7,16 +7,24 @@ local dpi = require("beautiful.xresources").apply_dpi
 local naughty = require("naughty")
 local volume = require("ui.volume")
 local titlebars = require("ui.titlebars")
-local revelation = require("libs.revelation")
+-- local revelation = require("libs.revelation")
 -- END Imports }}}
+
+local menu = require("ui.clientmenu")
 
 -- Functions {{{
 local function noti_type()
-    local c = awful.mouse.client_under_pointer()
+    local c = mouse.current_client
     naughty.notify({title = "Class", text=c.class})
     naughty.notify({title = "Name", text=c.name})
     naughty.notify({title = "Type", text=c.type})
     naughty.notify({title = "Transient for", text=c.transient_for ~= nil and c.transient_for.name or "nil"})
+end
+
+local function list_clients_tag()
+    for _, c in ipairs(awful.screen.focused().selected_tag:clients()) do
+        naughty.notify({title = c.name, text="class = " .. c.class .."\ntype = " .. c.type})
+    end
 end
 
 local function move_to_previous_tag()
@@ -90,10 +98,11 @@ globalkeys = gears.table.join(
 -- Move across tags
     awful.key({ modkey, }, "e", awful.tag.viewprev),
     awful.key({ modkey, }, "n", awful.tag.viewnext),
-    awful.key({ modkey, }, "k", revelation),
+    -- awful.key({ modkey, }, "k", revelation),
 
     awful.key({ modkey, "Mod1" }, "o", function() swap_screens() end),
     awful.key({ modkey, }, "j", function() noti_type() end),
+    awful.key({ modkey, "Shift" }, "j", function() list_clients_tag() end),
 
     awful.key({ modkey, }, "i", function() awful.client.focus.byidx(1) end),
     awful.key({ modkey, }, "m", function() awful.client.focus.byidx(-1) end),
@@ -161,7 +170,8 @@ globalkeys = gears.table.join(
     awful.key({modkey}, "F3",  function() end),
     awful.key({modkey}, "F4",  function() end),
     awful.key({modkey}, "F5",  function() end),
-    awful.key({modkey}, "F6",  function() naughty.notify({title="hey"}) end),
+    -- awful.key({modkey}, "F6",  function() naughty.notify({title="hey"}) end),
+    -- awful.key({modkey}, "F6", function(c) local cmenu = menu.menu(c) cmenu.visible = not cmenu.visible end),
     awful.key({modkey}, "F7",  function() end),
     awful.key({modkey}, "F8",  function() end),
     awful.key({modkey}, "F9",  function() end),
@@ -184,6 +194,13 @@ globalkeys = gears.table.join(
 
 clientkeys = gears.table.join(
 -- awful.key({ modkey,           }, 'b', awful.titlebar.toggle),
+    awful.key({modkey}, "F6", function(c) local cmenu = menu.menu(c) cmenu.visible = not cmenu.visible end),
+    awful.key({ modkey,           }, "h",
+        function(c)
+            local cmenu = menu.menu(c)
+            cmenu.visible = not cmenu.visible
+        end),
+
     awful.key({ modkey, }, 'b',
         function(c)
             -- awful.titlebar.toggle(c)

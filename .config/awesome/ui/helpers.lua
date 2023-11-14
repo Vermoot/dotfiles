@@ -46,7 +46,7 @@ M.hover = function (w, args)
     for property, _ in pairs(args) do
       if property == "cursor" then
         w.mw = mouse.current_wibox
-        if w.mw then
+        if w.mw and w.before.cursor then
           w.mw.cursor = w.before.cursor
           w.before.cursor = nil
         end
