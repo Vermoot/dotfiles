@@ -15,3 +15,8 @@
 .config/plover/tapey_tape.txt
 .config/gtk-3.0
 .config/ranger/plugins/__pycache__
+.config/awesome2
+.config/gtk-3.0
+.config/plover/.cache
+.config/plover/plover.log.5
+.config/plover/plover.log.6
