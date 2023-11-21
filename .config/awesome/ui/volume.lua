@@ -10,7 +10,7 @@ local helpers   = require("ui.helpers")
 
 local volume = {}
 
-local hud_screen   = awful.screen.focused()
+local hud_screen   = screen.primary
 local hud_width    = dpi(250)
 local hud_height   = dpi(40)
 local hud_margin   = dpi(32)
