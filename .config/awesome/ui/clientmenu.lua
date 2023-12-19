@@ -10,48 +10,44 @@ local helpers   = require("ui.helpers")
 local M = {}
 
 M.menu = function (c)
-
   local margin = 0
 
-  local menu = wibox {
-  visible = false,
-  -- height = c:geometry().height - margin*2,
-  -- width = c:geometry().width - margin*2,
-  -- x = c:geometry().x + beautiful.border_width + margin,
-  -- y = c:geometry().y + beautiful.border_width + margin,
-  x = mouse.coords().x,
-  y = mouse.coords().y,
-  width = dpi(250),
-  height = dpi(250),
-  -- bg = "#aa0",
-  -- opacity = 1,
-  -- shape = helpers.rounded(8),
-  -- screen = c.screen
-  ontop = true,
-  sticky = false,
-  input_passthrough = false,
-}
-
-  menu:setup {
-    {
-      widget = wibox.container.background,
-      bg = "#282828",
-      shape = helpers.rounded(8),
-      shape_border_width = dpi(1),
-      shape_border_color = "#665c54",
-      id = "menu_box",
+  local menu = awful.popup {
+    minimum_width  = dpi(250),
+    minimum_height = dpi(250),
+    widget = {
+      {
+        widget = wibox.container.background,
+        bg = "#282828",
+        shape = helpers.rounded(8),
+        shape_border_width = dpi(1),
+        shape_border_color = "#665c54",
+        id = "menu_box",
+      },
+      widget = wibox.container.margin,
+      id     = "menu_outside_margins",
     },
-    widget = wibox.container.margin,
-    id     = "menu_outside_margins",
-    -- top    = c:geometry().height * 0.1,
-    -- bottom = c:geometry().height * 0.1,
-    -- left   = c:geometry().width * 0.1,
-    -- right  = c:geometry().width * 0.1,
-    -- color = "#a00",
-    -- opacity = 0,
+    visible = false,
+    ontop = true,
+    placement = awful.placement.next_to_mouse,
+    -- x = mouse.coords().x,
+    -- y = mouse.coords().y,
+    shape = gears.shape.rounded_rect,
+    border_width = dpi(1),
+    border_color = "#665c54",
+    size = { width = dpi(250), height = dpi(250) },
   }
 
+  for _, signal in pairs({ "request::geometry", "property::maximized", "property::floating", "property::x" }) do
+    c:connect_signal(signal, function(c)
+      local margins = menu.widget:get_children_by_id("menu_outside_margins")[1]
+      -- Adjust margins or other properties based on window changes
+    end)
+  end
 
+  c:connect_signal("unfocus", function(c)
+    menu.visible = false
+  end)
 
   for _, signal in pairs({ "request::geometry", "property::maximized", "property::floating", "property::x"}) do
     c:connect_signal(signal, function(c)
@@ -69,18 +65,12 @@ M.menu = function (c)
     end)
   end
 
-  c:connect_signal("unfocus", function(c)
-    menu.visible = false
-  end)
-
-  local menubox = menu:get_children_by_id("menu_box")[1]
-  helpers.hover(menubox,
-    {
-      cursor = "hand1",
-    })
+  local menubox = menu.widget:get_children_by_id("menu_box")[1]
+  helpers.hover(menubox, {
+    cursor = "hand1",
+  })
 
   return menu
 end
-
 
 return M
