@@ -183,6 +183,7 @@ autocmd DocStart https://www.youtube.com/watch mode ignore
 autocmd DocStart https://www.twitch.tv/ mode ignore
 autocmd DocStart https://monkeytype.com/ mode ignore
 autocmd DocStart https://discord.com/ mode ignore
+autocmd DocStart https://cad.onshape.com/ mode ignore
 autocmd DocStart https://www.nytimes.com/games/wordle/index.html mode ignore
 autocmd DocLoad ^https://github.com/tridactyl/tridactyl/issues/new$ issue
 autocmd TriStart .* source_quiet
