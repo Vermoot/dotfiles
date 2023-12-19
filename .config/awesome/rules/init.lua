@@ -145,6 +145,11 @@ awful.rules.rules = {
     },
   },
 
+  { rule = { class = "kando" },
+    properties = {
+      border_width = 0
+    },
+  },
   -- Add titlebars to default-to-floating clients
   -- { rule = {floating = true, class = nil,}, except = {class = "yabridge-host.exe.so"},
   -- properties = { titlebars_enabled = true, focusable = false }
