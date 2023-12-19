@@ -22,6 +22,7 @@ awful.screen.connect_for_each_screen(function(s)
         type    = "Normal",
         screen  = s,
         shape   = helpers.rounded(9),
+        opacity = 1
     }
 
     -- Add widgets to the wibox
