@@ -1,0 +1,181 @@
+#| --------------- Keeb Pattern ------------------------------ {{{
+
+(deflayer 
+				_    _    _    _    _    _    _    _    _    _    _    _    _    
+				_    _    _    _    _    _    _    _    _    _    _    _    _    _    
+				_    _    _    _    _    _    _    _    _    _    _    _    _    _
+				_    _    _    _    _    _    _    _    _    _    _    _    _    
+				_    _    _    _    _    _    _    _    _    _    _    _    _
+				_    _    _    _              _         _    _    _    _    _    _
+)
+
+
+------------------------------------------------------------- }}} |#
+
+;; --------------- defsrc ------------------------------------ {{{
+
+(defsrc
+				esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+			  `    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+				tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
+				caps a    s    d    f    g    h    j    k    l    ;    '    \    
+				lsft nubs z    x    c    v    b    n    m    ,    .    /    rsft
+					   lctl lalt lmet           spc       rmet ralt left down up   rght
+)
+
+;; ----------------------------------------------------------- }}}
+
+;;;; -- Undead characters --
+;;(defalias apo (macro ' spc))
+;;(defalias grv (macro grv spc))
+;;(defalias tld (macro ~ spc))
+;;(defalias ^ (macro A-i spc))
+;;
+
+(defalias esc (tap-hold-release 500 300 esc lmet))
+(defalias tab (tap-hold-release 500 300 tab C-A-lsft))
+(defalias spc (tap-hold-release 500 300 spc (layer-while-held space)))
+
+(defalias q (chord base q)) 
+(defalias w (chord base w)) 
+(defalias f (chord base f)) 
+(defalias p (chord base p)) 
+(defalias b (chord base b)) 
+(defalias j (chord base j)) 
+(defalias l (chord base l)) 
+(defalias u (chord base u)) 
+(defalias y (chord base y)) 
+(defalias a (chord base a)) 
+(defalias r (chord base r)) 
+(defalias s (chord base s)) 
+(defalias t (chord base t)) 
+(defalias g (chord base g)) 
+(defalias m (chord base m)) 
+(defalias n (chord base n)) 
+(defalias e (chord base e)) 
+(defalias i (chord base i)) 
+(defalias o (chord base o)) 
+(defalias z (chord base z)) 
+(defalias x (chord base x)) 
+(defalias c (chord base c)) 
+(defalias d (chord base d)) 
+(defalias v (chord base v)) 
+(defalias k (chord base k)) 
+(defalias h (chord base h)) 
+(defalias , (chord base ,)) 
+(defalias . (chord base .)) 
+(defalias scln (chord base scln)) 
+(defalias -sft (chord base -sft))
+
+(defalias é    (macro '   e))
+(defalias è    (macro grv e))
+(defalias ê    (macro S-6 e))
+(defalias agrv (macro grv a))
+(defalias â    (macro S-6 a))
+(defalias î    (macro S-6 i))
+(defalias ô    (macro S-6 o))
+(defalias û    (macro S-6 u))
+(defalias où   (macro o   grv u))
+(defalias cced (macro '   c))
+
+(defalias apo (macro ' spc))
+(defalias dbqt (macro S-' spc))
+(defalias grv (macro grv spc))
+(defalias tld (macro S-grv spc))
+(defalias ^ (macro S-6 spc))
+
+(defchords base 50
+ (q) q 
+ (w) w 
+ (f) f 
+ (p) p 
+ (b) b 
+ (j) j 
+ (l) l 
+ (u) u 
+ (y) y 
+ (a) (tap-hold-release 500 175 a lsft)
+ (r) (tap-hold-release 500 300 r lmet) 
+ (s) (tap-hold-release 500 300 s lalt) 
+ (t) (tap-hold-release 500 300 t lctl) 
+ (g) g 
+ (m) m 
+ (n) (tap-hold-release 500 300 n rctl) 
+ (e) (tap-hold-release 500 300 e ralt) 
+ (i) (tap-hold-release 500 300 i rmet) 
+ (o) (tap-hold-release 500 250 o rsft) 
+ (z) z 
+ (x) x 
+ (c) c 
+ (d) d 
+ (v) v 
+ (k) k 
+ (h) h 
+ (,) , 
+ (.) . 
+ (scln) scln
+ (-sft) (tap-hold-release 500 300 - rsft)
+
+ (e i) @é
+ (n e) @è
+ (n e i) @ê
+ (l u y) @û
+ (o u) @où
+ (a r s) @â
+ (a s) @agrv
+ (o e) @ô
+ (e i o) @î
+ (c d) @cced
+ (x c) @cced
+
+ (r s u y) S-/
+ (w f e i) S-1
+ (, .) S-- ;; underscore
+ (h .) =
+ (h ,) +
+ (h e) /
+ (e .) \
+ (n u) S-,
+ (u i) S-.
+ (u y) S-;
+ (w f) S-2
+ (f p) S-3
+ (l u) S-8
+ (h n) S-\
+ (c t) @grv
+ (c r) @tld
+
+ (w t) S-9
+ (n y) S-0
+ (w p) [
+ (l y) ]
+ (s w) S-[
+ (e y) S-]
+
+ (n i) C-bspc
+
+ (l a) (multi l @agrv)
+ ;; (c a) (multi @cced a)
+)
+
+;; --------------- deflayer ---------------------------------- {{{
+
+(deflayer default
+				_    brdn brup _    _    bldn blup prev pp   next mute vold volu
+				`    _    _    _    _    _    _    _    _    _    _    _    _    _
+				@tab @q   @w   @f   @p   @b   /    @j   @l   @u   @y   @scln \    _
+				@esc @a   @r   @s   @t   @g   @grv @m   @n   @e   @i   @o   @apo
+				_    @z   @x   @c   @d   @v   [    ]    @k   @h   @,   @.   @-sft
+				     _    _    _             @spc       bspc _    _    _    _    _
+)
+
+(deflayer space 
+				lrld _    _    _    _    _    _    _    _    _    _    _    _    
+				`    _    _    _    _    _    _    _    _    _    _    _    _    _    
+				_    _    _    _    _    _    _    _    pgdn pgup _    _    _    _
+				caps lsft lmet lalt lctl _    _    left down up   rght _    _   
+				_    _    _    _    _    _    _    _    _    _    _    _    _
+				     _    _    _              _         del  _    _    _    _    _
+)
+
+;; ----------------------------------------------------------- }}}
