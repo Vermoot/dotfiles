@@ -235,7 +235,8 @@ clientkeys = gears.table.join(
     awful.key({ modkey, }, "y", function(c) c.sticky = not c.sticky end),
     awful.key({ modkey, "Control" }, "l", function(c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey, "Control" }, "o", function(c) c:move_to_screen() end),
-    awful.key({ modkey, }, "x", function(c) c.maximized = not c.maximized c:raise() end)
+    awful.key({ modkey, }, "x", function(c) c.maximized = not c.maximized c:raise() end),
+    awful.key({ modkey, "Shift"}, "x", function(c) c.fullscreen = not c.fullscreen c:raise() end)
 )
 
 
