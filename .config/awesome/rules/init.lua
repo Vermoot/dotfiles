@@ -145,7 +145,7 @@ awful.rules.rules = {
     },
   },
 
-  { rule = { class = "kando" },
+  { rule = { class = "Kando" },
     properties = {
       border_width = 0
     },
