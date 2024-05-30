@@ -142,8 +142,8 @@ globalkeys = gears.table.join(
     -- Volume keys
     -- awful.key({}, "XF86AudioRaiseVolume", function () awful.spawn.with_shell("pamixer -i 5 --unmute && volume.sh",    false) end),
     -- awful.key({}, "XF86AudioLowerVolume", function () awful.spawn.with_shell("pamixer -d 5 --unmute && volume.sh",    false) end),
-    awful.key({}, "XF86AudioRaiseVolume", function() volume.update(5) end),
-    awful.key({}, "XF86AudioLowerVolume", function() volume.update(-5) end),
+    awful.key({}, "XF86AudioRaiseVolume", function() volume.update(2) end),
+    awful.key({}, "XF86AudioLowerVolume", function() volume.update(-2) end),
     awful.key({}, "XF86AudioMute",        function() volume.toggle_mute() end),
 
     -- Media keys
@@ -158,14 +158,16 @@ globalkeys = gears.table.join(
     -- Utils
     -- awful.key({ modkey, }, "space",
     --     function() awful.util.spawn("rofi -m -4 -combi-modi 'window,drun' -show combi -modi combi", false) end),
+    awful.key({ modkey, }, "h",
+        function() awful.util.spawn("onagre --scale 1.2", false) end),
     awful.key({ modkey, }, "s",
         function() awful.spawn.with_shell("scrot -s -f -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png"
                 , false)
         end),
     awful.key({ modkey, }, "r", function() awful.spawn.with_shell("replay-sorcery save", false) end),
     awful.key({ modkey, "Shift" }, "semicolon", function() awful.spawn.with_shell("emoji-picker", false) end),
-    awful.key({ modkey, "Control" }, "space",
-        function() awful.spawn.with_shell("~/.config/eww/modules/menu/menu.sh", false) end),
+    -- awful.key({ modkey, "Control" }, "space",
+    --     function() awful.spawn.with_shell("~/.config/eww/modules/menu/menu.sh", false) end),
 -- awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("scrot -s -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png", false) end)
 
     -- G600 buttons {{{
@@ -197,23 +199,23 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
--- awful.key({ modkey,           }, 'b', awful.titlebar.toggle),
     awful.key({modkey}, "F6", function(c) local cmenu = menu.menu(c) cmenu.visible = not cmenu.visible end),
-    awful.key({ modkey,           }, "h",
-        function(c)
-            local cmenu = menu.menu(c)
-            cmenu.visible = not cmenu.visible
-        end),
+    -- awful.key({ modkey,           }, "h",
+    --     function(c)
+    --         local cmenu = menu.menu(c)
+    --         cmenu.visible = not cmenu.visible
+    --     end),
 
-    awful.key({ modkey, }, 'b',
+    awful.key({ modkey, }, "b",
         function(c)
             -- awful.titlebar.toggle(c)
             -- c:emit_signal("request::titlebars")
             titlebars.toggle(c)
+            -- naughty.notify({title=c.name})
         end),
     awful.key({ modkey, }, "v",
         function(c)
-            naughty.notify({title=client.name})
+            naughty.notify({title=c.name})
             -- awful.titlebar.hide(c, "left")
             -- awful.titlebar.hide(c, "top")
             titlebars.hide(c)
