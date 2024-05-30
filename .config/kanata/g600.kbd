@@ -1,0 +1,70 @@
+(defcfg
+  linux-dev
+  (
+   /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-if01-event-kbd
+   /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-mouse
+   /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-event-if01
+   /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-event-mouse
+  )
+)
+
+(defsrc
+  ;; Scroll left/click/right
+               mwu 
+  mlft     F4  mmid F5    mrgt   F6
+               mwd
+
+               F7
+  F9           F10                  F11
+  F12          F13                  F14
+  F15          F16                  F17
+  F18          F19                  F20
+)
+
+(defalias lyr (tap-hold-release 500 300 M-mlft (layer-while-held layer)))
+(defalias wpnt M-n)
+(defalias wppv M-e)
+
+(deflayer default
+        _ 
+  _   _ _ _  _   @lyr
+        _
+               F7
+  M-C-spc           M-n         M-e
+  C-w          C-Tab       C-S-Tab
+  F15          A-lft       A-rght
+  u            F19         esc
+)
+
+(deflayer firefox
+        _ 
+  _   _ _ _  _   @lyr
+        _
+               F7
+  F9           M-n         M-e
+  C-w          C-Tab       C-S-Tab
+  F15          A-lft       A-rght
+  l            F19         esc
+)
+
+(deflayer discord
+        _ 
+  _   _ _ _  _   @lyr
+        _
+               F7
+  F9           M-n         M-e
+  C-w          C-Tab       C-S-Tab
+  F15          A-down      A-up
+  l            F19         esc
+)
+
+(deflayer layer
+        _ 
+  _   _ _ _  _  _
+        _
+    _
+  _     _ _
+  C-S-t _ _
+  _     _ _
+  _     _ lrld
+)
