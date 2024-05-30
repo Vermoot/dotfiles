@@ -6,7 +6,7 @@ local gears = require("gears")
 local awful = require("awful")
 local dpi = require("beautiful.xresources").apply_dpi
 local beautiful = require("beautiful")
--- local naughty = require("naughty")
+local naughty = require("naughty")
 
 local revelation = require("libs.revelation")
 revelation.init()
@@ -128,8 +128,22 @@ client.connect_signal("unmanage", function(c)
   end
 end)
 
+kanata_layers = {"firefox", "discord"}
+local function set_kanata_layer(layer)
+      awful.spawn.with_shell("printf '{\"ChangeLayer\":{\"new\":\"" .. layer .. "\"}}\n' | nc -w1 127.0.0.1 10000")
+end
+
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
+
+  for k, v in pairs(kanata_layers) do
+    if v == c.class then
+      set_kanata_layer(c.class)
+      break
+    end
+    set_kanata_layer("default")
+  end
+
 end)
 
 client.connect_signal("unfocus", function(c)
