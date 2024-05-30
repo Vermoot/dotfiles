@@ -44,8 +44,9 @@ awful.rules.rules = {
         awful.placement.centered(c, { parent = c.transient_for })
         awful.placement.no_offscreen(c)
         c:emit_signal("request::titlebars")
+      -- elseif c.size_hints.program_position ~= nil and c.size_hints.user_position ~= nil then
       elseif c.size_hints ~= nil then
-        c.size_hints.program_position = nil
+        -- c.size_hints.program_position = nil
         local s = c.screen
         if c.size_hints.program_position ~= nil and c.size_hints.program_position.x ~= 0 then
           c.x = c.size_hints.program_position.x
