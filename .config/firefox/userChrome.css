@@ -247,7 +247,9 @@ transition: .2s ease .8s;
 
 #mainPopupSet:hover ~ box > toolbox,
 #navigator-toolbox:hover,
-#navigator-toolbox:focus-within{
+#navigator-toolbox:focus-within,
+#navigator-toolbox:has(toolbarbutton[open="true"]),
+#navigator-toolbox:has(hbox[open="true"]){
    width: calc(100% - var(--sidebar-min-width) - 20px) !important;
    left: var(--sidebar-min-width) !important;
    transition-delay: 0ms !important;
@@ -349,6 +351,7 @@ box-shadow: 0px 2px 15px rgba(0,0,0,0.2);
 #nav-bar {
 width: 100%;
 box-shadow: none !important;
+border-top: none !important;
 }
 
 .customization-target {
@@ -401,10 +404,9 @@ border: 1px solid #665c54 !important;
 }
 
 /* Actually vertically center the url bar */
-#urlbar { top: 3px !important; }
-
 #urlbar[breakout][breakout-extend] {
-top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+top: 4px !important;
+padding: 0 1px 0;
 left: 0 !important;
 width: 100% !important;
 }
