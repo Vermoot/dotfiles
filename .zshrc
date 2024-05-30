@@ -30,6 +30,8 @@ export RANGER_DEVICONS_SEPARATOR=" "
 
 # ------------------ Aliases ----------------------- {{{
 
+source ~/.aliases
+
 alias zshrc="nvim ~/.zshrc"
 alias nvimrc="ranger ~/.config/astronvim/lua/user"
 alias cpicom="nvim ~/.config/picom/picom.conf"
@@ -50,3 +52,14 @@ __git_files () {
 }
 
 eval $(thefuck --alias)
+
+eval "$(atuin init zsh --disable-up-arrow)"
+
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
