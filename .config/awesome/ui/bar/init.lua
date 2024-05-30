@@ -37,7 +37,17 @@ awful.screen.connect_for_each_screen(function(s)
                     layout = wibox.layout.flex.vertical,
                 },
                 -- tasklist.widget(s, "1"),
-                {layout=wibox.layout.fixed.vertical},
+                {
+                    awful.widget.tasklist {
+                        screen  = s,
+                        filter  = awful.widget.tasklist.filter.currenttags,
+                        layout  = wibox.layout.flex.vertical,
+                    },
+                    -- vertically centered layout
+                    layout = wibox.container.place,
+
+                },
+                    -- layout=wibox.layout.fixed.vertical},
                 { -- Bottom widgets
                     systray.widget(s),
                     -- battery.widget,
