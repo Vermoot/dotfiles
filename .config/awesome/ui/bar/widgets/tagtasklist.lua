@@ -93,7 +93,7 @@ local update_callback = function(self, tag, _, _)
     tagbox.shape_border_color = "#423e3c"
     tagbox.bg = "#3c3836"
   end
-  if #tag:clients() == 0 then
+  if #tag:clients() <= 1 then
     self.forced_height = dpi(32)
   else
     self.forced_height = nil
