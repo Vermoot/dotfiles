@@ -99,6 +99,8 @@ awful.rules.rules = {
     instance = {},
     class = {
       "1Password",
+      "smile",
+      "Emoji-picker",
     },
     name = {
       "Event Tester", -- xev.
