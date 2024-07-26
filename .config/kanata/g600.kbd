@@ -21,7 +21,7 @@
   F18          F19                  F20
 )
 
-(defalias lyr (tap-hold-release 500 300 M-mlft (layer-while-held layer)))
+(defalias lyr (tap-hold-release 500 300 (macro mlft 30 mlft) (layer-while-held layer)))
 (defalias wpnt M-n)
 (defalias wppv M-e)
 
