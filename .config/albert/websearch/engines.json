@@ -49,6 +49,13 @@
         "url": "https://scholar.google.com/scholar?q=%s"
     },
     {
+        "iconPath": ":reddit",
+        "id": "b85d6cc3",
+        "name": "Reddit",
+        "trigger": "r",
+        "url": "https://www.reddit.com/r/%s"
+    },
+    {
         "iconPath": "/home/vermoot/.config/albert/websearch/{e9d2e768-a7ab-4a25-a4d3-d392b9ff5df3}.",
         "id": "a23c9209",
         "name": "Subreddits",
@@ -66,7 +73,7 @@
         "iconPath": ":youtube",
         "id": "299f94e0",
         "name": "Youtube",
-        "trigger": "yt",
+        "trigger": "y",
         "url": "https://www.youtube.com/results?search_query=%s"
     }
 ]
