@@ -165,7 +165,7 @@ globalkeys = gears.table.join(
                 , false)
         end),
     awful.key({ modkey, }, "r", function() awful.spawn.with_shell("replay-sorcery save", false) end),
-    awful.key({ modkey, "Shift" }, "semicolon", function() awful.spawn.with_shell("emoji-picker", false) end),
+    awful.key({ modkey, "Shift" }, "semicolon", function() awful.spawn.with_shell("smile", false) end),
     -- awful.key({ modkey, "Control" }, "space",
     --     function() awful.spawn.with_shell("~/.config/eww/modules/menu/menu.sh", false) end),
 -- awful.key({ modkey,  }, "r",     function () awful.spawn.with_shell("scrot -s -b ~/scrot.png && xclip -selection clipboard -t image/png ~/scrot.png && rm ~/scrot.png", false) end)
@@ -272,6 +272,10 @@ root.keys(globalkeys)
 
 clientbuttons = gears.table.join(
     awful.button({}, 1, function(c)
+        c:emit_signal("request::activate", "mouse_click", { raise = true })
+    end),
+
+    awful.button({}, 2, function(c)
         c:emit_signal("request::activate", "mouse_click", { raise = true })
     end),
 
