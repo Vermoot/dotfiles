@@ -95,6 +95,14 @@ local sft = "Shift"
 
 globalkeys = gears.table.join(
 
+    -- awful.key({ modkey, "Control"}, "space", function()
+    --     -- if mouse.current_client.class == "firefox" the
+    --     --     awful.spawn.with_shell("kando -m Firefox")
+    --     -- else
+    --     --     awful.spawn.with_shell("kando -m default")
+    --     -- end
+    --     awful.spawn.with_shell("kando -m " .. mouse.current_client.class)
+    -- end),
 -- Move across tags
     awful.key({ modkey, }, "e", awful.tag.viewprev),
     awful.key({ modkey, }, "n", awful.tag.viewnext),
