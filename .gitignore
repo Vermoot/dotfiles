@@ -24,3 +24,4 @@
 .config/awesome/Vermoot/theme
 .config/awesome/Vermoot
 .config/awesome/configs/material
+.config/nvim/lazy-lock.json
