@@ -6,6 +6,7 @@
    /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-event-if01
    /dev/input/by-id/usb-Logitech_Gaming_Mouse_G600_E032D5528F280017-event-mouse
   )
+  concurrent-tap-hold yes
 )
 
 (defsrc
@@ -21,7 +22,7 @@
   F18          F19                  F20
 )
 
-(defalias lyr (tap-hold-release 500 300 (macro mlft 30 mlft) (layer-while-held layer)))
+(defalias lyr (tap-hold-release 500 300 M-S-C-spc (layer-while-held layer)))
 (defalias wpnt M-n)
 (defalias wppv M-e)
 
@@ -60,11 +61,15 @@
 
 (deflayer layer
         _ 
-  _   _ _ _  _  _
+  M-mlft   _ _ _  _  _
         _
     _
-  _     _ _
+  _     M-C-n M-C-e
   C-S-t _ _
   _     _ _
   _     _ lrld
 )
+
+;; (defchordsv2-experimental
+;;   (mlft mrgt) M-mmid 80 all-released ()
+;; )
