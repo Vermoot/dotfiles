@@ -148,9 +148,10 @@ awful.rules.rules = {
     },
   },
 
-  { rule = { class = "Kando" },
+  { rule = { class = "kando" },
     properties = {
-      border_width = 0
+      border_width = 0,
+      fullscreen = true,
     },
   },
   -- Add titlebars to default-to-floating clients
