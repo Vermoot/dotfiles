@@ -1,0 +1,15 @@
+[filetype]
+rules = [
+  { mime = "*/directory", is = "link", fg = "cyan", bold = true },
+  { name = "*/", bold = true, fg = "blue" },
+  { name = "*", is = "link", fg = "cyan" },
+]
+
+[icon]
+prepend_rules = [
+  { name = "*/", text = "\uf07b"}
+]
+
+[which]
+mask = {bg = "#3c3836"}
+cols = 2

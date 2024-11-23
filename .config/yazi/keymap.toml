@@ -1,0 +1,34 @@
+[manager]
+prepend_keymap = [
+    { on = [ "<Backspace>" ], run = "hidden --toggle", desc = "Show/Hide hidden files" },
+    { on = [ "<Right>" ], run = "plugin --sync smart-enter", desc = "Enter directory or open file" },
+
+    { on = [ "y", "y" ], run = [ "yank", """ shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'""" ] , desc = "Yank" },
+    { on = [ "y", "f" ], run = [ "copy filename" ] , desc = "Filename" },
+    { on = [ "y", "F" ], run = [ "copy name_without_ext" ] , desc = "Filename (without extension)" },
+    { on = [ "y", "p" ], run = [ "copy path" ] , desc = "Path of file" },
+    { on = [ "y", "d" ], run = [ "copy dirname" ] , desc = "Path of the parent directory" },
+    { on = [ "y", "x" ], run = "unyank", desc = "Cancel yank" },
+    { on = [ "p", "p" ], run = "paste", desc = "Paste" },
+    { on = [ "p", "l" ], run = "link", desc = "Create symbolic link" },
+
+    { on = [ "'", "c" ], run = "cd ~/.config", desc = ".config"},
+    { on = [ "'", "d" ], run = "cd ~/Downloads/", desc = "Downloads"},
+    { on = [ "'", "D" ], run = "cd ~/Desktop/", desc = "Desktop"},
+    { on = [ "'", "q" ], run = "cd ~/Projects/keyboard/qmk_firmware/", desc = "QMK"},
+    { on = [ "'", "k" ], run = "cd ~/Projects/keyboard/qmk_keymaps/", desc = "Keymaps"},
+    { on = [ "'", "p" ], run = "cd ~/Projects/", desc = "Projects"},
+    { on = [ "'", "m" ], run = "cd /run/media/vermoot/My Passport Ultra/", desc = "MyPassport Ultra"},
+
+    { on = [ "m" ], run = "plugin bookmarks --args=save", desc = "Save current position as a bookmark" },
+    { on = [ "'" ], run = "plugin bookmarks --args=jump", desc = "Jump to a bookmark" },
+    { on = [ "b", "d" ], run = "plugin bookmarks --args=delete", desc = "Delete a bookmark" },
+    { on = [ "b", "D" ], run = "plugin bookmarks --args=delete_all", desc = "Delete all bookmarks" },
+
+]
+
+
+[input]
+prepend_keymap = [
+    { on = [ "<Esc>" ], run = "close", desc = "Cancel input" },
+]
