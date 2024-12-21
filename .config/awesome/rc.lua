@@ -135,6 +135,7 @@ end
 
 client.connect_signal("focus", function(c)
   c.border_color = beautiful.border_focus
+  -- naughty.notify({title="Focus: " .. c.class})
 
   for k, v in pairs(kanata_layers) do
     if v == c.class then
