@@ -1,607 +1,227 @@
-@import url("https://raw.githubusercontent.com/vermoot/gruvbox-contrib/master/css/gruvbox-dark.css");
+/* Tabs sidebar with Sidebery {{{*/
 
-/* Background color */
-@-moz-document url(chrome://browser/content/browser.xhtml)
-{
-  #main-window,
-  browser[type="content-primary"],
-  browser[type="content"],
-  tabbrowser#content,
-  #content,
-  browser[type="content"] > html,
-  #tabbrowser-tabpanels,
-  .browserContainer {
-    background: #282828 !important;
-  }
-}
-
-/* Gruvbox colors yo {{{*/
+/* Configs for the sidebar */
 :root {
-  /* Dark Background */
-  --gb-bg0: #282828;
-  --gb-bg0-hard: #1d2021;
-  --gb-bg0-soft: #32302f;
-  --gb-bg1: #3c3836;
-  --gb-bg2: #504945;
-  --gb-bg3: #665c54;
-  --gb-bg4: #7c6f64;
-
-  /* Dark Foreground */
-  --gb-fg0: #fbf1c7;
-  --gb-fg1: #ebdbb2;
-  --gb-fg2: #d5c4a1;
-  --gb-fg3: #bdae93;
-  --gb-fg4: #a89984;
-
-  /* Dark Colors */
-  --gb-dark-red: #cc241d;
-  --gb-dark-green: #98971a;
-  --gb-dark-yellow: #d79921;
-  --gb-dark-blue: #458588;
-  --gb-dark-purple: #b16286;
-  --gb-dark-aqua: #689d6a;
-  --gb-dark-orange: #d65d0e;
-  --gb-dark-gray: #928374;
-
-  --gb-light-red: #fb4934;
-  --gb-light-green: #b8bb26;
-  --gb-light-yellow: #fabd2f;
-  --gb-light-blue: #83a598;
-  --gb-light-purple: #d3869b;
-  --gb-light-aqua: #8ec07c;
-  --gb-light-orange: #f38019;
-  --gb-light-gray: #a89984;
-}
-/*}}}*/
-
-/* Hide macOS traffic lights */
-.titlebar-buttonbox-container,
-.titlebar-spacer {
-  display: none !important;
+   --sidebar-min-width:       40px;
+   --sidebar-visible-width:   300px;
+   --sidebar-animation-speed: 0.2s;
+   --sidebar-open-delay:      0.8s;
+   --sidebar-close-delay:     0.25s;
 }
 
-/* Personal Bar sizing, spacing and custom icons {{{*/
-:root {
-  --bookmarks-icon-size: 16px;
-}
-
-#PersonalToolbar {
-  width: 100%;
-}
-
-#PlacesToolbarItems .toolbarbutton-icon {
-  width: var(--bookmarks-icon-size) !important; /* Width of new image */
-  height: var(--bookmarks-icon-size) !important; /* Height of new image */
-  margin-inline: calc(var(--bookmarks-icon-size) / 16);
-}
-
-#PlacesToolbarItems toolbarseparator {
-  padding-inline: calc(var(--bookmarks-icon-size) / 2);
-}
-
-/* Hide "Open all in tabs" and its separator in bookmarks folder menu */
-.openintabs-menuitem,
-.bookmarks-actions-menuseparator {
-  display: none;
-}
-
-/* Reddit bookmarks icons {{{*/
-#PlacesToolbarItems .toolbarbutton-icon[src^="page-icon:https://www.reddit.com/"]
-{
-  display: block;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding-left: var(
-    --bookmarks-icon-size
-  ) !important; /* Equal to width of new image */
-  background-size: contain;
-  background-position: center;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/france/"]
-{
-  background: url(https://icons.iconarchive.com/icons/wikipedia/flags/256/FR-France-Flag-icon.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/videos/"]
-{
-  background: url(https://a.thumbs.redditmedia.com/mtwnduVr0DnrK1o8rpTPi6waLWuPimj_8ntK8i5t890.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/ukpolitics/"]
-{
-  background: url(https://www.vegepaclub.com/wp-content/uploads/2016/06/House-of-Commons-logo.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/all/"]
-{
-  background: url(http://icons.iconarchive.com/icons/martz90/circle-addon1/256/reddit-icon.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/unitedkingdom/"]
-{
-  background: url(https://www.texasreview.in/images/uk-flag.png) no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/panelshow/"]
-{
-  background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/TV-icon-uk.svg/2000px-TV-icon-uk.svg.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/RocketLeague/"]
-{
-  background: url(https://i0.wp.com/www.inforumatik.com/wp-content/uploads/2016/06/Rocket-League-logo-HZ-on-White-1.png?fit=256%2C256&ssl=1)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/KerbalSpaceProgram/"]
-{
-  background: url(https://pbs.twimg.com/profile_images/1751599732/thrilled_400x400.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/spacex/"]
-{
-  background: url(https://images.vexels.com/media/users/3/152650/isolated/lists/dc67bc351ada9cb55254534c2a35f57d-spacex-spacecraft-icon.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/space/"]
-{
-  background: url(https://cdn.iconscout.com/icon/free/png-256/nasa-5-569227.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/tolkienfans/"]
-{
-  background: url(https://66.media.tumblr.com/avatar_d0872e8cd5d6_128.pnj)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/marvelstudios/"]
-{
-  background: url(https://66.media.tumblr.com/avatar_e07705844e50_128.pnj)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/jailbreak/"]
-{
-  background: url(https://res-1.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco/v1473719356/bddqmwcnuo10h3flcgmr.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/me/m/apple/"]
-{
-  background: url(http://files.softicons.com/download/system-icons/apple-logo-icons-by-thvg/ico/Apple%20logo%20icon%20-%20Classic.ico)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/motogp/"]
-{
-  background: url(https://seeklogo.com/images/M/motogp-2007-logo-6BF53CF637-seeklogo.com.png)
-    no-repeat;
-}
-
-.toolbarbutton-icon[src="page-icon:https://www.reddit.com/r/audioengineering/"]
-{
-  background: url(https://tawwabeen.org/bookstore/wp-content/uploads/2014/01/audio-wave-icon-256.png)
-    no-repeat;
-}
-/* END Reddit bookmark icons }}}*/
-/* END Personal Bar sizing, spacing and custom icons }}}*/
-
-/* Tabs Sidebar stuff {{{*/
-
-/*
-*     This is to be used with Sidebery
-*/
-
-:root {
-  --sidebar-min-width: 41px;
-  --sidebar-visible-width: 300px;
-}
-
-.sidebar-splitter {
-  display: none;
-}
-
+/* Hide the tab bar */
 #TabsToolbar {
-  visibility: collapse;
+   visibility: collapse;
 }
 
-#sidebar-header {
-  overflow: hidden !important;
-}
-
+/* Hide the sidebar's header */
 #sidebar-box #sidebar-header {
-  display: none !important;
+   display: none !important;
 }
 
+/* Hide the sidebar splitter */
+.sidebar-splitter {
+   display:none;
+}
+
+/* Collapse the sidebar when not hovered */
 #sidebar-box {
-  min-width: unset !important;
-  width: var(--sidebar-min-width) !important;
-  z-index: 3;
+   position: relative !important;
+   min-width: var(--sidebar-min-width) !important;
+   max-width: var(--sidebar-min-width) !important;
+   transition: var(--sidebar-animation-speed) ease var(--sidebar-close-delay);
+   z-index:3;
 }
 
-#sidebar,
-#sidebar-header {
-  position: relative !important;
-  min-width: var(--sidebar-min-width) !important;
-  max-width: var(--sidebar-min-width) !important;
-  transition: 0.2s ease 0.25s;
+/* Reveal the sidebar when hovering */
+#sidebar-box:hover #sidebar {
+   position: relative !important;
+   min-width: var(--sidebar-visible-width) !important;
+   max-width: var(--sidebar-visible-width) !important;
+   margin-right: calc((var(--sidebar-visible-width) - var(--sidebar-min-width)) * -1) !important;
+   transition: var(--sidebar-animation-speed) ease var(--sidebar-open-delay);
+   z-index:3;
 }
 
-#sidebar-box:hover :-moz-any(#sidebar, #sidebar-header) {
-  background-color: var(--toolbar-bgcolor) !important;
-  min-width: var(--sidebar-visible-width) !important;
-  max-width: var(--sidebar-visible-width) !important;
-  margin-right: calc(
-    (var(--sidebar-visible-width) - var(--sidebar-min-width)) * -1
-  ) !important;
-  z-index: 1;
-  position: relative !important;
-  transition: 0.2s ease 0.8s;
-}
+/* END Tabs sidebar with Sidebery }}}*/
 
-/* Nav toolbox under the sidebar */
-#navigator-toolbox {
-  z-index: 1;
-}
+/* Navigator-toolbox stuff {{{*/
 
-/* END Tabs sidebar stuff }}}*/
+/* Position and auto-hide logic {{{*/
 
-/* Autohide the toolbox {{{*/
-
-/*
- *  Based on https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/autohide_toolbox.css made available under Mozilla Public License v. 2.0
- */
-
+/* Configs for the toolbox */
 :root {
-  --uc-autohide-toolbox-delay: 800ms; /* Wait 0.1s before hiding toolbars */
-  --uc-toolbox-translation: -50px;
+   --toolbox-collapsed-opacity: 0.5;
+   --toolbox-margins: 10px;
+   --toolbox-padding: 6px;
+   --toolbox-tab-height: 12px;
+   --toolbox-autohide-delay: 800ms;
+   --toolbox-animation-speed: 0.1s;
 }
 
+/* Idle state of the toolbox (hidden with a small tab on top of the window) */
 #navigator-toolbox {
-  width: 5% !important;
-  left: calc(45% + var(--sidebar-min-width) - 30%) !important;
-  position: fixed !important;
-  display: block;
-  transition:
-    left 0ms linear 882ms,
-    width 0ms linear 882ms,
-    transform 82ms linear,
-    opacity 82ms linear !important;
-  transition-delay: var(--uc-autohide-toolbox-delay) !important;
-  transform: translate(0, var(--uc-toolbox-translation));
-  opacity: 1;
-  line-height: 0;
-  z-index: 2;
-  pointer-events: all;
-  margin: 10px 10px 0;
+   display: block;
+   position: fixed !important;
+   width: 5% !important;
+   min-width: 50px;
+   left: calc(45% + var(--sidebar-min-width) - 30%) !important;
+   margin: 10px 10px 0;
+   padding: 7px;
+   background-color: var(--toolbar-bgcolor) !important;
+   border: 1px solid gray !important; /* TODO change to an actual theme color */
+   border-radius: 8px;
+   transform: translate(0, calc(-100% - var(--toolbox-padding) + var(--toolbox-tab-height)));
+
+   transition: left      var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay),
+               width     var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay),
+               transform var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay),
+               opacity   var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay) !important;
+   opacity: var(--toolbox-collapsed-opacity);
+   line-height: 0;
+   pointer-events: all;
+   z-index: 3 !important;
+   overflow: hidden;
 }
 
-#mainPopupSet:hover ~ box > toolbox,
-#navigator-toolbox:hover,
-#navigator-toolbox:focus-within,
-#navigator-toolbox:has(toolbarbutton[open="true"]),
-#navigator-toolbox:has(hbox[open="true"]) {
-  width: calc(100% - var(--sidebar-min-width) - 20px) !important;
-  left: var(--sidebar-min-width) !important;
-  transition-delay: 0ms !important;
-  transform: translate(0px, 0px);
-  opacity: 1;
+/* Active state of the toolbox (shown when hovered or active) */
+#navigator-toolbox:hover, /* On hover */
+#navigator-toolbox:focus-within,        /* When focused (Ctrl-L for example) */
+#mainPopupSet:has(panel[panelopen="true"]) ~ toolbox,
+#navigator-toolbox:has(toolbarbutton[open="true"]) {   /* When hovering a menu */
+   width: calc(100% - var(--sidebar-min-width) - 2 * var(--toolbox-margins)) !important;
+   left: var(--sidebar-min-width) !important;
+   transition-delay: 0ms !important;
+   transform: translate(0px, 0px);
+   opacity: 1;
 }
 
-#navigator-toolbox > * {
-  line-height: normal;
-  pointer-events: auto;
-}
-
-#navigator-toolbox,
-#navigator-toolbox > * {
-  -moz-appearance: none !important;
-}
-
-/* Don't apply transform before window has been fully created */
-:root:not([sessionrestored]) #navigator-toolbox {
-  transform: none !important;
-}
-
-/* Show the nav bar when in the "Customize" page */
-:root[customizing] #navigator-toolbox {
-  position: relative !important;
-  transform: none !important;
-  opacity: 1 !important;
-}
-
-/*
-* [> Why? <]
-* #navigator-toolbox[inFullscreen] > #PersonalToolbar,
-* #PersonalToolbar[collapsed="true"]{ display: none }
-*/
-
-/* Uncomment this if tabs toolbar is hidden with hide_tabs_toolbar.css */
-
-/* Uncomment the following for compatibility with tabs_on_bottom.css - this isn't well tested though */
-/*
-:root{ --uc-titlebar-padding: 0px !important; }
-#navigator-toolbox{ flex-direction: column; display: flex; }
-#titlebar{ order: 2 }
-*/
-
-/* END Autohide the toolbox }}}*/
-
-/* Not working, gotta find the right way to do selectors on this. */
-#sidebar-box:hover .customization-target,
-#sidebar-box:hover #PlacesToolbarItems {
-  padding-left: var(--sidebar-visible-width) !important;
-  transition: 0.2s ease 0.8s;
-}
-
-#urlbar,
-#searchbar,
-.toolbarbutton-text {
-  font-family: SF Compact Rounded;
-}
-
-.browser-toolbar:not(.titlebar-color) {
-  background: #282828 !important;
-  color: #ebdbb2 !important;
-}
-
-#urlbar:-moz-lwtheme > #urlbar-background,
-#navigator-toolbox #searchbar:-moz-lwtheme {
-  background-color: #504945 !important;
-}
-
-#urlbar:-moz-lwtheme:hover > #urlbar-background,
-#navigator-toolbox #searchbar:-moz-lwtheme:hover,
-#urlbar[focused="true"]:-moz-lwtheme > #urlbar-background,
-#navigator-toolbox #searchbar:focus-within:-moz-lwtheme {
-  background-color: #665c54 !important;
-}
-
-#urlbar-background,
-#searchbar {
-  /* border: 1px solid #ebdbb2 !important; */
-  border: none;
-}
-
-.toolbarbutton.bookmark-item,
-.toolbarbutton-animatable-box,
-.toolbarbutton-1,
-#identity-box,
-#tracking-protection-icon-container {
-  fill: #ebdbb2 !important;
-}
-
-.urlbar-icon,
-#urlbar:-moz-lwtheme,
-#navigator-toolbox #searchbar:-moz-lwtheme {
-  color: #ebdbb2 !important;
-}
-
-#nav-bar-customization-target > toolbarbutton > .toolbarbutton-icon:hover {
-  background-color: var(--gb-dark-aqua);
-}
-
-#navigator-toolbox {
-  width: calc(100% - var(--sidebar-min-width) - 20px);
-  left: calc(var(--sidebar-min-width) + 10px);
-  background-color: #3c3836 !important;
-  margin-top: 10px;
-  padding: 7px;
-  border-radius: 8px;
-  border: 1px solid #665c54 !important;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.2);
-}
-
-#nav-bar {
+/* before block so the empty space above the toolbox still counts for hovering */
+#navigator-toolbox::before {
+  content: '';
+  position: absolute;
+  bottom: 0px;
   width: 100%;
-  box-shadow: none !important;
-  border-top: none !important;
+  top: -11px;
+  left: 0px;
+  z-index: -1;
 }
 
-.customization-target {
-  padding-left: none;
-  background-color: transparent;
+#navigator-toolbox:has(+ #browser #sidebar-box:hover)) {
+   background-color: red;
 }
 
-.browser-toolbar:not(.titlebar-color) {
-  background: transparent !important;
+#navigator-toolbox #urlbar {
+   top: -40px !important;
+   transition: top var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay) !important;
+   display: none;
 }
 
-/* Don't show the "Other Bookmarks" label */
-#OtherBookmarks .toolbarbutton-text {
-  display: none !important;
+#navigator-toolbox:hover #urlbar,
+#navigator-toolbox:focus-within #urlbar,
+#mainPopupSet:has(panel[panelopen="true"]) ~ toolbox #urlbar,
+#navigator-toolbox:has(toolbarbutton[open="true"]) #urlbar {
+   top: 18px !important;
+   transition: top var(--toolbox-animation-speed) linear 0ms !important;
 }
 
-/* Center bookmarks in the personal bar */
-#PlacesToolbarItems {
-  -moz-box-pack: center;
+#navigator-toolbox #urlbar-container {
+   width: 0px !important;
 }
 
-#PersonalToolbar {
-  padding: 5px 6px 2px;
+/* Hide the contents of the toolbox when it's not hovered */
+#navigator-toolbox * {
+   opacity:1 !important;
+   transition: opacity var(--toolbox-animation-speed) linear var(--toolbox-autohide-delay) !important;
 }
 
-#PlacesToolbarItems > toolbarseparator {
-  visibility: hidden !important;
+/* Show the contents of the toolbox when it's hovered */
+#navigator-toolbox:hover *,               /* On hover */
+#navigator-toolbox:focus-within *,        /* When focused (Ctrl-L for example) */
+#mainPopupSet:hover ~ box > toolbox * {   /* When hovering a menu */
+   opacity: 1 !important;
+   transition-delay: 0ms !important;
 }
 
-#urlbar:not([focused="true"]):-moz-lwtheme > #urlbar-background,
-#navigator-toolbox #searchbar:not(:focus-within):-moz-lwtheme {
-  border-color: #665c54;
+/* Hide the border at the top of the nav-bar */
+#nav-bar {
+   border-top: none !important;
 }
 
-:root {
-  --toolbar-field-focus-border-color: var(--gb-fg1) !important;
+/* /* Have the nav-bar and personal bar fill the toolbox */ */
+/* toolbar { */
+/*    width: 100%; */
+/* } */
+
+/* /* Show the nav bar when in the "Customize" page */ */
+/* :root[customizing] #navigator-toolbox, */
+/* :root[customizing] #navigator-toolbox > * { */
+/*    position: relative !important; */
+/*    transform: none !important; */
+/*    opacity: 1 !important; */
+/* } */
+
+/* END Position and auto-hide logic }}}*/
+
+/* Toolbox Styling {{{*/
+
+/* Toolbox Base {{{*/
+#navigator-toolbox > * {
+   background-color: transparent !important;
 }
 
-#urlbar-background,
-#searchbar {
-  border: 1px solid #665c54 !important;
-}
 #navigator-toolbox {
-  -moz-window-dragging: drag;
+   box-shadow: 0px 2px 15px rgba(0,0,0,0.2);
 }
 
-/* url bar colors and size/position */ /*{{{*/
-#main-window {
-  --urlbar-separator-color: #665c54 !important;
+
+/*END Toolbox Base }}}*/
+
+/* Toolbox buttons {{{*/
+/* Toolbox buttons color (back/forward, reload, extensions...) and personal bar items (folder icons...) */
+/* .toolbarbutton-animatable-box,   /* reload/stop button */ */
+/* .toolbarbutton-1, */
+/* toolbarbutton.bookmark-item { */
+/*    fill: currentColor !important; */
+/* } */
+
+
+/* END Toolbox buttons}}}*/
+
+
+/* Extended/Breakout Url Bar {{{*/
+
+/* Don't thicken the URL bar when active (part 1) */
+/* #urlbar[breakout][breakout-extend] { */
+/*    top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important; */
+/*    left: 0 !important; */
+/*    width: 100% !important; */
+/* } */
+
+/* Don't thicken the URL bar when active (part 2) */
+/* #urlbar[breakout][breakout-extend] > #urlbar-input-container { */
+/*    height: var(--urlbar-height) !important; */
+/*    padding-block: 0 !important; */
+/*    padding-inline: 1px !important; */
+/* } */
+
+
+
+
+
+/* END Extended/Breakout Url Bar }}}*/
+
+/* Panels {{{*/
+
+/* Rounded corners on all panels */
+menupopup, panel {
+   --panel-border-radius: 8px 
 }
 
-/* Actually vertically center the url bar */
-#urlbar[breakout][breakout-extend] {
-  top: 4px !important;
-  padding: 0 1px 0;
-  left: 0 !important;
-  width: 100% !important;
-}
 
-#urlbar[breakout][breakout-extend] > #urlbar-input-container {
-  height: var(--urlbar-height) !important;
-  padding-block: 0 !important;
-  padding-inline: 0 !important;
-}
 
-#urlbar[breakout][breakout-extend][breakout-extend-animate]
-  > #urlbar-background {
-  animation-name: none !important;
-}
+/* END Panels }}}*/
 
-#urlbar[breakout][breakout-extend] > #urlbar-background {
-  box-shadow: none !important;
-}
+/* END Toolbox Styling }}}*/
 
-.urlbarView {
-  padding-top: 2px;
-}
-
-#main-window {
-  --urlbar-separator-color: #665c54 !important;
-}
-.search-one-offs {
-  border-top: 1px solid var(--urlbar-separator-color) !important;
-}
-
-:root:-moz-lwtheme[lwt-toolbar-field-focus-brighttext] {
-  --urlbar-popup-url-color: #83a598 !important;
-  --urlbar-popup-action-color: #98971a !important;
-}
-
-:root[lwt-popup-brighttext] panel,
-toolbar[brighttext] {
-  --toolbarbutton-icon-fill-attention: #458588 !important;
-}
-
-:root[lwt-popup-brighttext] panel,
-toolbar[brighttext] {
-  --toolbarbutton-icon-fill-attention: #458588 !important;
-}
-
-:root[lwt-toolbar-field-brighttext]
-  .urlbarView-row[source="bookmarks"]:not([selected])
-  > .urlbarView-row-inner
-  > .urlbarView-no-wrap
-  > .urlbarView-favicon,
-:root[lwt-toolbar-field-brighttext]
-  #urlbar-engine-one-off-item-bookmarks:not([selected]) {
-  fill: #458588 !important;
-}
-
-:root[lwt-toolbar-field-brighttext]
-  .urlbarView-row[source="tabs"]:not([selected])
-  > .urlbarView-row-inner
-  > .urlbarView-no-wrap
-  > .urlbarView-favicon,
-:root[lwt-toolbar-field-brighttext]
-  #urlbar-engine-one-off-item-tabs:not([selected]) {
-  fill: #83a598 !important;
-}
-
-:root[lwt-toolbar-field-brighttext]
-  .urlbarView-row[type="bookmark"]
-  > .urlbarView-row-inner
-  > .urlbarView-no-wrap
-  > .urlbarView-type-icon {
-  color: #458588 !important;
-}
-
-:root[lwt-toolbar-field-brighttext]
-  .urlbarView:not([actionoverride])
-  .urlbarView-row[type="switchtab"]
-  > .urlbarView-row-inner
-  > .urlbarView-no-wrap
-  > .urlbarView-type-icon,
-:root[lwt-toolbar-field-brighttext]
-  .urlbarView-row[type="remotetab"]
-  > .urlbarView-row-inner
-  > .urlbarView-no-wrap
-  > .urlbarView-type-icon {
-  color: #458588 !important;
-}
-/*}}}*/
-
-/* Submenu colors {{{*/
-
-.panel-arrowcontent {
-  background: #504945 !important;
-}
-
-#main-window {
-  --arrowpanel-background: #504945 !important;
-}
-
-.subviewbutton-iconic > .toolbarbutton-text {
-  color: #ebdbb2 !important;
-}
-
-.subviewbutton-iconic > .toolbarbutton-icon {
-  fill: #ebdbb2 !important;
-}
-
-#appMenu-fxa-avatar,
-#fxa-menu-account-fxa-avatar {
-  fill: #ebdbb2 !important;
-}
-
-.PanelUI-subView .subviewbutton-nav::after {
-  fill: #ebdbb2 !important;
-  fill-opacity: 1 !important;
-}
-
-.subviewbutton[shortcut]::after {
-  color: #ebdbb2 !important;
-}
-
-.panelmultiview .toolbaritem-combined-buttons > label {
-  color: #ebdbb2 !important;
-}
-/* }}} */
-
-/* Twitter expando reddit width (move elsewhere than this file) {{{*/
-
-/* Element | https://www.reddit.com/r/spacex/comments/snnt9j/rspacex_starbase_stacking_activities_feb_8th9th/ */
-
-.twitter-tweet {
-  /* max-width: 550px; */
-  max-width: 1000px;
-}
-
-.r-vakc41 {
-  /* max-width: 550px; */
-  max-width: 1000px;
-  max-width: 1000px;
-}
-
-#twitter-widget-0 {
-  /* width: 250px; */
-  width: 800px;
-}
-/*}}}*/
+/* END Navigator-toolbox stuff }}}*/
