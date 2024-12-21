@@ -15,7 +15,7 @@ return {
           "--stdio",
         },
         filetypes = { "kerboscript" },
-        root_dir = require("lspconfig.util").root_pattern ".git",
+        root_dir = require("lspconfig.util").root_pattern "ships",
       },
     })
 
