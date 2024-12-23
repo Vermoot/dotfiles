@@ -1,5 +1,5 @@
 return {
-  "gruvbox.nvim",
+  "ellisonleao/gruvbox.nvim",
   opts = {
     italic = {
       strings = false,
