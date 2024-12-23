@@ -36,6 +36,9 @@
 (defalias tab (tap-hold-release 500 300 tab C-A-lsft))
 (defalias spc (tap-hold-release 500 300 spc (layer-while-held space)))
 
+(defalias qwr (layer-switch qwerty))
+(defalias dft (layer-switch default))
+
 (defalias q (chord base q)) 
 (defalias w (chord base w)) 
 (defalias f (chord base f)) 
@@ -78,7 +81,7 @@
 (defalias où   (macro o   grv u))
 (defalias cced (macro '   c))
 
-(defalias apo (macro ' spc))
+(defalias apo (chord base '))
 (defalias dbqt (macro S-' spc))
 (defalias grv (macro grv spc))
 (defalias tld (macro S-grv spc))
@@ -115,6 +118,7 @@
  (.) . 
  (scln) scln
  (-sft) (tap-hold-release 500 300 - rsft)
+ (') (macro ' spc)
 
  (e i) @é
  (n e) @è
@@ -154,8 +158,13 @@
 
  (n i) C-bspc
 
- (l a) (multi l @agrv)
- ;; (c a) (multi @cced a)
+ (l a) (macro l grv a)
+ (c a) (macro ' c a)
+ (d j) (macro d ' e j grv a)
+ (c ') (macro c ' spc e s t)
+ (c ' a) (macro c ' spc ' e t a i t)
+ (p q) (macro p o u r q u o i)
+ (p r e) (macro p e u t - S-6 e t r e)
 )
 
 ;; --------------- deflayer ---------------------------------- {{{
@@ -169,10 +178,19 @@
 				     _    _    _             @spc       bspc _    _    _    _    _
 )
 
+(deflayer qwerty
+				esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+			 `    1    2    3    4    5    6    7    8    9    0    -    =    bspc
+				tab  q    w    e    r    t    y    u    i    o    p    [    ]    ret
+				caps a    s    d    f    g    h    j    k    l    ;    '    \    
+				lsft nubs z    x    c    v    b    n    m    ,    .    /    rsft
+					   lctl lalt lmet          @spc       bspc ralt left down up   rght
+)
+
 (deflayer space 
 				lrld _    _    _    _    _    _    _    _    _    _    _    _    
-				`    _    _    _    _    _    _    _    _    _    _    _    _    _    
-				_    _    _    _    _    _    _    _    pgdn pgup _    _    _    _
+				@dft  _    _    _    _    _    _    _    _    _    _    _    _    _    
+				_    @qwr  _    _    _    _    _    _    pgdn pgup _    _    _    _
 				caps lsft lmet lalt lctl _    _    left down up   rght _    _   
 				_    _    _    _    _    _    _    _    _    _    _    _    _
 				     _    _    _              _         del  _    _    _    _    _
