@@ -1,0 +1,20 @@
+newalias() {
+    echo "alias $1=\"$2\"" >> ~/.aliases
+    source ~/.aliases
+}
+
+mkcdir() {
+    mkdir -p $1
+    cd $1
+}
+
+alias pRu="paru"
+alias nv="nvim"
+alias ranger="ya"
+alias yabridge="yabridgectl"
+alias mootmini="ssh moots@mootmini"
+alias winekill="pkill -f -9  .\.exe && pkill -f wine. && pkill -f yabridge-host.e"
+alias bakkesinject="protontricks -c 'wine /mnt/data/Games/Steam/steamapps/common/rocketleague/BakkesMod/inject.exe' 252950"
+alias bakkesscript=/mnt/data/Games/Steam/steamapps/common/rocketleague/BakkesMod/inject.exe
+alias bakkesmod="protontricks -c 'wine /home/vermoot/Data/Games/Steam/steamapps/common/rocketleague/BakkesMod/bakkesmod.exe' 252950"
+alias ckan="mono /mnt/data/Games/Standalone/Kerbal\ Space\ Program/ckan.exe"
