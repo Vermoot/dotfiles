@@ -1,7 +1,7 @@
 [manager]
 prepend_keymap = [
     { on = [ "<Backspace>" ], run = "hidden --toggle", desc = "Show/Hide hidden files" },
-    { on = [ "<Right>" ], run = "plugin --sync smart-enter", desc = "Enter directory or open file" },
+    { on = [ "<Right>" ], run = "plugin smart-enter", desc = "Enter directory or open file" },
 
     { on = [ "y", "y" ], run = [ "yank", """ shell --confirm 'echo "$@" | xclip -i -selection clipboard -t text/uri-list'""" ] , desc = "Yank" },
     { on = [ "y", "f" ], run = [ "copy filename" ] , desc = "Filename" },
@@ -21,9 +21,11 @@ prepend_keymap = [
     { on = [ "'", "m" ], run = "cd /run/media/vermoot/My Passport Ultra/", desc = "MyPassport Ultra"},
 
     { on = [ "m" ], run = "plugin bookmarks --args=save", desc = "Save current position as a bookmark" },
-    { on = [ "'" ], run = "plugin bookmarks --args=jump", desc = "Jump to a bookmark" },
+    { on = [ "'", "'" ], run = "plugin bookmarks --args=jump", desc = "Jump to a bookmark" },
     { on = [ "b", "d" ], run = "plugin bookmarks --args=delete", desc = "Delete a bookmark" },
     { on = [ "b", "D" ], run = "plugin bookmarks --args=delete_all", desc = "Delete all bookmarks" },
+
+    { on = [ "c", "d" ], run = "cd ~", desc = "~" },
 
 ]
 

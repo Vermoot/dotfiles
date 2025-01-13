@@ -1,46 +1,3 @@
-require("bookmarks"):setup({
-	save_last_directory = false,
-	notify = {
-		enable = false,
-		timeout = 1,
-		message = {
-			new = "New bookmark '<key>' -> '<folder>'",
-			delete = "Deleted bookmark in '<key>'",
-			delete_all = "Deleted all bookmarks",
-		},
-	},
-})
-
--- function Manager:render(area)
--- 	local chunks = self:layout(area)
---
---   local bar = function(c, x, y)
---   	x, y = math.max(0, x), math.max(0, y)
---   	return ui.Bar(ui.Rect { x = x, y = y, w = ya.clamp(0, area.w - x, 1), h = math.min(1, area.h) }, ui.Bar.TOP)
---   		:symbol(c)
---   end
---
--- 	return ya.flat {
--- 		-- Borders
---   	ui.Border(area, ui.Border.ALL):type(ui.Border.ROUNDED),
---   	ui.Bar(chunks[1], ui.Bar.RIGHT),
---   	ui.Bar(chunks[3], ui.Bar.LEFT),
---
---   	bar("┬", chunks[1].right - 1, chunks[1].y),
---   	bar("┴", chunks[1].right - 1, chunks[1].bottom - 1),
---   	bar("┬", chunks[2].right, chunks[2].y),
---   	bar("┴", chunks[2].right, chunks[1].bottom - 1),
---
---  		-- Parent
---   	Parent:render(chunks[1]:padding(ui.Padding.xy(1))),
---   	-- Current
---   	Current:render(chunks[2]:padding(ui.Padding.y(1))),
---   	-- Preview
---   	Preview:render(chunks[3]:padding(ui.Padding.xy(1))),
---  	}
---  end
-
--- require("full-border"):setup()
 
 function Status:name()
 	local h = cx.active.current.hovered
@@ -54,6 +11,10 @@ function Status:name()
 	end
 	return ui.Span(" " .. h.name .. linked)
 end
+
+require("full-border"):setup {
+	type= ui.Border.ROUNDED,
+}
 
 require("yatline"):setup({
 	section_separator = { open = "", close = "" },
