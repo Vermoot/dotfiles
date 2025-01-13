@@ -51,8 +51,6 @@ __git_files () {
     _wanted files expl 'local files' _files     
 }
 
-eval $(thefuck --alias)
-
 eval "$(atuin init zsh --disable-up-arrow)"
 
 function ya() {
