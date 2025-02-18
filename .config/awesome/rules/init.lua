@@ -214,7 +214,7 @@ awful.rules.rules = {
   -- -- Panels
   { rule = { class = "plasmashell", type = "dock" },
     properties = {
-      border_width = 0, focusable = false
+      border_width = 0, focusable = false, ontop = false,
     }
   },
 
