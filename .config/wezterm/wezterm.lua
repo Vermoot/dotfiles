@@ -10,7 +10,7 @@ return {
   warn_about_missing_glyphs = false,
   -- modifyOtherKeys = true,
   -- enable_csi_u_key_encoding = true,
-  -- enable_kitty_keyboard = true,
+  enable_kitty_keyboard = true,
   -- }}}
 
   -- Appearance {{{
