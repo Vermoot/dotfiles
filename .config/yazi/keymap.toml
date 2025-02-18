@@ -1,5 +1,7 @@
 [manager]
 prepend_keymap = [
+    { on = [ "A" ], run = "create --dir", desc = "Create a directory" },
+
     { on = [ "<Backspace>" ], run = "hidden --toggle", desc = "Show/Hide hidden files" },
     { on = [ "<Right>" ], run = "plugin smart-enter", desc = "Enter directory or open file" },
 
@@ -26,6 +28,11 @@ prepend_keymap = [
     { on = [ "b", "D" ], run = "plugin bookmarks --args=delete_all", desc = "Delete all bookmarks" },
 
     { on = [ "c", "d" ], run = "cd ~", desc = "~" },
+
+    # Move across tabs
+    # { on = ["<D-S-Enter>"], run = "tab_switch --relative -1", desc = "Previous tab" },
+    { on = ["<C-A-m>"], run = "tab_create", desc = "Previous tab" },
+    { on = ["<C-A-i>"], run = "tab_switch --relative +1", desc = "Next tab" },
 
 ]
 
