@@ -28,7 +28,7 @@
 
 (deflayer default
         _ 
-  _   _ _ _  _   @lyr
+  _ M-m _ M-i  _   @lyr
         _
                F7
   M-C-spc           M-n         M-e
