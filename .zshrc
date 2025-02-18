@@ -53,11 +53,11 @@ __git_files () {
 
 eval "$(atuin init zsh --disable-up-arrow)"
 
-function ya() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
 }
