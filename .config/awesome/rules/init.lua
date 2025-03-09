@@ -42,7 +42,7 @@ awful.rules.rules = {
     callback = function(c)
       if c.transient_for ~= nil and c.class ~= "plasmashell" then
         awful.placement.centered(c, { parent = c.transient_for })
-        awful.placement.no_offscreen(c)
+        -- awful.placement.no_offscreen(c)
         c:emit_signal("request::titlebars")
       -- elseif c.size_hints.program_position ~= nil and c.size_hints.user_position ~= nil then
       elseif c.size_hints ~= nil then
@@ -58,8 +58,9 @@ awful.rules.rules = {
         c.screen = s
       else
         awful.placement.centered(c)
-        awful.placement.no_offscreen(c)
+        -- awful.placement.no_offscreen(c)
       end
+      awful.placement.no_offscreen(c)
     end
 
   },
