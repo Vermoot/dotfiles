@@ -106,6 +106,9 @@ return {
           -- ["g-"] = { "g<c-x>gv", desc = "Descrement number sequentially" },
           -- ["g+"] = { "g<c-a>gv", desc = "Increment number sequentially" },
 
+          ["<"] = {"<gv", desc = "Decrease indent"},
+          [">"] = {">gv", desc = "Increase indent"},
+
         },
         c = {
           ["<PageUp>"]   = {"<Up>"},
