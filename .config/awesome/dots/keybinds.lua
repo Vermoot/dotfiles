@@ -160,8 +160,8 @@ globalkeys = gears.table.join(
     awful.key({}, "XF86AudioForward", function() awful.util.spawn("playerctl -p spotify next", false) end),
 
     -- Audio sink
-    awful.key({}, "XF86Launch6", function() awful.util.spawn("pactl set-default-sink alsa_output.pci-0000_31_00.4.analog-stereo", false) end),
-    awful.key({}, "XF86Launch7", function() awful.util.spawn("pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_18i20_USB-00.pro-output-0", false) end),
+    awful.key({}, "XF86Launch5", function() awful.util.spawn("pactl set-default-sink Headphones", false) end),
+    awful.key({}, "XF86Tools", function() awful.util.spawn("pactl set-default-sink alsa_output.usb-Focusrite_Scarlett_18i20_USB-00.pro-output-0", false) end),
 
     -- Utils
     -- awful.key({ modkey, }, "space",
