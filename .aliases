@@ -1,4 +1,11 @@
+#!/bin/bash
+
 newalias() {
+    # if no args then return
+    if [ -z "$1" ]; then
+        printf "Usage: newalias <alias> <command>\n"
+        return
+    fi
     echo "alias $1=\"$2\"" >> ~/.aliases
     source ~/.aliases
 }
