@@ -73,6 +73,7 @@ return {
   keys = {
     -- { key = "n", mods = "CTRL", action = "SpawnWindow" },
     { key = "w", mods = "CTRL", action = wezterm.action { CloseCurrentTab = { confirm = true } } },
+    { key = "Backspace", mods = "CTRL", action = wezterm.action.SendKey {key = "w", mods = "CTRL" } },
   }
   --}}}
 
