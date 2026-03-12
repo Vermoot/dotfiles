@@ -23,6 +23,8 @@
 )
 
 (defalias lyr (tap-hold-release 500 300 M-S-C-spc (layer-while-held layer)))
+(defalias mmov M-mmid)
+(defalias G10 (tap-hold-release 500 300 M-n @mmov))
 (defalias wpnt M-n)
 (defalias wppv M-e)
 
@@ -31,10 +33,10 @@
   _ M-m _ M-i  _   @lyr
         _
                F7
-  mmid         M-n         M-e
+  mmid         @G10       M-e
   C-w          C-Tab       C-S-Tab
   F15          A-lft       A-rght
-  u            F19         esc
+  M-C-spc      M-mmid         esc
 )
 
 (deflayer firefox
