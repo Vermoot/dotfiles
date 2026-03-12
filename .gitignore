@@ -26,3 +26,5 @@
 .config/awesome/configs/material
 .config/nvim/lazy-lock.json
 .config/firefox/userChrome_1.css
+/.config/albert/websearch/engines.json
+/.config/albert/config
