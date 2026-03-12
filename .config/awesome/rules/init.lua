@@ -180,6 +180,7 @@ awful.rules.rules = {
     placement = awful.placement.centered() } },
   { rule = { name = "Untapped.gg Overlay" },
     properties = { floating = true, border_width = 0, focusable = false, ontop = true } },
+  { rule = { type = "dock" }, properties = { border_width = 0 } },
 
   -- Plasma Stuff {{{
   -- { rule = { class = "plasmashell" },

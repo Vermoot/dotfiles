@@ -172,4 +172,8 @@ client.connect_signal("property::active", function(c)
   c.screen.bar.ontop = not c.fullscreen
 end)
 
+client.connect_signal("mouse::enter", function(c)
+    c:activate { context = "mouse_enter", raise = false }
+end)
+
 -- }}}
