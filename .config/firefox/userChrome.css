@@ -10,9 +10,9 @@
 }
 
 /* Hide the tab bar */
-#TabsToolbar {
-   visibility: collapse;
-}
+/* #TabsToolbar { */
+/*    visibility: collapse; */
+/* } */
 
 /* Hide the sidebar's header */
 #sidebar-box #sidebar-header {
@@ -25,23 +25,23 @@
 }
 
 /* Collapse the sidebar when not hovered */
-#sidebar-box {
-   position: relative !important;
-   min-width: var(--sidebar-min-width) !important;
-   max-width: var(--sidebar-min-width) !important;
-   transition: var(--sidebar-animation-speed) ease var(--sidebar-close-delay);
-   z-index:3;
-}
+/* #sidebar-box { */
+/*    position: relative !important; */
+/*    min-width: var(--sidebar-min-width) !important; */
+/*    max-width: var(--sidebar-min-width) !important; */
+/*    transition: var(--sidebar-animation-speed) ease var(--sidebar-close-delay); */
+/*    z-index:3; */
+/* } */
 
 /* Reveal the sidebar when hovering */
-#sidebar-box:hover #sidebar {
-   position: relative !important;
-   min-width: var(--sidebar-visible-width) !important;
-   max-width: var(--sidebar-visible-width) !important;
-   margin-right: calc((var(--sidebar-visible-width) - var(--sidebar-min-width)) * -1) !important;
-   transition: var(--sidebar-animation-speed) ease var(--sidebar-open-delay);
-   z-index:3;
-}
+/* #sidebar-box:hover #sidebar { */
+/*    position: relative !important; */
+/*    min-width: var(--sidebar-visible-width) !important; */
+/*    max-width: var(--sidebar-visible-width) !important; */
+/*    margin-right: calc((var(--sidebar-visible-width) - var(--sidebar-min-width)) * -1) !important; */
+/*    transition: var(--sidebar-animation-speed) ease var(--sidebar-open-delay); */
+/*    z-index:3; */
+/* } */
 
 /* END Tabs sidebar with Sidebery }}}*/
 
@@ -87,7 +87,7 @@
 /* Active state of the toolbox (shown when hovered or active) */
 #navigator-toolbox:hover, /* On hover */
 #navigator-toolbox:focus-within,        /* When focused (Ctrl-L for example) */
-#mainPopupSet:has(panel[panelopen="true"]) ~ toolbox,
+/* #mainPopupSet:has(panel[panelopen="true"]) ~ toolbox, */
 #navigator-toolbox:has(toolbarbutton[open="true"]) {   /* When hovering a menu */
    width: calc(100% - var(--sidebar-min-width) - 2 * var(--toolbox-margins)) !important;
    left: var(--sidebar-min-width) !important;
