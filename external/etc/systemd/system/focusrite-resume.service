@@ -1,0 +1,10 @@
+[Unit]
+Description=Reset Scarlett 18i20 after suspend
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/fix-focusrite.sh
+
+[Install]
+WantedBy=suspend.target
